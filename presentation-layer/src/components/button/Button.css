@@ -1,0 +1,83 @@
+:root{
+    --primary: #4628ff;
+    --warning: #ffd028;
+    --danger: #eb3f27;
+    --success: #1e8028;
+    --dark: #181717;
+    --light: #fdfdfd;
+}
+
+.btn{
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Century Gothic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn:hover{
+    filter:contrast(70%)
+}
+
+/* Button Styles */
+
+.btn--primary--solid{
+    border: none;
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.btn--success--solid{
+    border: none;
+    background-color: var(--success);
+    color: var(--light);
+}
+
+.btn--danger--solid{
+    border: none;
+    background-color: var(--danger);
+    color: var(--light);
+}
+
+.btn--primary--outline{
+    border: 1px var(--primary) solid;
+    background-color: var(--light);
+    color: var(--primary);
+    font-weight: bold;
+}
+.btn--gradient{
+    border: none;
+    color:var(--light);
+    box-shadow: 2px 2px 4px var(--danger), -2px -2px 4px var(--danger);
+    background: linear-gradient(to left, var(--danger), black, var(--danger));
+}
+
+.btn--danger--outline{
+    border: 1px var(--danger) solid;
+    background-color: var(--light);
+    color: var(--danger);
+    font-weight: bold;
+}
+.btn--success--outline{
+    border: 1px var(--success) solid;
+    background-color: var(--light);
+    color: var(--success);
+    font-weight: bold;
+
+}
+
+/* Button Sizes */
+
+.btn--medium{
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.btn--small{
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.btn--large{
+    padding: 15px 30px;
+    font-size: 20px;
+}

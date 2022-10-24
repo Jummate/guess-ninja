@@ -1,10 +1,13 @@
+import ParticlesComponent from './components/Particles';
 import './App.css';
+import Welcome from './containers/Welcome/Welcome';
 
 function App() {
   return (
-    <div className='App'>
-      <h1>This is the header tag</h1>
-    </div>
+    <main className='main-container'>
+      <ParticlesComponent />
+      <Welcome />
+    </main>
   );
 }
 
