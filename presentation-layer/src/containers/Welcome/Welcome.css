@@ -19,7 +19,6 @@
 .Welcome__heading{
     font-family: 'Bungee', cursive;
     font-size:4.3rem;
-    margin-bottom: 20px;
     letter-spacing: 5px;
     word-spacing: 3px;
     background: #121FCF;
@@ -27,4 +26,15 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+}
+
+.Welcome__image{
+    height:50%;
+    width: 50%;
+    max-width: 350px;
+    max-height: 300px;
+    min-width: 100px;
+    min-height: 100px;
+    margin-bottom: 30px;
+    border-radius: 50%;
 }
