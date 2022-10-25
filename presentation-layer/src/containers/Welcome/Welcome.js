@@ -1,11 +1,13 @@
 import React from 'react';
 import Button from '../../components/button/Button';
+// import {ninja-image} from
 import './Welcome.css';
 
 const Welcome = () => {
   return (
     <section className='Welcome__container'>
       <h1 className='Welcome__heading'>Guess Ninja</h1>
+      {/* <img src={}/> */}
       <Button buttonSize='btn--large btn--gradient'> Proceed &gt;&gt;</Button>
     </section>
   );

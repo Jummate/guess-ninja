@@ -13,12 +13,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Century Gothic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Century Gothic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     /* margin: 0 auto; */
 }
 .Welcome__heading{
+    font-family: 'Bungee', cursive;
     font-size:4.3rem;
     margin-bottom: 20px;
     letter-spacing: 5px;
-    word-spacing: 3px
+    word-spacing: 3px;
+    background: #121FCF;
+    background: linear-gradient(to right, #49cdcb 19%, #CF1512 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }

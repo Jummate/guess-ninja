@@ -11,7 +11,7 @@ describe('when the page loads', () => {
 
   it('should render "Guess Ninja" text', () => {
     render(<Welcome />);
-    const hOneElement = screen.getByText(/Guess Ninja/i);
-    expect(hOneElement).toBeInTheDocument();
+    const headingElement = screen.getByText(/Guess Ninja/i);
+    expect(headingElement).toBeInTheDocument();
   });
 });
