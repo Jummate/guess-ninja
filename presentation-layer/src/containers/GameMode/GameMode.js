@@ -1,6 +1,7 @@
 import React from 'react';
 import './GameMode.css';
 import Button from '../../components/button/Button';
+import Navigation from '../../components/nav/Navigation';
 
 const GameMode = () => {
   return (
@@ -21,6 +22,8 @@ const GameMode = () => {
           Multiplayer
         </Button>
       </div>
+
+      <Navigation />
     </>
   );
 };
