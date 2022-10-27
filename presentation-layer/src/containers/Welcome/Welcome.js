@@ -15,7 +15,8 @@ const Welcome = () => {
         alt='Ninja Gaming Joystick Sport Logo'
       />
       <Button
-        buttonSize='btn--large btn--gradient'
+        buttonSize='btn--large'
+        buttonStyle='btn--gradient'
         onClick={() => context.contextDispatch({ type: 'SHOW_GAME_MODE_PAGE' })}
       >
         Proceed &gt;&gt;
