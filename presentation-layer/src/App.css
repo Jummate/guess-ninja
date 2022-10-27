@@ -1,6 +1,23 @@
-.main-container{
+.App__container{
   color:#fff;
   width:100%;
   height: 100%;
   background:linear-gradient(to top, black, red 50%, black);
 }
+.App__content__wrapper{
+  position: relative;
+  top:50%;
+  left:50%;
+  background-color:#000;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  width:80%;
+  height:80%;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px red, -2px -2px 4px #49cdcb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
