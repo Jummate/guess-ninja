@@ -3,12 +3,17 @@ import ParticlesComponent from './components/Particles';
 import './App.css';
 import Welcome from './containers/Welcome/Welcome';
 import GameMode from './containers/GameMode/GameMode';
+import GameSetup from './containers/GameSetup/GameSetup';
 import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
 
 const defaulState = {
   homePageActive: true,
   gameModeActive: false,
+  gameSetupActive: false,
+  showHome: false,
+  showMode: false,
+  showSetup: false,
 };
 
 function App() {
@@ -23,6 +28,7 @@ function App() {
         <div className='App__content__wrapper'>
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}
+          {state.gameSetupActive ? <GameSetup /> : null}
         </div>
       </main>
     </AppContext.Provider>

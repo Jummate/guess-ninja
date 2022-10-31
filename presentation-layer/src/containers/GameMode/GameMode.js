@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './GameMode.css';
 import Button from '../../components/button/Button';
 import Navigation from '../../components/nav/Navigation';
+import { AppContext } from '../../utils/context';
 
 const GameMode = () => {
+  const context = useContext(AppContext);
   return (
     <>
       <h1 className='GameMode__heading'>Game Mode</h1>
@@ -12,12 +14,18 @@ const GameMode = () => {
         <Button
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
+          onClick={() =>
+            context.contextDispatch({ type: 'SHOW_GAME_SETUP_PAGE' })
+          }
         >
           Single
         </Button>
         <Button
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
+          onClick={() =>
+            context.contextDispatch({ type: 'SHOW_GAME_SETUP_PAGE' })
+          }
         >
           Multiplayer
         </Button>

@@ -24,3 +24,6 @@
     margin-left: 10px;
     cursor: pointer;
 }
+.Navigation__wrapper li:hover{
+    color: #ffffffaf;
+}
