@@ -1,0 +1,7 @@
+.input{
+    padding: 15px 20px;
+    width:80%;
+}
+.input::placeholder{
+    color:var(--danger)
+}

@@ -1,0 +1,23 @@
+.GameSetup__container{
+    height:98%;
+    width:98%;
+    background-color: #e8f8f7;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:var(--danger)
+
+}
+
+.GameSetup__heading{
+    margin-bottom: 30px;
+    background: #121FCF;
+    background: linear-gradient(to right, #000 60%, #CF1512 40%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.GameSetup__container h3{
+    margin-bottom: 30px;
+}
