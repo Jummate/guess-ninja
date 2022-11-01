@@ -11,8 +11,15 @@
 
 }
 
+.GameSetup__container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:50%;
+}
 .GameSetup__heading{
     margin-bottom: 30px;
+    font-size: 2em;
     background: #121FCF;
     background: linear-gradient(to right, #000 60%, #CF1512 40%);
     -webkit-background-clip: text;
@@ -20,4 +27,16 @@
 }
 .GameSetup__container h3{
     margin-bottom: 30px;
+}
+.GameSetup__difficulty{
+    width:100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-weight: 100;
+}
+.difficulty-label{
+    margin-top:30px;
+}
+.GameSetup__container label{
+    margin-bottom: 5px;
 }
