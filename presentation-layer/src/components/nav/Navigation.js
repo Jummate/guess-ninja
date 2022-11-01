@@ -14,7 +14,15 @@ const Navigation = () => {
             Home
           </li>
         ) : null}
-        {context.initialState.showMode ? <li>Mode</li> : null}
+        {context.initialState.showMode ? (
+          <li
+            onClick={() =>
+              context.contextDispatch({ type: 'SHOW_GAME_MODE_PAGE' })
+            }
+          >
+            Mode
+          </li>
+        ) : null}
         {context.initialState.showSetup ? <li>Setup</li> : null}
       </ul>
     </section>
