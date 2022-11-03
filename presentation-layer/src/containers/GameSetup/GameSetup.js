@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './GameSetup.css';
 import Input from '../../components/input/Input';
 import Navigation from '../../components/nav/Navigation';
 import Button from '../../components/button/Button';
+import { AppContext } from '../../utils/context';
 
 const GameSetup = () => {
+  const context = useContext(AppContext);
+  const nextPage =
+    context.initialState.selectedMode === 'Single'
+      ? 'SHOW_GAME_INFO_PAGE'
+      : 'SHOW_PLAYER_REG_PAGE';
   return (
     <section className='GameSetup__container'>
       <h1 className='GameSetup__heading'>Game Setup</h1>
       <h3 className='GameSetup__text'>Specify the gameplan</h3>
       <form>
-        <label>Number of Players</label>
-        <Input />
+        {context.initialState.selectedMode === 'Multi' ? (
+          <p>
+            <label>Number of Players</label>
+            <Input type='number' />
+          </p>
+        ) : null}
 
         <label className='difficulty-label'>Difficulty</label>
         <select
@@ -26,6 +36,7 @@ const GameSetup = () => {
         <Button
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
+          onClick={() => context.contextDispatch({ type: nextPage })}
         >
           Submit
         </Button>

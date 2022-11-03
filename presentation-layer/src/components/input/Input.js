@@ -2,12 +2,12 @@ import React from 'react';
 
 import './Input.css';
 
-const Input = () => {
+const Input = ({ type = 'text', placeholder }) => {
   return (
     <input
-      type='text'
+      type={type}
       className='input'
-      placeholder='This is an input component'
+      placeholder={placeholder}
     />
   );
 };

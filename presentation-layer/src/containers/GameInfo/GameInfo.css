@@ -1,0 +1,11 @@
+.GameInfo__container{
+    height:98%;
+    width:98%;
+    background-color: #e8f8f7;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:var(--danger)
+}

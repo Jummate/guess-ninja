@@ -15,7 +15,10 @@ const GameMode = () => {
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
           onClick={() =>
-            context.contextDispatch({ type: 'SHOW_GAME_SETUP_PAGE' })
+            context.contextDispatch({
+              type: 'SHOW_GAME_SETUP_PAGE',
+              payload: { selectedMode: 'Single' },
+            })
           }
         >
           Single
@@ -24,7 +27,10 @@ const GameMode = () => {
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
           onClick={() =>
-            context.contextDispatch({ type: 'SHOW_GAME_SETUP_PAGE' })
+            context.contextDispatch({
+              type: 'SHOW_GAME_SETUP_PAGE',
+              payload: { selectedMode: 'Multi' },
+            })
           }
         >
           Multiplayer
