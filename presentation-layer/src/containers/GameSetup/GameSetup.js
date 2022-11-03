@@ -34,7 +34,7 @@ const GameSetup = () => {
         </select>
 
         <Button
-          buttonSize='btn--large'
+          buttonSize='btn--medium'
           buttonStyle='btn--gradient'
           onClick={() => context.contextDispatch({ type: nextPage })}
         >
