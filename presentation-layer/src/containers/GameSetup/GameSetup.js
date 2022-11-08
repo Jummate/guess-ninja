@@ -17,7 +17,7 @@ const GameSetup = () => {
       <h3 className='GameSetup__text'>Specify the gameplan</h3>
       <form>
         {context.initialState.selectedMode === 'Multi' ? (
-          <p>
+          <p data-testid='input-wrapper'>
             <label>Number of Players</label>
             <Input type='number' />
           </p>
