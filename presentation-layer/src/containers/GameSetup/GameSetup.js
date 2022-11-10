@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './GameSetup.css';
 import Input from '../../components/input/Input';
 import Navigation from '../../components/nav/Navigation';
@@ -7,10 +7,17 @@ import { AppContext } from '../../utils/context';
 
 const GameSetup = () => {
   const context = useContext(AppContext);
+  const [numOfPlayer, setNumOfPlayer] = useState('');
   const nextPage =
     context.initialState.selectedMode === 'Single'
       ? 'SHOW_GAME_INFO_PAGE'
       : 'SHOW_PLAYER_REG_PAGE';
+
+  // const handleInputChange = () => {};
+
+  // useEffect(() => {
+
+  // }, [numOfPlayer]);
   return (
     <section className='GameSetup__container'>
       <h1 className='GameSetup__heading'>Game Setup</h1>
@@ -19,7 +26,11 @@ const GameSetup = () => {
         {context.initialState.selectedMode === 'Multi' ? (
           <p data-testid='input-wrapper'>
             <label>Number of Players</label>
-            <Input type='number' />
+            <Input
+              type='number'
+              value={numOfPlayer}
+              onChange={(e) => setNumOfPlayer(e.target.value)}
+            />
           </p>
         ) : null}
 
@@ -32,11 +43,19 @@ const GameSetup = () => {
           <option value='Medium'>Medium</option>
           <option value='Hard'>Hard</option>
         </select>
+        <span>{context.initialState.selectedMode}</span>
 
         <Button
           buttonSize='btn--medium'
           buttonStyle='btn--gradient'
-          onClick={() => context.contextDispatch({ type: nextPage })}
+          onClick={() =>
+            context.contextDispatch({
+              type: nextPage,
+              payload: {
+                numOfPlayer,
+              },
+            })
+          }
         >
           Submit
         </Button>

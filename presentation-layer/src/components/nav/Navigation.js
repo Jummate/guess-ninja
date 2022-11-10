@@ -23,7 +23,18 @@ const Navigation = () => {
             Mode
           </li>
         ) : null}
-        {context.initialState.showSetup ? <li>Setup</li> : null}
+        {context.initialState.showSetup ? (
+          <li
+            onClick={() =>
+              context.contextDispatch({
+                type: 'SHOW_GAME_SETUP_PAGE',
+                payload: { selectedMode: context.initialState.selectedMode },
+              })
+            }
+          >
+            Setup
+          </li>
+        ) : null}
       </ul>
     </section>
   );

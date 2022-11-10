@@ -45,7 +45,8 @@ const reducer = (state, action) => {
         playerRegActive: true,
         showHome: true,
         showMode: true,
-        showSetup: false,
+        showSetup: true,
+        numOfPlayer: action.payload.numOfPlayer,
       };
     case 'SHOW_GAME_INFO_PAGE':
       return {
@@ -57,7 +58,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         showHome: true,
         showMode: true,
-        showSetup: false,
+        showSetup: true,
       };
     default:
       throw new Error('No matching action type');

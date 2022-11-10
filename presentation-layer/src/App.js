@@ -19,6 +19,7 @@ const defaulState = {
   showMode: false,
   showSetup: false,
   selectedMode: '',
+  numOfPlayer: 0,
 };
 
 function App() {
