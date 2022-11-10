@@ -43,7 +43,6 @@ const GameSetup = () => {
           <option value='Medium'>Medium</option>
           <option value='Hard'>Hard</option>
         </select>
-        <span>{context.initialState.selectedMode}</span>
 
         <Button
           buttonSize='btn--medium'
