@@ -1,0 +1,18 @@
+.GamePrep__container{
+    height:98%;
+    width:98%;
+    background-color: #e8f8f7;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:var(--danger)
+}
+.GamePrep__heading{
+    margin-bottom: 30px;
+    background: linear-gradient(to left, #000 19%, #CF1512 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

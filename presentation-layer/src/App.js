@@ -6,6 +6,7 @@ import GameMode from './containers/GameMode/GameMode';
 import GameSetup from './containers/GameSetup/GameSetup';
 import PlayerRegistration from './containers/PlayerRegistration/PlayerRegistration';
 import GameInfo from './containers/GameInfo/GameInfo';
+import GamePreparation from './containers/GamePreparation/GamePreparation';
 import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
 
@@ -15,6 +16,7 @@ const defaulState = {
   gameSetupActive: false,
   gameInfoActive: false,
   playerRegActive: false,
+  gamePrepActive: false,
   showHome: false,
   showMode: false,
   showSetup: false,
@@ -37,6 +39,7 @@ function App() {
           {state.gameSetupActive ? <GameSetup /> : null}
           {state.gameInfoActive ? <GameInfo /> : null}
           {state.playerRegActive ? <PlayerRegistration /> : null}
+          {state.gamePrepActive ? <GamePreparation /> : null}
         </div>
       </main>
     </AppContext.Provider>

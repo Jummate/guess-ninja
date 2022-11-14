@@ -8,6 +8,7 @@ const reducer = (state, action) => {
         gameSetupActive: false,
         gameInfoActive: false,
         playerRegActive: false,
+        gamePrepActive: false,
       };
     case 'SHOW_GAME_MODE_PAGE':
       return {
@@ -17,6 +18,7 @@ const reducer = (state, action) => {
         gameSetupActive: false,
         gameInfoActive: false,
         playerRegActive: false,
+        gamePrepActive: false,
         showHome: true,
         showMode: false,
         showSetup: false,
@@ -43,6 +45,7 @@ const reducer = (state, action) => {
         gameSetupActive: false,
         gameInfoActive: false,
         playerRegActive: true,
+        gamePrepActive: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -56,9 +59,21 @@ const reducer = (state, action) => {
         gameSetupActive: false,
         gameInfoActive: true,
         playerRegActive: false,
+        gamePrepActive: false,
         showHome: true,
         showMode: true,
         showSetup: true,
+      };
+
+    case 'SHOW_GAME_PREP_PAGE':
+      return {
+        ...state,
+        homePageActive: false,
+        gameModeActive: false,
+        gameSetupActive: false,
+        gameInfoActive: false,
+        playerRegActive: false,
+        gamePrepActive: true,
       };
     default:
       throw new Error('No matching action type');
