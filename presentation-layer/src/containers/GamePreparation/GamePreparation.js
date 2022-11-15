@@ -14,8 +14,7 @@ const GamePreparation = () => {
         buttonStyle='btn--gradient'
         onClick={() =>
           context.contextDispatch({
-            type: 'SHOW_GAME_SETUP_PAGE',
-            payload: { selectedMode: 'Multi' },
+            type: 'SHOW_GUESS_TAKING_PAGE',
           })
         }
       >

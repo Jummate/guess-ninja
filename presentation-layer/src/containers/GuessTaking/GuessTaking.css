@@ -11,12 +11,8 @@
 
 }
 .GuessTaking__heading{
-    font-family: 'Bungee', cursive;
-    font-size:4.3rem;
-    letter-spacing: 5px;
-    word-spacing: 3px;
-    background: #121FCF;
-    background: linear-gradient(to right, #49cdcb 19%, #CF1512 75%);
+    margin-bottom: 30px;
+    background: linear-gradient(to left, #000 19%, #CF1512 75%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
