@@ -9,6 +9,7 @@ import GameInfo from './containers/GameInfo/GameInfo';
 import GamePreparation from './containers/GamePreparation/GamePreparation';
 import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
+import GuessTaking from './containers/GuessTaking/GuessTaking';
 
 const defaulState = {
   homePageActive: true,
@@ -40,6 +41,7 @@ function App() {
           {state.gameInfoActive ? <GameInfo /> : null}
           {state.playerRegActive ? <PlayerRegistration /> : null}
           {state.gamePrepActive ? <GamePreparation /> : null}
+          {state.guessTakingActive ? <GuessTaking /> : null}
         </div>
       </main>
     </AppContext.Provider>

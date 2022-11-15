@@ -9,6 +9,7 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: false,
         gamePrepActive: false,
+        guessTakingActive: false,
       };
     case 'SHOW_GAME_MODE_PAGE':
       return {
@@ -19,6 +20,7 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: false,
         gamePrepActive: false,
+        guessTakingActive: false,
         showHome: true,
         showMode: false,
         showSetup: false,
@@ -31,6 +33,7 @@ const reducer = (state, action) => {
         gameSetupActive: true,
         gameInfoActive: false,
         playerRegActive: false,
+        guessTakingActive: false,
         showHome: true,
         showMode: true,
         showSetup: false,
@@ -46,6 +49,7 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: true,
         gamePrepActive: false,
+        guessTakingActive: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -60,6 +64,7 @@ const reducer = (state, action) => {
         gameInfoActive: true,
         playerRegActive: false,
         gamePrepActive: false,
+        guessTakingActive: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -74,6 +79,18 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: false,
         gamePrepActive: true,
+        guessTakingActive: false,
+      };
+    case 'SHOW_GUESS_TAKING_PAGE':
+      return {
+        ...state,
+        homePageActive: false,
+        gameModeActive: false,
+        gameSetupActive: false,
+        gameInfoActive: false,
+        playerRegActive: false,
+        gamePrepActive: false,
+        guessTakingActive: true,
       };
     default:
       throw new Error('No matching action type');
