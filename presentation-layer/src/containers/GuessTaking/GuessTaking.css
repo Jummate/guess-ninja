@@ -16,3 +16,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.GuessTaking__container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:55%;
+}
