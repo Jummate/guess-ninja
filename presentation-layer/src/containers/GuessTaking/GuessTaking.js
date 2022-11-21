@@ -12,7 +12,7 @@ const GuessTaking = () => {
       <form>
         <p data-testid='input-wrapper'>
           <label>Player:</label>
-          <Input value='Your player' />
+          <Input type='number' />
         </p>
 
         <Button

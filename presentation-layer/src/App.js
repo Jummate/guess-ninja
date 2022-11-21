@@ -10,8 +10,10 @@ import GamePreparation from './containers/GamePreparation/GamePreparation';
 import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
 import GuessTaking from './containers/GuessTaking/GuessTaking';
+import Modal from './components/modal/Modal';
 
 const defaulState = {
+  isOpen: true,
   homePageActive: true,
   gameModeActive: false,
   gameSetupActive: false,
@@ -32,7 +34,17 @@ function App() {
     <AppContext.Provider
       value={{ initialState: state, contextDispatch: dispatch }}
     >
-      <main className='App__container'>
+      <>
+        {state.isOpen ? (
+          <Modal
+            title='Add Item'
+            onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+          >
+            This is modal
+          </Modal>
+        ) : null}
+      </>
+      {/* <main className='App__container'>
         <ParticlesComponent />
         <div className='App__content__wrapper'>
           {state.homePageActive ? <Welcome /> : null}
@@ -43,7 +55,7 @@ function App() {
           {state.gamePrepActive ? <GamePreparation /> : null}
           {state.guessTakingActive ? <GuessTaking /> : null}
         </div>
-      </main>
+      </main> */}
     </AppContext.Provider>
   );
 }

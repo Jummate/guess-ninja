@@ -92,6 +92,10 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: true,
       };
+    case 'OPEN_MODAL':
+      return { ...state, isOpen: true };
+    case 'CLOSE_MODAL':
+      return { ...state, isOpen: false };
     default:
       throw new Error('No matching action type');
   }
