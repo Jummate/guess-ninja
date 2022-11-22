@@ -11,7 +11,7 @@ if (!portalRoot) {
   document.body.appendChild(portalRoot);
 }
 
-const Modal = ({ onClose, title, dialog = false, children }) => {
+const Modal = ({ onClose, title, dialog = true, children }) => {
   return ReactDOM.createPortal(
     <>
       <div className='modal-overlay'></div>
@@ -30,16 +30,14 @@ const Modal = ({ onClose, title, dialog = false, children }) => {
         {!dialog && (
           <div className='modal-footer'>
             <Button
-              type='button'
               onClick={onClose}
-              buttonSize='btn--small'
+              buttonSize='btn--medium'
               buttonStyle='btn--danger--solid'
             >
               Close
             </Button>
             <Button
-              type='button'
-              buttonSize='btn--small'
+              buttonSize='btn--medium'
               buttonStyle='btn--success--solid'
             >
               Save

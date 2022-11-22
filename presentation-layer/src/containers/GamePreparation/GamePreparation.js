@@ -20,6 +20,20 @@ const GamePreparation = () => {
       >
         Start Now
       </Button>
+
+      <footer>
+        <Button
+          buttonSize='btn--medium'
+          buttonStyle='btn--danger--solid'
+          onClick={() =>
+            context.contextDispatch({
+              type: 'OPEN_MODAL',
+            })
+          }
+        >
+          Quit
+        </Button>
+      </footer>
     </section>
   );
 };

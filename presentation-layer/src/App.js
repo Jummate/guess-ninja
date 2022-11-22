@@ -11,9 +11,10 @@ import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
 import GuessTaking from './containers/GuessTaking/GuessTaking';
 import Modal from './components/modal/Modal';
+import Button from './components/button/Button';
 
 const defaulState = {
-  isOpen: true,
+  isOpen: false,
   homePageActive: true,
   gameModeActive: false,
   gameSetupActive: false,
@@ -34,17 +35,32 @@ function App() {
     <AppContext.Provider
       value={{ initialState: state, contextDispatch: dispatch }}
     >
-      <>
-        {state.isOpen ? (
-          <Modal
-            title='Add Item'
-            onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
-          >
-            This is modal
-          </Modal>
-        ) : null}
-      </>
-      {/* <main className='App__container'>
+      {state.isOpen ? (
+        <Modal
+          title='Confirmation'
+          onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+        >
+          <h3>Are you sure you want to quit?</h3>
+          <p>
+            <Button
+              buttonSize='btn--medium'
+              buttonStyle='btn--gradient'
+              onClick={() => dispatch({ type: 'SHOW_HOME_PAGE' })}
+            >
+              OK
+            </Button>
+            <Button
+              buttonSize='btn--medium'
+              buttonStyle='btn--gradient'
+              onClick={() => dispatch({ type: 'CLOSE_MODAL' })}
+            >
+              CANCEL
+            </Button>
+          </p>
+        </Modal>
+      ) : null}
+
+      <main className='App__container'>
         <ParticlesComponent />
         <div className='App__content__wrapper'>
           {state.homePageActive ? <Welcome /> : null}
@@ -55,7 +71,7 @@ function App() {
           {state.gamePrepActive ? <GamePreparation /> : null}
           {state.guessTakingActive ? <GuessTaking /> : null}
         </div>
-      </main> */}
+      </main>
     </AppContext.Provider>
   );
 }

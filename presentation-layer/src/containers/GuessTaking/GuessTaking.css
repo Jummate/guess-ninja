@@ -23,3 +23,9 @@
     justify-content: center;
     width:55%;
 }
+
+footer{
+    position: absolute;
+    bottom:0;
+    right:0;
+}

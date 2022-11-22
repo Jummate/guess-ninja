@@ -10,6 +10,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
+        isOpen: false,
       };
     case 'SHOW_GAME_MODE_PAGE':
       return {
@@ -21,6 +22,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
+        isOpen: false,
         showHome: true,
         showMode: false,
         showSetup: false,
@@ -34,6 +36,7 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: false,
         guessTakingActive: false,
+        isOpen: false,
         showHome: true,
         showMode: true,
         showSetup: false,
@@ -50,6 +53,7 @@ const reducer = (state, action) => {
         playerRegActive: true,
         gamePrepActive: false,
         guessTakingActive: false,
+        isOpen: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -65,6 +69,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
+        isOpen: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -80,6 +85,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: true,
         guessTakingActive: false,
+        isOpen: false,
       };
     case 'SHOW_GUESS_TAKING_PAGE':
       return {
@@ -91,6 +97,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: true,
+        isOpen: false,
       };
     case 'OPEN_MODAL':
       return { ...state, isOpen: true };
