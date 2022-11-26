@@ -58,6 +58,7 @@ const reducer = (state, action) => {
         showMode: true,
         showSetup: true,
         numOfPlayer: action.payload.numOfPlayer,
+        difficulty: action.payload.difficulty,
       };
     case 'SHOW_GAME_INFO_PAGE':
       return {
@@ -73,6 +74,7 @@ const reducer = (state, action) => {
         showHome: true,
         showMode: true,
         showSetup: true,
+        difficulty: action.payload.difficulty,
       };
 
     case 'SHOW_GAME_PREP_PAGE':

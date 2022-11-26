@@ -26,6 +26,8 @@ const defaulState = {
   showSetup: false,
   selectedMode: '',
   numOfPlayer: 0,
+  difficulty: 'Easy',
+  playersInvolved: [],
 };
 
 function App() {

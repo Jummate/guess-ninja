@@ -8,6 +8,7 @@ import { AppContext } from '../../utils/context';
 const GameSetup = () => {
   const context = useContext(AppContext);
   const [numOfPlayer, setNumOfPlayer] = useState('');
+  const [difficulty, setDifficulty] = useState('Easy');
   const nextPage =
     context.initialState.selectedMode === 'Single'
       ? 'SHOW_GAME_INFO_PAGE'
@@ -36,8 +37,10 @@ const GameSetup = () => {
 
         <label className='difficulty-label'>Difficulty</label>
         <select
-          name='difficult'
+          name='difficulty'
           className='GameSetup__difficulty'
+          value={difficulty}
+          onChange={(e) => setDifficulty(e.target.value)}
         >
           <option value='Easy'>Easy</option>
           <option value='Medium'>Medium</option>
@@ -52,6 +55,7 @@ const GameSetup = () => {
               type: nextPage,
               payload: {
                 numOfPlayer,
+                difficulty,
               },
             })
           }
