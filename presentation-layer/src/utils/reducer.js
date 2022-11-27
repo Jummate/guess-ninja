@@ -10,7 +10,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
       };
     case 'SHOW_GAME_MODE_PAGE':
       return {
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
         showHome: true,
         showMode: false,
         showSetup: false,
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
         gameInfoActive: false,
         playerRegActive: false,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
         showHome: true,
         showMode: true,
         showSetup: false,
@@ -53,7 +53,7 @@ const reducer = (state, action) => {
         playerRegActive: true,
         gamePrepActive: false,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -70,11 +70,12 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
         showHome: true,
         showMode: true,
         showSetup: true,
         difficulty: action.payload.difficulty,
+        playersInvolved: action.payload.playersInvolved,
       };
 
     case 'SHOW_GAME_PREP_PAGE':
@@ -87,7 +88,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: true,
         guessTakingActive: false,
-        isOpen: false,
+        isOpenQuit: false,
       };
     case 'SHOW_GUESS_TAKING_PAGE':
       return {
@@ -99,12 +100,12 @@ const reducer = (state, action) => {
         playerRegActive: false,
         gamePrepActive: false,
         guessTakingActive: true,
-        isOpen: false,
+        isOpenQuit: false,
       };
-    case 'OPEN_MODAL':
-      return { ...state, isOpen: true };
-    case 'CLOSE_MODAL':
-      return { ...state, isOpen: false };
+    case 'OPEN_QUIT_MODAL':
+      return { ...state, isOpenQuit: true };
+    case 'CLOSE_QUIT_MODAL':
+      return { ...state, isOpenQuit: false };
     default:
       throw new Error('No matching action type');
   }

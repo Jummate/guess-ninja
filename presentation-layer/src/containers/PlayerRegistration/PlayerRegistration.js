@@ -3,17 +3,25 @@ import Navigation from '../../components/nav/Navigation';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
+import { showAlert } from '../../utils/alert';
 
 import './PlayerRegistration.css';
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
+  const { numOfPlayer, difficulty } = context.initialState;
   const [playerCount, setPlayerCount] = useState(1);
   const [player, setPlayer] = useState('');
   const [playersInvolved, setPlayersInvolved] = useState([]);
+  const successConfig = {
+    title: 'Success',
+    text: 'Saved succesfully',
+    icon: 'success',
+    confirmButtonText: 'OK',
+  };
 
   const incrementPlayerCount = () => {
-    if (playerCount < context.initialState.numOfPlayer) {
+    if (playerCount < Number(numOfPlayer)) {
       setPlayerCount((prev) => prev + 1);
     }
   };
@@ -22,7 +30,7 @@ const PlayerRegistration = () => {
   };
 
   const savePlayerNames = () => {
-    setPlayersInvolved((prev) => prev.push(player));
+    setPlayersInvolved([...playersInvolved, player]);
   };
 
   const handleClick = () => {
@@ -35,7 +43,10 @@ const PlayerRegistration = () => {
       <h1 className='PlayerReg__heading'>Player Registration</h1>
       <p className='player-entry-wrapper'>
         <label>Player {playerCount}:</label>
-        <Input value={player} />
+        <Input
+          value={player}
+          onChange={(e) => setPlayer(e.target.value)}
+        />
       </p>
 
       <Button
@@ -52,6 +63,7 @@ const PlayerRegistration = () => {
         onClick={() =>
           context.contextDispatch({
             type: 'SHOW_GAME_INFO_PAGE',
+            payload: { playersInvolved, difficulty },
           })
         }
       >

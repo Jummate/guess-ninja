@@ -7,9 +7,26 @@ import './GameInfo.css';
 
 const GameInfo = () => {
   const context = useContext(AppContext);
+  const { selectedMode, numOfPlayer, difficulty, playersInvolved } =
+    context.initialState;
   return (
     <section className='GameInfo__container'>
-      <h1>This is Game Info Page</h1>
+      <h1 className='GameInfo__heading'>Game Details</h1>
+
+      <h4>
+        You are almost ready to get started. Here are the details about the
+        current game
+      </h4>
+
+      <ul type='square'>
+        <li>Game Mode: {selectedMode}</li>
+        <li>No of players: {selectedMode === 'Multi' ? numOfPlayer : 1}</li>
+        <li>Difficulty: {difficulty}</li>
+        <li>
+          Players involved:{' '}
+          {selectedMode === 'Multi' ? playersInvolved.join(', ') : 'n/a'}
+        </li>
+      </ul>
 
       <Button
         buttonSize='btn--large'

@@ -27,7 +27,7 @@ const GamePreparation = () => {
           buttonStyle='btn--danger--solid'
           onClick={() =>
             context.contextDispatch({
-              type: 'OPEN_MODAL',
+              type: 'OPEN_QUIT_MODAL',
             })
           }
         >

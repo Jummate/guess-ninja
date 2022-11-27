@@ -7,10 +7,10 @@ import './GuessTaking.css';
 
 const GuessTaking = () => {
   const context = useContext(AppContext);
+
   return (
     <section className='GuessTaking__container'>
       <h1 className='GuessTaking__heading'>This is Guess Taking Page</h1>
-
       <form>
         <p data-testid='input-wrapper'>
           <label>Player:</label>
@@ -29,7 +29,7 @@ const GuessTaking = () => {
         <Button
           buttonSize='btn--medium'
           buttonStyle='btn--danger--solid'
-          onClick={() => context.contextDispatch({ type: 'OPEN_MODAL' })}
+          onClick={() => context.contextDispatch({ type: 'OPEN_QUIT_MODAL' })}
         >
           Quit
         </Button>

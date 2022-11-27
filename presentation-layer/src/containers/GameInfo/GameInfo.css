@@ -9,3 +9,14 @@
     align-items: center;
     color:var(--danger)
 }
+
+.GameInfo__heading{
+    margin-bottom: 30px;
+    background: linear-gradient(to left, #000 19%, #CF1512 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.GameInfo__container h4{
+    text-align: center;
+}

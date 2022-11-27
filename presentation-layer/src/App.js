@@ -12,35 +12,19 @@ import { AppContext } from './utils/context';
 import GuessTaking from './containers/GuessTaking/GuessTaking';
 import Modal from './components/modal/Modal';
 import Button from './components/button/Button';
-
-const defaulState = {
-  isOpen: false,
-  homePageActive: true,
-  gameModeActive: false,
-  gameSetupActive: false,
-  gameInfoActive: false,
-  playerRegActive: false,
-  gamePrepActive: false,
-  showHome: false,
-  showMode: false,
-  showSetup: false,
-  selectedMode: '',
-  numOfPlayer: 0,
-  difficulty: 'Easy',
-  playersInvolved: [],
-};
+import { defaultState } from './utils/defaultState';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, defaulState);
+  const [state, dispatch] = useReducer(reducer, defaultState);
 
   return (
     <AppContext.Provider
       value={{ initialState: state, contextDispatch: dispatch }}
     >
-      {state.isOpen ? (
+      {state.isOpenQuit ? (
         <Modal
           title='Confirmation'
-          onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+          onClose={() => dispatch({ type: 'CLOSE_QUIT_MODAL' })}
         >
           <h3>Are you sure you want to quit?</h3>
           <p>
@@ -54,7 +38,7 @@ function App() {
             <Button
               buttonSize='btn--medium'
               buttonStyle='btn--gradient'
-              onClick={() => dispatch({ type: 'CLOSE_MODAL' })}
+              onClick={() => dispatch({ type: 'CLOSE_QUIT_MODAL' })}
             >
               CANCEL
             </Button>
