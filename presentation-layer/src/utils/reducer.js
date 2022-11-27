@@ -11,6 +11,7 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
       };
     case 'SHOW_GAME_MODE_PAGE':
       return {
@@ -23,6 +24,7 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
         showHome: true,
         showMode: false,
         showSetup: false,
@@ -37,6 +39,7 @@ const reducer = (state, action) => {
         playerRegActive: false,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
         showHome: true,
         showMode: true,
         showSetup: false,
@@ -54,6 +57,7 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -71,6 +75,7 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
         showHome: true,
         showMode: true,
         showSetup: true,
@@ -89,6 +94,7 @@ const reducer = (state, action) => {
         gamePrepActive: true,
         guessTakingActive: false,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
       };
     case 'SHOW_GUESS_TAKING_PAGE':
       return {
@@ -101,11 +107,16 @@ const reducer = (state, action) => {
         gamePrepActive: false,
         guessTakingActive: true,
         isOpenQuit: false,
+        isOpenPlayerReg: false,
       };
     case 'OPEN_QUIT_MODAL':
       return { ...state, isOpenQuit: true };
     case 'CLOSE_QUIT_MODAL':
       return { ...state, isOpenQuit: false };
+    case 'OPEN_PLAYER_REG_MODAL':
+      return { ...state, isOpenPlayerReg: true };
+    case 'CLOSE_PLAYER_REG_MODAL':
+      return { ...state, isOpenPlayerReg: false };
     default:
       throw new Error('No matching action type');
   }

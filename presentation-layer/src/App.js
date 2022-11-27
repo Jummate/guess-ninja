@@ -46,6 +46,24 @@ function App() {
         </Modal>
       ) : null}
 
+      {state.isOpenPlayerReg ? (
+        <Modal
+          title='Confirmation'
+          onClose={() => dispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
+        >
+          <h3>Successful!</h3>
+          <p>
+            <Button
+              buttonSize='btn--medium'
+              buttonStyle='btn--gradient'
+              onClick={() => dispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
+            >
+              OK
+            </Button>
+          </p>
+        </Modal>
+      ) : null}
+
       <main className='App__container'>
         <ParticlesComponent />
         <div className='App__content__wrapper'>

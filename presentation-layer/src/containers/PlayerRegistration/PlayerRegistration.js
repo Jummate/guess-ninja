@@ -37,6 +37,11 @@ const PlayerRegistration = () => {
     savePlayerNames();
     incrementPlayerCount();
     clearInputField();
+    if (playerCount === Number(numOfPlayer)) {
+      context.contextDispatch({
+        type: 'OPEN_PLAYER_REG_MODAL',
+      });
+    }
   };
   return (
     <section className='PlayerReg__container'>
