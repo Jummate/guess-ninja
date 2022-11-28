@@ -7,8 +7,12 @@ import './GameInfo.css';
 
 const GameInfo = () => {
   const context = useContext(AppContext);
-  const { selectedMode, numOfPlayer, difficulty, playersInvolved } =
-    context.initialState;
+
+  const {
+    initialState: { numOfPlayer, difficulty, selectedMode, playersInvolved },
+    contextDispatch,
+  } = context;
+
   return (
     <section className='GameInfo__container'>
       <h1 className='GameInfo__heading'>Game Details</h1>
@@ -32,7 +36,7 @@ const GameInfo = () => {
         buttonSize='btn--large'
         buttonStyle='btn--gradient'
         onClick={() =>
-          context.contextDispatch({
+          contextDispatch({
             type: 'SHOW_GAME_PREP_PAGE',
           })
         }

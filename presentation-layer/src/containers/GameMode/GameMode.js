@@ -6,6 +6,7 @@ import { AppContext } from '../../utils/context';
 
 const GameMode = () => {
   const context = useContext(AppContext);
+  const { contextDispatch } = context;
   return (
     <>
       <h1 className='GameMode__heading'>Game Mode</h1>
@@ -15,7 +16,7 @@ const GameMode = () => {
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
           onClick={() =>
-            context.contextDispatch({
+            contextDispatch({
               type: 'SHOW_GAME_SETUP_PAGE',
               payload: { selectedMode: 'Single' },
             })
@@ -27,7 +28,7 @@ const GameMode = () => {
           buttonSize='btn--large'
           buttonStyle='btn--gradient'
           onClick={() =>
-            context.contextDispatch({
+            contextDispatch({
               type: 'SHOW_GAME_SETUP_PAGE',
               payload: { selectedMode: 'Multi' },
             })

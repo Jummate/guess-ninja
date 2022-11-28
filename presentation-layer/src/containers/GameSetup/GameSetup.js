@@ -9,10 +9,13 @@ const GameSetup = () => {
   const context = useContext(AppContext);
   const [numOfPlayer, setNumOfPlayer] = useState('');
   const [difficulty, setDifficulty] = useState('Easy');
+
+  const {
+    initialState: { selectedMode },
+    contextDispatch,
+  } = context;
   const nextPage =
-    context.initialState.selectedMode === 'Single'
-      ? 'SHOW_GAME_INFO_PAGE'
-      : 'SHOW_PLAYER_REG_PAGE';
+    selectedMode === 'Single' ? 'SHOW_GAME_INFO_PAGE' : 'SHOW_PLAYER_REG_PAGE';
 
   // const handleInputChange = () => {};
 
@@ -24,7 +27,7 @@ const GameSetup = () => {
       <h1 className='GameSetup__heading'>Game Setup</h1>
       <h3 className='GameSetup__text'>Specify the gameplan</h3>
       <form>
-        {context.initialState.selectedMode === 'Multi' ? (
+        {selectedMode === 'Multi' ? (
           <p data-testid='input-wrapper'>
             <label>Number of Players</label>
             <Input
@@ -51,7 +54,7 @@ const GameSetup = () => {
           buttonSize='btn--medium'
           buttonStyle='btn--gradient'
           onClick={() =>
-            context.contextDispatch({
+            contextDispatch({
               type: nextPage,
               payload: {
                 numOfPlayer,

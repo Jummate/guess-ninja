@@ -3,22 +3,19 @@ import Navigation from '../../components/nav/Navigation';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
-import { showAlert } from '../../utils/alert';
+import Modal from '../../components/modal/Modal';
 
 import './PlayerRegistration.css';
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
-  const { numOfPlayer, difficulty } = context.initialState;
+  const {
+    initialState: { numOfPlayer, difficulty, isOpenPlayerReg },
+    contextDispatch,
+  } = context;
   const [playerCount, setPlayerCount] = useState(1);
   const [player, setPlayer] = useState('');
   const [playersInvolved, setPlayersInvolved] = useState([]);
-  const successConfig = {
-    title: 'Success',
-    text: 'Saved succesfully',
-    icon: 'success',
-    confirmButtonText: 'OK',
-  };
 
   const incrementPlayerCount = () => {
     if (playerCount < Number(numOfPlayer)) {
@@ -38,13 +35,35 @@ const PlayerRegistration = () => {
     incrementPlayerCount();
     clearInputField();
     if (playerCount === Number(numOfPlayer)) {
-      context.contextDispatch({
+      contextDispatch({
         type: 'OPEN_PLAYER_REG_MODAL',
       });
     }
   };
   return (
     <section className='PlayerReg__container'>
+      {/* Modal starts---------------------------- */}
+      {isOpenPlayerReg ? (
+        <Modal
+          title='Confirmation'
+          onClose={() => contextDispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
+        >
+          <h2>COMPLETED</h2>
+          <h3>Players successfully registered!</h3>
+          <p>
+            <Button
+              buttonSize='btn--medium'
+              buttonStyle='btn--gradient'
+              onClick={() =>
+                contextDispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })
+              }
+            >
+              OK
+            </Button>
+          </p>
+        </Modal>
+      ) : null}
+
       <h1 className='PlayerReg__heading'>Player Registration</h1>
       <p className='player-entry-wrapper'>
         <label>Player {playerCount}:</label>
@@ -66,7 +85,7 @@ const PlayerRegistration = () => {
         buttonSize='btn--large'
         buttonStyle='btn--gradient'
         onClick={() =>
-          context.contextDispatch({
+          contextDispatch({
             type: 'SHOW_GAME_INFO_PAGE',
             payload: { playersInvolved, difficulty },
           })

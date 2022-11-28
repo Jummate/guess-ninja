@@ -10,8 +10,6 @@ import GamePreparation from './containers/GamePreparation/GamePreparation';
 import reducer from './utils/reducer';
 import { AppContext } from './utils/context';
 import GuessTaking from './containers/GuessTaking/GuessTaking';
-import Modal from './components/modal/Modal';
-import Button from './components/button/Button';
 import { defaultState } from './utils/defaultState';
 
 function App() {
@@ -21,49 +19,6 @@ function App() {
     <AppContext.Provider
       value={{ initialState: state, contextDispatch: dispatch }}
     >
-      {state.isOpenQuit ? (
-        <Modal
-          title='Confirmation'
-          onClose={() => dispatch({ type: 'CLOSE_QUIT_MODAL' })}
-        >
-          <h3>Are you sure you want to quit?</h3>
-          <p>
-            <Button
-              buttonSize='btn--medium'
-              buttonStyle='btn--gradient'
-              onClick={() => dispatch({ type: 'SHOW_HOME_PAGE' })}
-            >
-              OK
-            </Button>
-            <Button
-              buttonSize='btn--medium'
-              buttonStyle='btn--gradient'
-              onClick={() => dispatch({ type: 'CLOSE_QUIT_MODAL' })}
-            >
-              CANCEL
-            </Button>
-          </p>
-        </Modal>
-      ) : null}
-
-      {state.isOpenPlayerReg ? (
-        <Modal
-          title='Confirmation'
-          onClose={() => dispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
-        >
-          <h3>Successful!</h3>
-          <p>
-            <Button
-              buttonSize='btn--medium'
-              buttonStyle='btn--gradient'
-              onClick={() => dispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
-            >
-              OK
-            </Button>
-          </p>
-        </Modal>
-      ) : null}
-
       <main className='App__container'>
         <ParticlesComponent />
         <div className='App__content__wrapper'>

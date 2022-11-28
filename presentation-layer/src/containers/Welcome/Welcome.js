@@ -6,6 +6,7 @@ import { AppContext } from '../../utils/context';
 
 const Welcome = () => {
   const context = useContext(AppContext);
+  const { contextDispatch } = context;
   return (
     <>
       <h1 className='Welcome__heading'>Guess Ninja</h1>
@@ -17,7 +18,7 @@ const Welcome = () => {
       <Button
         buttonSize='btn--large'
         buttonStyle='btn--gradient'
-        onClick={() => context.contextDispatch({ type: 'SHOW_GAME_MODE_PAGE' })}
+        onClick={() => contextDispatch({ type: 'SHOW_GAME_MODE_PAGE' })}
       >
         Proceed &gt;&gt;
       </Button>
