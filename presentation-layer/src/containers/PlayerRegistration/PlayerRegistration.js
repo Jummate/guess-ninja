@@ -4,6 +4,7 @@ import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
 import Modal from '../../components/modal/Modal';
+import { FaStar } from 'react-icons/fa';
 
 import './PlayerRegistration.css';
 
@@ -48,17 +49,25 @@ const PlayerRegistration = () => {
           title='Confirmation'
           onClose={() => contextDispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
         >
-          <h2>COMPLETED</h2>
+          <h2>
+            COMPLETED{' '}
+            <span>
+              <FaStar />
+            </span>
+          </h2>
           <h3>Players successfully registered!</h3>
           <p>
             <Button
-              buttonSize='btn--medium'
+              buttonSize='btn--large'
               buttonStyle='btn--gradient'
               onClick={() =>
-                contextDispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })
+                contextDispatch({
+                  type: 'SHOW_GAME_INFO_PAGE',
+                  payload: { playersInvolved, difficulty },
+                })
               }
             >
-              OK
+              Proceed
             </Button>
           </p>
         </Modal>
@@ -81,18 +90,6 @@ const PlayerRegistration = () => {
         Enter
       </Button>
 
-      <Button
-        buttonSize='btn--large'
-        buttonStyle='btn--gradient'
-        onClick={() =>
-          contextDispatch({
-            type: 'SHOW_GAME_INFO_PAGE',
-            payload: { playersInvolved, difficulty },
-          })
-        }
-      >
-        Proceed
-      </Button>
       <Navigation />
     </section>
   );
