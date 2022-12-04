@@ -108,6 +108,7 @@ const reducer = (state, action) => {
         guessTakingActive: true,
         isOpenQuit: false,
         isOpenPlayerReg: false,
+        numberToGuess: action.payload.numberToGuess,
       };
     case 'OPEN_QUIT_MODAL':
       return { ...state, isOpenQuit: true };

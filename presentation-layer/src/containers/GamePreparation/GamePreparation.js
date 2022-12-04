@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import Button from '../../components/button/Button';
 import Modal from '../../components/modal/Modal';
 import { AppContext } from '../../utils/context';
+import { generateRandomNum } from '../../utils/random-number';
 
 import './GamePreparation.css';
 
 const GamePreparation = () => {
   const context = useContext(AppContext);
+  const numberToGuess = generateRandomNum();
 
   const {
     initialState: { isOpenQuit },
@@ -40,12 +42,14 @@ const GamePreparation = () => {
       ) : null}
 
       <h1 className='GamePrep__heading'>This is Game preparation page</h1>
+      <h2>Timmy thinks of a number {numberToGuess}</h2>
       <Button
         buttonSize='btn--large'
         buttonStyle='btn--gradient'
         onClick={() =>
           contextDispatch({
             type: 'SHOW_GUESS_TAKING_PAGE',
+            payload: { numberToGuess },
           })
         }
       >

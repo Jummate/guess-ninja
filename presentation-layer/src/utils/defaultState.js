@@ -14,4 +14,5 @@ export const defaultState = {
   numOfPlayer: 0,
   difficulty: 'Easy',
   playersInvolved: [],
+  numberToGuess: '',
 };

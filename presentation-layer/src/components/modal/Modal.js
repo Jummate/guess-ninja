@@ -18,12 +18,14 @@ const Modal = ({ onClose, title, dialog = true, children }) => {
       <div className='modal'>
         <div className='modal-header'>
           <h3>{title}</h3>
-          <h2
-            className='extra-close'
-            onClick={onClose}
-          >
-            &times;
-          </h2>
+          {!dialog ? (
+            <h2
+              className='extra-close'
+              onClick={onClose}
+            >
+              &times;
+            </h2>
+          ) : null}
         </div>
         <hr />
         <div className='modal-body'>{children}</div>

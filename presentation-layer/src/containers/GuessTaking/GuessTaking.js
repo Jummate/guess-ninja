@@ -9,7 +9,7 @@ import './GuessTaking.css';
 const GuessTaking = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { isOpenQuit },
+    initialState: { isOpenQuit, numberToGuess },
     contextDispatch,
   } = context;
 
