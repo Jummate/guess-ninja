@@ -63,6 +63,7 @@ const reducer = (state, action) => {
         showSetup: true,
         numOfPlayer: action.payload.numOfPlayer,
         difficulty: action.payload.difficulty,
+        newGame: action.payload.newGame,
       };
     case 'SHOW_GAME_INFO_PAGE':
       return {
@@ -81,6 +82,7 @@ const reducer = (state, action) => {
         showSetup: true,
         difficulty: action.payload.difficulty,
         playersInvolved: action.payload.playersInvolved,
+        newGame: action.payload.newGame,
       };
 
     case 'SHOW_GAME_PREP_PAGE':

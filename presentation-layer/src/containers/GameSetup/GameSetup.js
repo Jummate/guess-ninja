@@ -4,11 +4,16 @@ import Input from '../../components/input/Input';
 import Navigation from '../../components/nav/Navigation';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
+import { GuessGame } from '../../utils/game';
 
 const GameSetup = () => {
   const context = useContext(AppContext);
   const [numOfPlayer, setNumOfPlayer] = useState('');
   const [difficulty, setDifficulty] = useState('Easy');
+
+  const initializeGame = () => {
+    return new GuessGame();
+  };
 
   const {
     initialState: { selectedMode },
@@ -17,11 +22,17 @@ const GameSetup = () => {
   const nextPage =
     selectedMode === 'Single' ? 'SHOW_GAME_INFO_PAGE' : 'SHOW_PLAYER_REG_PAGE';
 
-  // const handleInputChange = () => {};
-
-  // useEffect(() => {
-
-  // }, [numOfPlayer]);
+  const handleClick = () => {
+    const newGame = initializeGame();
+    contextDispatch({
+      type: nextPage,
+      payload: {
+        numOfPlayer,
+        difficulty,
+        newGame,
+      },
+    });
+  };
   return (
     <section className='GameSetup__container'>
       <h1 className='GameSetup__heading'>Game Setup</h1>
@@ -53,15 +64,7 @@ const GameSetup = () => {
         <Button
           buttonSize='btn--medium'
           buttonStyle='btn--gradient'
-          onClick={() =>
-            contextDispatch({
-              type: nextPage,
-              payload: {
-                numOfPlayer,
-                difficulty,
-              },
-            })
-          }
+          onClick={handleClick}
         >
           Submit
         </Button>

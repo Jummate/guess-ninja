@@ -15,4 +15,5 @@ export const defaultState = {
   difficulty: 'Easy',
   playersInvolved: [],
   numberToGuess: '',
+  newGame: null,
 };
