@@ -81,7 +81,6 @@ const reducer = (state, action) => {
         showMode: true,
         showSetup: true,
         difficulty: action.payload.difficulty,
-        playersInvolved: action.payload.playersInvolved,
         newGame: action.payload.newGame,
       };
 

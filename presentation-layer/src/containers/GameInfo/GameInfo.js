@@ -9,7 +9,7 @@ const GameInfo = () => {
   const context = useContext(AppContext);
 
   const {
-    initialState: { numOfPlayer, difficulty, selectedMode, playersInvolved },
+    initialState: { numOfPlayer, difficulty, selectedMode, newGame },
     contextDispatch,
   } = context;
 
@@ -28,7 +28,9 @@ const GameInfo = () => {
         <li>Difficulty: {difficulty}</li>
         <li>
           Players involved:{' '}
-          {selectedMode === 'Multi' ? playersInvolved.join(', ') : 'n/a'}
+          {selectedMode === 'Multi'
+            ? newGame.getPlayersInvolved().join(', ')
+            : 'n/a'}
         </li>
       </ul>
 

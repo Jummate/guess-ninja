@@ -13,7 +13,6 @@ export const defaultState = {
   selectedMode: '',
   numOfPlayer: 0,
   difficulty: 'Easy',
-  playersInvolved: [],
   numberToGuess: '',
   newGame: null,
 };

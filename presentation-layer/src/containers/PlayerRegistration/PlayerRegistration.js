@@ -11,12 +11,16 @@ import './PlayerRegistration.css';
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, difficulty, isOpenPlayerReg },
+    initialState: { numOfPlayer, difficulty, isOpenPlayerReg, newGame },
     contextDispatch,
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
   const [player, setPlayer] = useState('');
-  const [playersInvolved, setPlayersInvolved] = useState([]);
+  // const [playersInvolved, setPlayersInvolved] = useState([]);
+
+  const registerPlayer = () => {
+    newGame.addPlayer(player);
+  };
 
   const incrementPlayerCount = () => {
     if (playerCount < Number(numOfPlayer)) {
@@ -27,12 +31,14 @@ const PlayerRegistration = () => {
     setPlayer('');
   };
 
-  const savePlayerNames = () => {
-    setPlayersInvolved([...playersInvolved, player]);
-  };
+  // const savePlayerNames = () => {
+
+  //   setPlayersInvolved([...playersInvolved, player]);
+  // };
 
   const handleClick = () => {
-    savePlayerNames();
+    // savePlayerNames();
+    registerPlayer();
     incrementPlayerCount();
     clearInputField();
     if (playerCount === Number(numOfPlayer)) {
@@ -63,7 +69,7 @@ const PlayerRegistration = () => {
               onClick={() =>
                 contextDispatch({
                   type: 'SHOW_GAME_INFO_PAGE',
-                  payload: { playersInvolved, difficulty },
+                  payload: { difficulty, newGame },
                 })
               }
             >
