@@ -16,7 +16,6 @@ const PlayerRegistration = () => {
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
   const [player, setPlayer] = useState('');
-  // const [playersInvolved, setPlayersInvolved] = useState([]);
 
   const registerPlayer = () => {
     newGame.addPlayer(player);
@@ -31,13 +30,7 @@ const PlayerRegistration = () => {
     setPlayer('');
   };
 
-  // const savePlayerNames = () => {
-
-  //   setPlayersInvolved([...playersInvolved, player]);
-  // };
-
   const handleClick = () => {
-    // savePlayerNames();
     registerPlayer();
     incrementPlayerCount();
     clearInputField();
