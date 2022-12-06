@@ -1,17 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
 import Modal from '../../components/modal/Modal';
+import { generateRandomPlayers } from '../../utils/random-player';
 
 import './GuessTaking.css';
 
 const GuessTaking = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { isOpenQuit, numberToGuess, playersInvolved },
+    initialState: { isOpenQuit, numberToGuess, newGame },
     contextDispatch,
   } = context;
+  const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
+  const [playerGuess, setPlayerGuess] = useState('');
+  const [nextPlayerToGuess, setNextPlayerToGuess] = useState(
+    generateRandomPlayers(
+      newGame.getPlayersInvolvedByObjects(),
+      playersAlreadyGuessed
+    )
+  );
+
+  const clearInputField = (e) => {
+    setPlayerGuess('');
+  };
+
+  const processPlayerGuess = () => {
+    console.log('Wronggggggggg!');
+  };
+
+  const handleClick = () => {
+    processPlayerGuess();
+    savePlayersAlreadyGuessed();
+    clearInputField();
+    setNextPlayerToGuess(
+      generateRandomPlayers(
+        newGame.getPlayersInvolvedByObjects(),
+        playersAlreadyGuessed
+      )
+    );
+  };
+
+  const savePlayersAlreadyGuessed = () => {
+    setPlayersAlreadyGuessed((prev) => [...prev], nextPlayerToGuess);
+  };
 
   return (
     <section className='GuessTaking__container'>
@@ -43,13 +76,24 @@ const GuessTaking = () => {
       <h1 className='GuessTaking__heading'>This is Guess Taking Page</h1>
       <form>
         <p data-testid='input-wrapper'>
+          {console.log(
+            generateRandomPlayers(
+              newGame.getPlayersInvolvedByObjects(),
+              playersAlreadyGuessed
+            )
+          )}
           <label>Player:</label>
-          <Input type='number' />
+          <Input
+            type='number'
+            value={playerGuess}
+            onChange={(e) => setPlayerGuess(e.target.value)}
+          />
         </p>
 
         <Button
           buttonSize='btn--medium'
           buttonStyle='btn--gradient'
+          onClick={handleClick}
         >
           Submit Guess
         </Button>

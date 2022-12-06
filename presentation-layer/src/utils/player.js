@@ -9,11 +9,18 @@ export class Player {
     this.currentGuess = null;
   }
 
-  setGameId(newVlaue) {
-    this.gameId = newVlaue;
+  setGameId(newId) {
+    this.gameId = newId;
   }
   getGameId() {
     return this.gameId;
+  }
+
+  setPlayerId(newId) {
+    this.playerId = newId;
+  }
+  getPlayerId() {
+    return this.playerId;
   }
 
   setPlayerName(newName) {
@@ -49,5 +56,9 @@ export class Player {
   }
   getPlayerPlayStatus() {
     return this.hasPlayed;
+  }
+
+  isEqualTo(anotherPlayer) {
+    return this.playerId === anotherPlayer.playerId;
   }
 }

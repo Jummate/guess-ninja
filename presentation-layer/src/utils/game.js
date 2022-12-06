@@ -16,6 +16,10 @@ export class GuessGame {
     return this.gameId;
   }
 
+  getPlayersInvolvedByObjects() {
+    return this.playersInvolved;
+  }
+
   getPlayersInvolved() {
     return this.playersInvolved.map((player) => player.getPlayerName());
   }
