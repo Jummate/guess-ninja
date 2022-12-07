@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { AppContext } from '../../utils/context';
@@ -34,17 +34,28 @@ const GuessTaking = () => {
     processPlayerGuess();
     savePlayersAlreadyGuessed();
     clearInputField();
+  };
+
+  const savePlayersAlreadyGuessed = () => {
+    console.log('already');
+    setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
+  };
+
+  useEffect(() => {
+    // setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
+    // console.log(nextPlayerToGuess);
     setNextPlayerToGuess(
       generateRandomPlayers(
         newGame.getPlayersInvolvedByObjects(),
         playersAlreadyGuessed
       )
     );
-  };
 
-  const savePlayersAlreadyGuessed = () => {
-    setPlayersAlreadyGuessed((prev) => [...prev], nextPlayerToGuess);
-  };
+    console.log('Guess Taking');
+    console.log(
+      '==============================================================='
+    );
+  }, [playersAlreadyGuessed, newGame]);
 
   return (
     <section className='GuessTaking__container'>
@@ -76,13 +87,14 @@ const GuessTaking = () => {
       <h1 className='GuessTaking__heading'>This is Guess Taking Page</h1>
       <form>
         <p data-testid='input-wrapper'>
+          {console.log('next player', nextPlayerToGuess)}
+
+          {console.log('already guessed', playersAlreadyGuessed)}
           {console.log(
-            generateRandomPlayers(
-              newGame.getPlayersInvolvedByObjects(),
-              playersAlreadyGuessed
-            )
+            '================================================================'
           )}
-          <label>Player:</label>
+          {/* {console.log('You', nextPlayerToGuess)} */}
+          <label>Player: {nextPlayerToGuess.getPlayerName()}</label>
           <Input
             type='number'
             value={playerGuess}
