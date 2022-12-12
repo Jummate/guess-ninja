@@ -10,7 +10,7 @@ import './GuessTaking.css';
 const GuessTaking = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { isOpenQuit, numberToGuess, newGame },
+    initialState: { isOpenQuit, numberToGuess, newGame, selectedMode },
     contextDispatch,
   } = context;
   const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
@@ -84,7 +84,9 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <h1 className='GuessTaking__heading'>This is Guess Taking Page</h1>
+      <h1 className='GuessTaking__heading'>
+        This is Guess Taking Page {numberToGuess}
+      </h1>
       <form>
         <p data-testid='input-wrapper'>
           {console.log('next player', nextPlayerToGuess)}
@@ -94,7 +96,11 @@ const GuessTaking = () => {
             '================================================================'
           )}
           {/* {console.log('You', nextPlayerToGuess)} */}
-          <label>Player: {nextPlayerToGuess.getPlayerName()}</label>
+          {selectedMode === 'Multi' ? (
+            <label>Player: {nextPlayerToGuess.getPlayerName()}</label>
+          ) : (
+            <label>Single Playing</label>
+          )}
           <Input
             type='number'
             value={playerGuess}

@@ -57,7 +57,7 @@ const GameSetup = () => {
           onChange={(e) => setDifficulty(e.target.value)}
         >
           <option value='Easy'>Easy</option>
-          <option value='Medium'>Medium</option>
+          <option value='Moderate'>Moderate</option>
           <option value='Hard'>Hard</option>
         </select>
 
