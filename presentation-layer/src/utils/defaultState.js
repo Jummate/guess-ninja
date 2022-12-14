@@ -10,9 +10,10 @@ export const defaultState = {
   showHome: false,
   showMode: false,
   showSetup: false,
-  selectedMode: '',
+  selectedMode: "",
   numOfPlayer: 0,
-  difficulty: 'Easy',
-  numberToGuess: '',
+  difficulty: "Easy",
+  numberToGuess: "",
   newGame: null,
+  numOfAttempt: 0,
 };

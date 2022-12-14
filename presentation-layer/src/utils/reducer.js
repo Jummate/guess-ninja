@@ -1,6 +1,6 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SHOW_HOME_PAGE':
+    case "SHOW_HOME_PAGE":
       return {
         ...state,
         homePageActive: true,
@@ -13,7 +13,7 @@ const reducer = (state, action) => {
         isOpenQuit: false,
         isOpenPlayerReg: false,
       };
-    case 'SHOW_GAME_MODE_PAGE':
+    case "SHOW_GAME_MODE_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
         showMode: false,
         showSetup: false,
       };
-    case 'SHOW_GAME_SETUP_PAGE':
+    case "SHOW_GAME_SETUP_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -46,7 +46,7 @@ const reducer = (state, action) => {
         selectedMode: action.payload.selectedMode,
       };
 
-    case 'SHOW_PLAYER_REG_PAGE':
+    case "SHOW_PLAYER_REG_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -62,10 +62,11 @@ const reducer = (state, action) => {
         showMode: true,
         showSetup: true,
         numOfPlayer: action.payload.numOfPlayer,
+        numOfAttempt: action.payload.numOfAttempt,
         difficulty: action.payload.difficulty,
         newGame: action.payload.newGame,
       };
-    case 'SHOW_GAME_INFO_PAGE':
+    case "SHOW_GAME_INFO_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -84,7 +85,7 @@ const reducer = (state, action) => {
         newGame: action.payload.newGame,
       };
 
-    case 'SHOW_GAME_PREP_PAGE':
+    case "SHOW_GAME_PREP_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -97,7 +98,7 @@ const reducer = (state, action) => {
         isOpenQuit: false,
         isOpenPlayerReg: false,
       };
-    case 'SHOW_GUESS_TAKING_PAGE':
+    case "SHOW_GUESS_TAKING_PAGE":
       return {
         ...state,
         homePageActive: false,
@@ -111,16 +112,16 @@ const reducer = (state, action) => {
         isOpenPlayerReg: false,
         numberToGuess: action.payload.numberToGuess,
       };
-    case 'OPEN_QUIT_MODAL':
+    case "OPEN_QUIT_MODAL":
       return { ...state, isOpenQuit: true };
-    case 'CLOSE_QUIT_MODAL':
+    case "CLOSE_QUIT_MODAL":
       return { ...state, isOpenQuit: false };
-    case 'OPEN_PLAYER_REG_MODAL':
+    case "OPEN_PLAYER_REG_MODAL":
       return { ...state, isOpenPlayerReg: true };
-    case 'CLOSE_PLAYER_REG_MODAL':
+    case "CLOSE_PLAYER_REG_MODAL":
       return { ...state, isOpenPlayerReg: false };
     default:
-      throw new Error('No matching action type');
+      throw new Error("No matching action type");
   }
 };
 
