@@ -16,12 +16,7 @@ const GuessTaking = () => {
   } = context;
   const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
   const [playerGuess, setPlayerGuess] = useState("");
-  const [nextPlayerToGuess, setNextPlayerToGuess] = useState(
-    generateRandomPlayers(
-      newGame.getPlayersInvolvedByObjects(),
-      playersAlreadyGuessed
-    )
-  );
+  const [nextPlayerToGuess, setNextPlayerToGuess] = useState(null);
 
   const clearInputField = (e) => {
     setPlayerGuess("");
@@ -42,6 +37,9 @@ const GuessTaking = () => {
   };
 
   const savePlayersAlreadyGuessed = () => {
+    nextPlayerToGuess.setPlayerPlayStatus(
+      !nextPlayerToGuess.getPlayerPlayStatus()
+    );
     setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
   };
 
@@ -83,13 +81,14 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <h1 className="GuessTaking__heading">
-        This is Guess Taking Page {numberToGuess}
-      </h1>
+      <h1 className="GuessTaking__heading">This is Guess Taking Page</h1>
       <form>
         <p data-testid="input-wrapper">
           {selectedMode === "Multi" ? (
-            <label>Player: {nextPlayerToGuess.getPlayerName()}</label>
+            <label>
+              It's your turn, {nextPlayerToGuess?.getPlayerName().toUpperCase()}{" "}
+              {nextPlayerToGuess?.getPlayerPlayStatus().toString()}{" "}
+            </label>
           ) : (
             <label>Single Playing</label>
           )}

@@ -1,4 +1,4 @@
-import { Player } from './player';
+import { Player } from "./player";
 export class GuessGame {
   constructor() {
     this.gameId = Date.now();
@@ -26,5 +26,12 @@ export class GuessGame {
 
   getNumOfPlayer() {
     return this.playersInvolved.length;
+  }
+
+  resetPlayerPlayStatus() {
+    this.playersInvolved = this.playersInvolved.map((player) => {
+      player.setPlayerPlayStatus(false);
+      return player;
+    });
   }
 }

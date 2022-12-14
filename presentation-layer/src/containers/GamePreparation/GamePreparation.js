@@ -46,7 +46,7 @@ const GamePreparation = () => {
       ) : null}
 
       <h1 className="GamePrep__heading">This is Game preparation page</h1>
-      <h2>
+      <h2 style={{ textAlign: "center" }}>
         Timmy thinks of a number {numberToGuess} between {start} and {end} in an
         array of {numberArray.join(", ")}
       </h2>
