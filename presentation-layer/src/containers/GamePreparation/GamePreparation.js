@@ -8,16 +8,16 @@ import "./GamePreparation.css";
 
 const GamePreparation = () => {
   const context = useContext(AppContext);
-  const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
-    1,
-    1,
-    "Easy"
-  );
-
   const {
-    initialState: { isOpenQuit },
+    initialState: { isOpenQuit, numOfPlayer, numOfAttempt, difficulty },
     contextDispatch,
   } = context;
+  const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
+    numOfAttempt,
+    numOfPlayer,
+    difficulty
+  );
+
   return (
     <section className="GamePrep__container">
       {isOpenQuit ? (

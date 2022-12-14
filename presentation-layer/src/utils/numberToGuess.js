@@ -3,12 +3,12 @@ import { calculateRandomNumbersLength } from "./randomNumberFormula";
 import { generateRandomNum } from "./random-number";
 
 export const generateNumberToGuess = (
-  numOfAttempt,
   numOfPlayers,
+  numOfAttempt,
   difficulty
 ) => {
   const numberArray = generateRangeOfNumbers(
-    calculateRandomNumbersLength(numOfAttempt, numOfPlayers, difficulty)
+    calculateRandomNumbersLength(numOfPlayers, numOfAttempt, difficulty)
   );
 
   let start = numberArray[0];
