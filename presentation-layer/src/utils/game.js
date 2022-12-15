@@ -16,22 +16,28 @@ export class GuessGame {
     return this.gameId;
   }
 
-  getPlayersInvolvedByObjects() {
+  getPlayersInvolved() {
     return this.playersInvolved;
   }
 
-  getPlayersInvolved() {
+  getPlayersInvolvedByName() {
     return this.playersInvolved.map((player) => player.getPlayerName());
   }
 
-  getNumOfPlayer() {
+  getCountOfPlayersInvolved() {
     return this.playersInvolved.length;
   }
 
-  resetPlayerPlayStatus() {
+  resetPlayersPlayStatus() {
     this.playersInvolved = this.playersInvolved.map((player) => {
       player.setPlayerPlayStatus(false);
       return player;
     });
   }
+
+  // getStat() {
+  //   return this.playersInvolved
+  //     .map((player) => player.getPlayerPlayStatus())
+  //     .join(", ");
+  // }
 }

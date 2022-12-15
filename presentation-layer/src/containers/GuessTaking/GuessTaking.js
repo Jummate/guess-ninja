@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
@@ -7,31 +7,56 @@ import { generateRandomPlayers } from "../../utils/random-player";
 
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
+import { checkAllPlayersHaveGuessed } from "../../utils/allPlayersHaveGuessed";
 
 const GuessTaking = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { isOpenQuit, numberToGuess, newGame, selectedMode },
+    initialState: {
+      isOpenQuit,
+      numberToGuess,
+      newGame,
+      selectedMode,
+      numOfAttempt,
+      numOfPlayer,
+    },
     contextDispatch,
   } = context;
   const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
   const [playerGuess, setPlayerGuess] = useState("");
   const [nextPlayerToGuess, setNextPlayerToGuess] = useState(null);
+  const [combinedAttempts, setCombinedAttempts] = useState(0);
+
+  const attemptMade = Math.round(
+    Number(combinedAttempts) / Number(numOfPlayer)
+  );
 
   const clearInputField = (e) => {
     setPlayerGuess("");
   };
 
-  const processPlayerGuess = () => {
-    if (checkAndConfirmGuess(numberToGuess, playerGuess)) {
-      console.log("Yes");
+  const incrementCombinedAttempts = useCallback(() => {
+    if (attemptMade < numOfAttempt) {
+      setCombinedAttempts((prev) => prev + 1);
+    }
+  }, [playersAlreadyGuessed]);
+
+  const processPlayerGuess = useCallback(() => {
+    if (checkAndConfirmGuess(numberToGuess, playersAlreadyGuessed.at(-1))) {
+      contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
       return;
     }
-    console.log("NO");
-  };
+    if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
+      if (attemptMade < numOfAttempt) {
+        newGame.resetPlayersPlayStatus();
+        setPlayersAlreadyGuessed([]);
+      } else if (Number(attemptMade) === Number(numOfAttempt)) {
+        contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+      }
+    }
+  }, [playersAlreadyGuessed]);
 
   const handleClick = () => {
-    processPlayerGuess();
     savePlayersAlreadyGuessed();
     clearInputField();
   };
@@ -40,19 +65,24 @@ const GuessTaking = () => {
     nextPlayerToGuess.setPlayerPlayStatus(
       !nextPlayerToGuess.getPlayerPlayStatus()
     );
+
+    nextPlayerToGuess.setPlayerCurrentGuess(playerGuess);
+
     setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
   };
 
   useEffect(() => {
-    // setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
-    // console.log(nextPlayerToGuess);
     setNextPlayerToGuess(
-      generateRandomPlayers(
-        newGame.getPlayersInvolvedByObjects(),
-        playersAlreadyGuessed
-      )
+      generateRandomPlayers(newGame.getPlayersInvolved(), playersAlreadyGuessed)
     );
-  }, [playersAlreadyGuessed, newGame]);
+    incrementCombinedAttempts();
+    processPlayerGuess();
+  }, [
+    playersAlreadyGuessed,
+    newGame,
+    processPlayerGuess,
+    incrementCombinedAttempts,
+  ]);
 
   return (
     <section className="GuessTaking__container">
@@ -81,7 +111,10 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <h1 className="GuessTaking__heading">This is Guess Taking Page</h1>
+      <h1 className="GuessTaking__heading">
+        This is Guess Taking Page{" "}
+        {`Attempts: ${attemptMade} of ${numOfAttempt}`}
+      </h1>
       <form>
         <p data-testid="input-wrapper">
           {selectedMode === "Multi" ? (
@@ -111,7 +144,7 @@ const GuessTaking = () => {
       <footer>
         <Button
           buttonSize="btn--medium"
-          buttonStyle="btn--danger--solid"
+          buttonStyle="btn--gradient"
           onClick={() => contextDispatch({ type: "OPEN_QUIT_MODAL" })}
         >
           Quit

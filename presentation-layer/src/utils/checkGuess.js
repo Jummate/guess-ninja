@@ -1,3 +1,3 @@
-export const checkAndConfirmGuess = (target, playerGuess) => {
-  return Number(target) === Number(playerGuess);
+export const checkAndConfirmGuess = (target, player) => {
+  return Number(target) === Number(player?.getPlayerCurrentGuess());
 };
