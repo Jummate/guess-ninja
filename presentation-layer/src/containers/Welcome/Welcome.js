@@ -22,7 +22,7 @@ const Welcome = () => {
           buttonStyle="btn--gradient"
           onClick={() => contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" })}
         >
-          INSTRUCTION
+          GAME GUIDE
         </Button>
 
         <Button

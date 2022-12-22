@@ -30,9 +30,10 @@
     color:#49cdcb;
     font-size: 30px;
     font-weight: bolder;
+    cursor: pointer;
 }
 .back-arrow-wrapper:hover{
     transition:all ease-in-out 0.5s;
-    background-color: #49cdcb;
+    background-color: #255958;
     color:#000;
 }
