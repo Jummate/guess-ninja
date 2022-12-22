@@ -1,0 +1,38 @@
+.GameGuide__container{
+    height:98%;
+    width:98%;
+    background-color: #e8f8f7;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:var(--danger)
+
+}
+.GameGuide__heading{
+    margin-bottom: 30px;
+    background: linear-gradient(to left, #000 19%, #CF1512 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.back-arrow-wrapper{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom:20px;
+    left:20px;
+    height:50px;
+    width:50px;
+    border-radius: 50%;
+    background:transparent;
+    color:#49cdcb;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.back-arrow-wrapper:hover{
+    transition:all ease-in-out 0.5s;
+    background-color: #49cdcb;
+    color:#000;
+}

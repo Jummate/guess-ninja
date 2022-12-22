@@ -1,28 +1,39 @@
-import React, { useContext } from 'react';
-import Button from '../../components/button/Button';
-import NinjaImage from '../../assets/ninja-gaming-joystick-sport-logo-icon.jpg';
-import './Welcome.css';
-import { AppContext } from '../../utils/context';
+import React, { useContext } from "react";
+import Button from "../../components/button/Button";
+import NinjaImage from "../../assets/ninja-gaming-joystick-sport-logo-icon.jpg";
+import "./Welcome.css";
+import { AppContext } from "../../utils/context";
 
 const Welcome = () => {
   const context = useContext(AppContext);
   const { contextDispatch } = context;
   return (
-    <>
-      <h1 className='Welcome__heading'>Guess Ninja</h1>
+    <div className="Welcome__container">
+      <h1 className="Welcome__heading">Guess Ninja</h1>
       <img
-        className='Welcome__image'
+        className="Welcome__image"
         src={NinjaImage}
-        alt='Ninja Gaming Joystick Sport Logo'
+        alt="Ninja Gaming Joystick Sport Logo"
       />
-      <Button
-        buttonSize='btn--large'
-        buttonStyle='btn--gradient'
-        onClick={() => contextDispatch({ type: 'SHOW_GAME_MODE_PAGE' })}
-      >
-        Proceed &gt;&gt;
-      </Button>
-    </>
+
+      <aside className="action-buttons-wrapper">
+        <Button
+          buttonSize="btn--small"
+          buttonStyle="btn--gradient"
+          onClick={() => contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" })}
+        >
+          INSTRUCTION
+        </Button>
+
+        <Button
+          buttonSize="btn--small"
+          buttonStyle="btn--gradient"
+          onClick={() => contextDispatch({ type: "SHOW_GAME_MODE_PAGE" })}
+        >
+          START
+        </Button>
+      </aside>
+    </div>
   );
 };
 

@@ -1,16 +1,17 @@
-import React, { useReducer } from 'react';
-import ParticlesComponent from './components/Particles';
-import './App.css';
-import Welcome from './containers/Welcome/Welcome';
-import GameMode from './containers/GameMode/GameMode';
-import GameSetup from './containers/GameSetup/GameSetup';
-import PlayerRegistration from './containers/PlayerRegistration/PlayerRegistration';
-import GameInfo from './containers/GameInfo/GameInfo';
-import GamePreparation from './containers/GamePreparation/GamePreparation';
-import reducer from './utils/reducer';
-import { AppContext } from './utils/context';
-import GuessTaking from './containers/GuessTaking/GuessTaking';
-import { defaultState } from './utils/defaultState';
+import React, { useReducer } from "react";
+import ParticlesComponent from "./components/Particles";
+import "./App.css";
+import Welcome from "./containers/Welcome/Welcome";
+import GameMode from "./containers/GameMode/GameMode";
+import GameSetup from "./containers/GameSetup/GameSetup";
+import PlayerRegistration from "./containers/PlayerRegistration/PlayerRegistration";
+import GameInfo from "./containers/GameInfo/GameInfo";
+import GamePreparation from "./containers/GamePreparation/GamePreparation";
+import GameGuide from "./containers/GameGuide/GameGuide";
+import reducer from "./utils/reducer";
+import { AppContext } from "./utils/context";
+import GuessTaking from "./containers/GuessTaking/GuessTaking";
+import { defaultState } from "./utils/defaultState";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -19,9 +20,9 @@ function App() {
     <AppContext.Provider
       value={{ initialState: state, contextDispatch: dispatch }}
     >
-      <main className='App__container'>
+      <main className="App__container">
         <ParticlesComponent />
-        <div className='App__content__wrapper'>
+        <div className="App__content__wrapper">
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}
           {state.gameSetupActive ? <GameSetup /> : null}
@@ -29,6 +30,7 @@ function App() {
           {state.playerRegActive ? <PlayerRegistration /> : null}
           {state.gamePrepActive ? <GamePreparation /> : null}
           {state.guessTakingActive ? <GuessTaking /> : null}
+          {state.gameGuideActive ? <GameGuide /> : null}
         </div>
       </main>
     </AppContext.Provider>

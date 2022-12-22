@@ -7,7 +7,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:var(--danger)
+    color:var(--danger);
+    overflow-y: auto;
 
 }
 
@@ -39,4 +40,5 @@
 }
 .GameSetup__container label{
     margin-bottom: 5px;
+    font-weight: bolder;
 }

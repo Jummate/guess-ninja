@@ -5,8 +5,13 @@
     letter-spacing: 1.5px;
     border-radius: 5px;
     border: none;
-    box-shadow: 1px 1px 3px #00000069, -1px -1px 3px #00000069;
+    outline: none;
+    box-shadow: 1px 1px 3px #49cdcb, -1px -1px 3px #00000069;
 }
 .input::placeholder{
     color:var(--danger)
+}
+
+.input:focus{
+    border: 2px ridge #49cdcb;
 }

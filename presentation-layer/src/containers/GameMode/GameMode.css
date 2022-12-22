@@ -18,7 +18,17 @@
     -webkit-text-fill-color: transparent;
 
 }
+.GameMode__btn-wrapper{
+    display: flex;
+    flex-direction: column;
+}
 .GameMode__text{
     margin-bottom: 30px;
 
+}
+
+@media screen and (min-width: 767px) {
+    .GameMode__btn-wrapper{
+        flex-direction: row
+    }
 }

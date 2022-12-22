@@ -7,6 +7,7 @@ export const defaultState = {
   gameInfoActive: false,
   playerRegActive: false,
   gamePrepActive: false,
+  gameGuideActive: false,
   showHome: false,
   showMode: false,
   showSetup: false,

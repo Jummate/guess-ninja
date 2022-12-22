@@ -60,13 +60,13 @@ const GamePreparation = () => {
           })
         }
       >
-        Start Now
+        START
       </Button>
 
       <footer>
         <Button
           buttonSize="btn--medium"
-          buttonStyle="btn--danger--solid"
+          buttonStyle="btn--gradient"
           onClick={() =>
             contextDispatch({
               type: "OPEN_QUIT_MODAL",

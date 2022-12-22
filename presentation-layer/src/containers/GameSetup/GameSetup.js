@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Select from "react-select";
 import "./GameSetup.css";
 import Input from "../../components/input/Input";
 import Navigation from "../../components/nav/Navigation";
@@ -35,9 +36,32 @@ const GameSetup = () => {
       },
     });
   };
+
+  const handleChange = (selectedOption) => {
+    setDifficulty(selectedOption.value);
+  };
+  const options = [
+    { value: "Easy", label: "Easy" },
+    { value: "Medium", label: "Medium" },
+    { value: "Hard", label: "Hard" },
+  ];
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: "black",
+      cursor: "pointer",
+      fontWeight: "bolder",
+      backgroundColor: state.isSelected ? "#49cdcb" : "white",
+    }),
+    // control: (provided) => ({
+    //   ...provided,
+    //   marginTop: "5%",
+    // })
+  };
+
   return (
     <section className="GameSetup__container">
-      <h1 className="GameSetup__heading">Game Setup</h1>
+      <h1 className="GameSetup__heading">GAME SETTINGS</h1>
       <h3 className="GameSetup__text">Specify the gameplan</h3>
       <form>
         {selectedMode === "Multi" ? (
@@ -60,26 +84,36 @@ const GameSetup = () => {
           />
         </p>
 
-        <p className="GameSetup__item">
+        <div className="GameSetup__item">
           <label>Difficulty</label>
-          <select
+
+          <Select
+            options={options}
+            defaultValue={options[0]}
+            styles={customStyles}
+            // value={difficulty}
+            onChange={handleChange}
+            // onChange={(e) => setDifficulty(e.target.value)}
+          />
+          {/* <select
             name="difficulty"
             className="GameSetup__difficulty"
+            de
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
           >
             <option value="Easy">Easy</option>
             <option value="Moderate">Moderate</option>
             <option value="Hard">Hard</option>
-          </select>
-        </p>
+          </select> */}
+        </div>
 
         <Button
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
           onClick={handleClick}
         >
-          Submit
+          CONTINUE
         </Button>
       </form>
 

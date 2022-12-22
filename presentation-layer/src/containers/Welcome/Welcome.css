@@ -1,12 +1,11 @@
 .Welcome__container{
-    position: relative;
-    top:50%;
-    left:50%;
+    position: absolute;
+    top:0;
+    left:0;
     background-color:#000;
     color: #fff;
-    transform: translate(-50%, -50%);
-    width:80%;
-    height:80%;
+    width:100%;
+    height:100%;
     border-radius: 20px;
     box-shadow: 2px 2px 4px red, -2px -2px 4px #49cdcb;
     display: flex;
@@ -37,4 +36,25 @@
     min-height: 100px;
     margin-bottom: 30px;
     border-radius: 50%;
+}
+
+.action-buttons-wrapper{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    right:0;
+    top:50%;
+    transform: translateY(-50%);    
+}
+
+@media screen and (min-width:760px){
+    .action-buttons-wrapper{
+        position:absolute;
+        flex-direction: row;
+        height: 70px;
+        right:50%;
+        top:80%;
+        bottom:0;
+        transform: translateX(50%);   
+    }
 }
