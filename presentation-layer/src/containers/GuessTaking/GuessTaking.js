@@ -113,10 +113,21 @@ const GuessTaking = () => {
       ) : null}
 
       <h1 className="GuessTaking__heading">
-        This is Guess Taking Page{"/n"}
+        This is Guess Taking Page{""}
         {`Attempts: ${attemptMade} of ${numOfAttempt}`}
       </h1>
-      <span>{numberArray.join(", ")}</span>
+      <div>
+        {numberArray.map((number) => (
+          <Button
+            key={number}
+            buttonSize="btn--small"
+            buttonStyle="btn--danger--solid"
+            onClick={(e) => console.log(e.target.textContent)}
+          >
+            {number}
+          </Button>
+        ))}
+      </div>
       <form>
         <p data-testid="input-wrapper">
           {selectedMode === "Multi" ? (
