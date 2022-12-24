@@ -19,6 +19,7 @@ const GuessTaking = () => {
       selectedMode,
       numOfAttempt,
       numOfPlayer,
+      numberArray,
     },
     contextDispatch,
   } = context;
@@ -112,15 +113,15 @@ const GuessTaking = () => {
       ) : null}
 
       <h1 className="GuessTaking__heading">
-        This is Guess Taking Page{" "}
+        This is Guess Taking Page{"/n"}
         {`Attempts: ${attemptMade} of ${numOfAttempt}`}
       </h1>
+      <span>{numberArray.join(", ")}</span>
       <form>
         <p data-testid="input-wrapper">
           {selectedMode === "Multi" ? (
             <label>
               It's your turn, {nextPlayerToGuess?.getPlayerName().toUpperCase()}{" "}
-              {nextPlayerToGuess?.getPlayerPlayStatus().toString()}{" "}
             </label>
           ) : (
             <label>Single Playing</label>

@@ -7,7 +7,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:var(--danger)
+    color:var(--danger);
+    font-weight: bolder;
 }
 
 .GameInfo__heading{

@@ -136,6 +136,7 @@ const reducer = (state, action) => {
         isOpenQuit: false,
         isOpenPlayerReg: false,
         numberToGuess: action.payload.numberToGuess,
+        numberArray: action.payload.numberArray,
       };
     case "OPEN_QUIT_MODAL":
       return { ...state, isOpenQuit: true };

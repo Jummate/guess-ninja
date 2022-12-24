@@ -56,7 +56,7 @@ const GamePreparation = () => {
         onClick={() =>
           contextDispatch({
             type: "SHOW_GUESS_TAKING_PAGE",
-            payload: { numberToGuess },
+            payload: { numberToGuess, numberArray },
           })
         }
       >

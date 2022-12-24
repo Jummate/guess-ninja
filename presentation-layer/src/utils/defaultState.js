@@ -17,4 +17,5 @@ export const defaultState = {
   numberToGuess: "",
   newGame: null,
   numOfAttempt: 0,
+  numberArray: null,
 };

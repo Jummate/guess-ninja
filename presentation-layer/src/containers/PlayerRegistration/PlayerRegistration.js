@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
-import Navigation from '../../components/nav/Navigation';
-import Input from '../../components/input/Input';
-import Button from '../../components/button/Button';
-import { AppContext } from '../../utils/context';
-import Modal from '../../components/modal/Modal';
-import { FaStar } from 'react-icons/fa';
+import React, { useState, useContext } from "react";
+import Navigation from "../../components/nav/Navigation";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
+import { AppContext } from "../../utils/context";
+import Modal from "../../components/modal/Modal";
+import { FaStar } from "react-icons/fa";
 
-import './PlayerRegistration.css';
+import "./PlayerRegistration.css";
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
@@ -15,7 +15,7 @@ const PlayerRegistration = () => {
     contextDispatch,
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
-  const [player, setPlayer] = useState('');
+  const [player, setPlayer] = useState("");
 
   const registerPlayer = () => {
     newGame.addPlayer(player);
@@ -27,7 +27,7 @@ const PlayerRegistration = () => {
     }
   };
   const clearInputField = (e) => {
-    setPlayer('');
+    setPlayer("");
   };
 
   const handleClick = () => {
@@ -36,20 +36,20 @@ const PlayerRegistration = () => {
     clearInputField();
     if (playerCount === Number(numOfPlayer)) {
       contextDispatch({
-        type: 'OPEN_PLAYER_REG_MODAL',
+        type: "OPEN_PLAYER_REG_MODAL",
       });
     }
   };
   return (
-    <section className='PlayerReg__container'>
+    <section className="PlayerReg__container">
       {/* Modal starts---------------------------- */}
       {isOpenPlayerReg ? (
         <Modal
-          title='Confirmation'
-          onClose={() => contextDispatch({ type: 'CLOSE_PLAYER_REG_MODAL' })}
+          title="Confirmation"
+          onClose={() => contextDispatch({ type: "CLOSE_PLAYER_REG_MODAL" })}
         >
           <h2>
-            COMPLETED{' '}
+            COMPLETED{" "}
             <span>
               <FaStar />
             </span>
@@ -57,11 +57,11 @@ const PlayerRegistration = () => {
           <h3>Players successfully registered!</h3>
           <p>
             <Button
-              buttonSize='btn--large'
-              buttonStyle='btn--gradient'
+              buttonSize="btn--large"
+              buttonStyle="btn--gradient"
               onClick={() =>
                 contextDispatch({
-                  type: 'SHOW_GAME_INFO_PAGE',
+                  type: "SHOW_GAME_INFO_PAGE",
                   payload: { difficulty, newGame },
                 })
               }
@@ -72,8 +72,9 @@ const PlayerRegistration = () => {
         </Modal>
       ) : null}
 
-      <h1 className='PlayerReg__heading'>Player Registration</h1>
-      <p className='player-entry-wrapper'>
+      <h1 className="PlayerReg__heading">Player Registration</h1>
+
+      <p className="player-entry-wrapper">
         <label>Player {playerCount}:</label>
         <Input
           value={player}
@@ -82,8 +83,8 @@ const PlayerRegistration = () => {
       </p>
 
       <Button
-        buttonSize='btn--medium'
-        buttonStyle='btn--gradient'
+        buttonSize="btn--medium"
+        buttonStyle="btn--gradient"
         onClick={handleClick}
       >
         Enter
