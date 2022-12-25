@@ -121,23 +121,12 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <h1 className="GuessTaking__heading">
-        This is Guess Taking Page{""}
-        {`Attempts: ${attemptMade} of ${numOfAttempt}`}
-      </h1>
-      <div>
-        {numArray.map((number) => (
-          <Button
-            key={number}
-            buttonSize="btn--small"
-            buttonStyle="btn--danger--solid"
-            onClick={handleNumberButtonClick}
-          >
-            {number}
-          </Button>
-        ))}
-      </div>
-      <form>
+      <div className="next-player-container">
+        <h1 className="GuessTaking__heading">
+          This is Guess Taking Page{""}
+          {`Attempts: ${attemptMade} of ${numOfAttempt}`}
+        </h1>
+
         <p data-testid="input-wrapper">
           {selectedMode === "Multi" ? (
             <label>
@@ -152,15 +141,20 @@ const GuessTaking = () => {
             onChange={(e) => setPlayerGuess(e.target.value)}
           /> */}
         </p>
+      </div>
 
-        {/* <Button
-          buttonSize="btn--medium"
-          buttonStyle="btn--gradient"
-          onClick={handleClick}
-        >
-          Submit Guess
-        </Button> */}
-      </form>
+      <div className="number-buttons-container">
+        {numArray.map((number) => (
+          <Button
+            key={number}
+            buttonSize="btn--medium"
+            buttonStyle="btn--danger--solid"
+            onClick={handleNumberButtonClick}
+          >
+            {number}
+          </Button>
+        ))}
+      </div>
 
       <footer>
         <Button

@@ -29,3 +29,12 @@ footer{
     bottom:0;
     right:0;
 }
+
+.next-player-container{
+    height:25%;
+}
+.number-buttons-container{
+    height:65%;
+    background-color: #000;
+    overflow-y: auto;
+}
