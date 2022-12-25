@@ -27,6 +27,7 @@ const GuessTaking = () => {
   const [playerGuess, setPlayerGuess] = useState("");
   const [nextPlayerToGuess, setNextPlayerToGuess] = useState(null);
   const [combinedAttempts, setCombinedAttempts] = useState(0);
+  const [numArray, setNumArray] = useState(numberArray);
 
   const attemptMade = Math.round(
     Number(combinedAttempts) / Number(numOfPlayer)
@@ -62,13 +63,21 @@ const GuessTaking = () => {
     clearInputField();
   };
 
-  const savePlayersAlreadyGuessed = () => {
+  const handleNumberButtonClick = (e) => {
+    let numberClicked = e.target.textContent;
+    setPlayerGuess(numberClicked);
+    setNumArray(
+      numArray.filter((number) => Number(number) !== Number(numberClicked))
+    );
+    savePlayersAlreadyGuessed(Number(numberClicked));
+  };
+
+  const savePlayersAlreadyGuessed = (guessedNum) => {
     nextPlayerToGuess.setPlayerPlayStatus(
       !nextPlayerToGuess.getPlayerPlayStatus()
     );
 
-    nextPlayerToGuess.setPlayerCurrentGuess(playerGuess);
-
+    nextPlayerToGuess.setPlayerCurrentGuess(guessedNum);
     setPlayersAlreadyGuessed((prev) => [...prev, nextPlayerToGuess]);
   };
 
@@ -117,12 +126,12 @@ const GuessTaking = () => {
         {`Attempts: ${attemptMade} of ${numOfAttempt}`}
       </h1>
       <div>
-        {numberArray.map((number) => (
+        {numArray.map((number) => (
           <Button
             key={number}
             buttonSize="btn--small"
             buttonStyle="btn--danger--solid"
-            onClick={(e) => console.log(e.target.textContent)}
+            onClick={handleNumberButtonClick}
           >
             {number}
           </Button>
@@ -137,20 +146,20 @@ const GuessTaking = () => {
           ) : (
             <label>Single Playing</label>
           )}
-          <Input
+          {/* <Input
             type="number"
             value={playerGuess}
             onChange={(e) => setPlayerGuess(e.target.value)}
-          />
+          /> */}
         </p>
 
-        <Button
+        {/* <Button
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
           onClick={handleClick}
         >
           Submit Guess
-        </Button>
+        </Button> */}
       </form>
 
       <footer>
