@@ -24,7 +24,7 @@ const GuessTaking = () => {
     contextDispatch,
   } = context;
   const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
-  const [playerGuess, setPlayerGuess] = useState("");
+  // const [playerGuess, setPlayerGuess] = useState("");
   const [nextPlayerToGuess, setNextPlayerToGuess] = useState(null);
   const [combinedAttempts, setCombinedAttempts] = useState(0);
   const [numArray, setNumArray] = useState(numberArray);
@@ -33,9 +33,9 @@ const GuessTaking = () => {
     Number(combinedAttempts) / Number(numOfPlayer)
   );
 
-  const clearInputField = (e) => {
-    setPlayerGuess("");
-  };
+  // const clearInputField = (e) => {
+  //   setPlayerGuess("");
+  // };
 
   const incrementCombinedAttempts = useCallback(() => {
     if (attemptMade < numOfAttempt) {
@@ -58,14 +58,14 @@ const GuessTaking = () => {
     }
   }, [playersAlreadyGuessed]);
 
-  const handleClick = () => {
-    savePlayersAlreadyGuessed();
-    clearInputField();
-  };
+  // const handleClick = () => {
+  //   savePlayersAlreadyGuessed();
+  //   clearInputField();
+  // };
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
-    setPlayerGuess(numberClicked);
+    // setPlayerGuess(numberClicked);
     setNumArray(
       numArray.filter((number) => Number(number) !== Number(numberClicked))
     );
@@ -121,17 +121,20 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <div className="next-player-container">
-        <h1 className="GuessTaking__heading">
-          This is Guess Taking Page{""}
-          {`Attempts: ${attemptMade} of ${numOfAttempt}`}
-        </h1>
+      <div className="GuessTaking__header">
+        <h1 className="GuessTaking__header-text">Take A Guess</h1>
+      </div>
 
-        <p data-testid="input-wrapper">
+      <div className="next-player-container">
+        <div className="next-player-item-1">
           {selectedMode === "Multi" ? (
-            <label>
-              It's your turn, {nextPlayerToGuess?.getPlayerName().toUpperCase()}{" "}
-            </label>
+            <h1>
+              <span>
+                {nextPlayerToGuess?.getPlayerName().toUpperCase()}
+                {", "}
+              </span>
+              it's your turn
+            </h1>
           ) : (
             <label>Single Playing</label>
           )}
@@ -140,7 +143,13 @@ const GuessTaking = () => {
             value={playerGuess}
             onChange={(e) => setPlayerGuess(e.target.value)}
           /> */}
-        </p>
+        </div>
+        <div className="next-player-item-2">
+          <h1>Attempt: </h1>
+          <h2>
+            {attemptMade} of {numOfAttempt}
+          </h2>
+        </div>
       </div>
 
       <div className="number-buttons-container">

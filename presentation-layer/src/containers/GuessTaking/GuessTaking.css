@@ -5,16 +5,23 @@
     border-radius: 20px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color:var(--danger)
 
 }
-.GuessTaking__heading{
-    margin-bottom: 30px;
-    background: linear-gradient(to left, #000 19%, #CF1512 75%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.GuessTaking__header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:10%;
+    width:100%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 20px;
+    background-color: #000;
+}
+.GuessTaking__header-text{
+    color: #CF1512
 }
 
 .GuessTaking__container form{
@@ -32,9 +39,32 @@ footer{
 
 .next-player-container{
     height:25%;
+    width:100%;
+    display:grid;
+    grid-template-columns: 65% 35%;
+    /* display: flex; */
 }
 .number-buttons-container{
     height:65%;
+    width:100%;
     background-color: #000;
     overflow-y: auto;
+}
+.next-player-item-1{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #CF1512; */
+}
+.next-player-item-2{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+
+}
+
+.next-player-item-1 span{
+    color:#000
 }

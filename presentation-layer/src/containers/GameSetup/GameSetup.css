@@ -5,18 +5,49 @@
     border-radius: 20px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color:var(--danger);
     overflow-y: auto;
 
 }
 
-.GameSetup__container form{
+.GameSetup__header{
+    background-color: #000;
+    margin-top: 40px;
+    height:20%;
+    width:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width:55%;
+    align-items: center;
+    color:#CF1512;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-weight: bolder;
+}
+
+.GameSetup__body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:66%;
+}
+
+.GameSetup__footer{
+    width:100%;
+    height:7%;
+    background-color: #000;
+    border-radius: 30px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.GameSetup__container form{
+    display: flex;
+    flex-direction: column;
+    width:65%;
+    max-width: 400px;
 }
 .GameSetup__heading{
     margin-bottom: 30px;
@@ -25,10 +56,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.GameSetup__container h3{
-    margin-bottom: 30px;
-    color:#000;
-}
+
 .GameSetup__difficulty{
     width:100%;
     padding: 8px;
