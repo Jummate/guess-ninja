@@ -4,6 +4,7 @@ import "./GameSetup.css";
 import Input from "../../components/input/Input";
 import Navigation from "../../components/nav/Navigation";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 import { AppContext } from "../../utils/context";
 import { GuessGame } from "../../utils/game";
 
@@ -61,31 +62,33 @@ const GameSetup = () => {
 
   return (
     <section className="GameSetup__container">
-      <header className="GameSetup__header">
-        <h1>GAME SETTINGS</h1>
-        <h3>Specify the gameplan</h3>
-      </header>
+      <Header
+        hOneText="Game Settings"
+        hFourText="Every activity begins with a plan"
+        mt="40"
+        height="20"
+      />
       <div className="GameSetup__body">
         <form>
           {selectedMode === "Multi" ? (
-            <p className="GameSetup__item">
+            <div className="GameSetup__item">
               <label>Number of Players</label>
               <Input
                 type="number"
                 value={numOfPlayer}
                 onChange={(e) => setNumOfPlayer(e.target.value)}
               />
-            </p>
+            </div>
           ) : null}
 
-          <p className="GameSetup__item">
-            <label>Preferred number of attempts</label>
+          <div className="GameSetup__item">
+            <label>Number of attempts</label>
             <Input
               type="number"
               value={numOfAttempt}
               onChange={(e) => setNumOfAttempt(e.target.value)}
             />
-          </p>
+          </div>
 
           <div className="GameSetup__item">
             <label>Difficulty</label>

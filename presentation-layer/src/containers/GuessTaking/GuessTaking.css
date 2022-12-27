@@ -9,20 +9,7 @@
     color:var(--danger)
 
 }
-.GuessTaking__header{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height:10%;
-    width:100%;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 100px;
-    border-top-left-radius: 20px;
-    background-color: #000;
-}
-.GuessTaking__header-text{
-    color: #CF1512
-}
+
 
 .GuessTaking__container form{
     display: flex;

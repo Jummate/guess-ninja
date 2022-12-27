@@ -3,14 +3,20 @@ import "./GameMode.css";
 import Button from "../../components/button/Button";
 import Navigation from "../../components/nav/Navigation";
 import { AppContext } from "../../utils/context";
+import Header from "../../components/header/Header";
 
 const GameMode = () => {
   const context = useContext(AppContext);
   const { contextDispatch } = context;
   return (
-    <>
-      <h1 className="GameMode__heading">Game Mode</h1>
-      <h3 className="GameMode__text">Click to indicate the preferred mode</h3>
+    <section className="GameMode__container">
+      <Header
+        hOneText="Game Mode"
+        hFourText="Click to indicate the preferred mode"
+        mt="40"
+        height="20"
+        bg="#0d0d0d"
+      />
       <div className="GameMode__btn-wrapper">
         <Button
           buttonSize="btn--large"
@@ -39,7 +45,7 @@ const GameMode = () => {
       </div>
 
       <Navigation />
-    </>
+    </section>
   );
 };
 export default GameMode;

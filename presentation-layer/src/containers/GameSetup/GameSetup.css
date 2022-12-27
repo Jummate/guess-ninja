@@ -8,23 +8,8 @@
     align-items: center;
     color:var(--danger);
     overflow-y: auto;
-
 }
 
-.GameSetup__header{
-    background-color: #000;
-    margin-top: 40px;
-    height:20%;
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:#CF1512;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    font-weight: bolder;
-}
 
 .GameSetup__body{
     display: flex;

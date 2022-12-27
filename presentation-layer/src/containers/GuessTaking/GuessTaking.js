@@ -8,6 +8,7 @@ import { generateRandomPlayers } from "../../utils/random-player";
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import { checkAllPlayersHaveGuessed } from "../../utils/allPlayersHaveGuessed";
+import Header from "../../components/header/Header";
 
 const GuessTaking = () => {
   const context = useContext(AppContext);
@@ -121,9 +122,15 @@ const GuessTaking = () => {
         </Modal>
       ) : null}
 
-      <div className="GuessTaking__header">
+      {/* <div className="GuessTaking__header">
+
         <h1 className="GuessTaking__header-text">Take A Guess</h1>
-      </div>
+      </div> */}
+      <Header
+        hOneText="Take A Guess"
+        tRadius="30"
+        height="10"
+      />
 
       <div className="next-player-container">
         <div className="next-player-item-1">

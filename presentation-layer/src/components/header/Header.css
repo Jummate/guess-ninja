@@ -1,0 +1,23 @@
+header{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:#CF1512;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-weight: bolder;
+}
+
+header h1{
+    background: linear-gradient(to right, #49cdcb 14%, #CF1512 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header h4{
+    font-style: italic;
+    margin-top: 20px;
+
+}

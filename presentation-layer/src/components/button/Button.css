@@ -13,6 +13,7 @@
     cursor: pointer;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
+    max-width: 400px;
 }
 
 .btn:hover{
