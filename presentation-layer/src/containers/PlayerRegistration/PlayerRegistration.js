@@ -6,7 +6,10 @@ import { AppContext } from "../../utils/context";
 import Modal from "../../components/modal/Modal";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+// import { showAlert } from "../../utils/alert";
 import { FaStar } from "react-icons/fa";
+
+import { toast } from "react-toastify";
 
 import "./PlayerRegistration.css";
 
@@ -37,15 +40,31 @@ const PlayerRegistration = () => {
     incrementPlayerCount();
     clearInputField();
     if (playerCount === Number(numOfPlayer)) {
-      contextDispatch({
-        type: "OPEN_PLAYER_REG_MODAL",
+      toast("All players successfully registered", {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        type: "success",
+        onClose: () =>
+          contextDispatch({
+            type: "SHOW_GAME_INFO_PAGE",
+            payload: { difficulty, newGame },
+          }),
       });
+      // contextDispatch({
+      //   type: "OPEN_PLAYER_REG_MODAL",
+      // });
     }
   };
   return (
     <section className="PlayerReg__container">
       {/* Modal starts---------------------------- */}
-      {isOpenPlayerReg ? (
+      {/* {isOpenPlayerReg ? (
         <Modal
           title="Confirmation"
           onClose={() => contextDispatch({ type: "CLOSE_PLAYER_REG_MODAL" })}
@@ -72,7 +91,7 @@ const PlayerRegistration = () => {
             </Button>
           </p>
         </Modal>
-      ) : null}
+      ) : null} */}
 
       <Header
         hOneText="Registration of Players"

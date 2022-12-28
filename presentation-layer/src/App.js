@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 import ParticlesComponent from "./components/Particles";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Welcome from "./containers/Welcome/Welcome";
 import GameMode from "./containers/GameMode/GameMode";
 import GameSetup from "./containers/GameSetup/GameSetup";
@@ -32,6 +35,7 @@ function App() {
           {state.guessTakingActive ? <GuessTaking /> : null}
           {state.gameGuideActive ? <GameGuide /> : null}
         </div>
+        <ToastContainer />
       </main>
     </AppContext.Provider>
   );
