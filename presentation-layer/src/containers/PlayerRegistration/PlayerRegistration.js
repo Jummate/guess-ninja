@@ -4,6 +4,8 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
 import Modal from "../../components/modal/Modal";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import { FaStar } from "react-icons/fa";
 
 import "./PlayerRegistration.css";
@@ -72,23 +74,32 @@ const PlayerRegistration = () => {
         </Modal>
       ) : null}
 
-      <h1 className="PlayerReg__heading">Player Registration</h1>
+      <Header
+        hOneText="Registration of Players"
+        hFourText="Let's get to meet our players"
+        mt="40"
+        height="20"
+      />
 
-      <p className="player-entry-wrapper">
-        <label>Player {playerCount}:</label>
-        <Input
-          value={player}
-          onChange={(e) => setPlayer(e.target.value)}
-        />
-      </p>
+      <div className="PlayerReg__body">
+        <p>
+          <label>Player {playerCount}:</label>
+          <Input
+            value={player}
+            onChange={(e) => setPlayer(e.target.value)}
+          />
+        </p>
 
-      <Button
-        buttonSize="btn--medium"
-        buttonStyle="btn--gradient"
-        onClick={handleClick}
-      >
-        Enter
-      </Button>
+        <Button
+          buttonSize="btn--medium"
+          buttonStyle="btn--gradient"
+          onClick={handleClick}
+        >
+          Enter
+        </Button>
+      </div>
+
+      <Footer height="10">{""}</Footer>
 
       <Navigation />
     </section>

@@ -5,6 +5,7 @@ import Input from "../../components/input/Input";
 import Navigation from "../../components/nav/Navigation";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import { AppContext } from "../../utils/context";
 import { GuessGame } from "../../utils/game";
 
@@ -123,7 +124,7 @@ const GameSetup = () => {
           </Button>
         </form>
       </div>
-      <footer className="GameSetup__footer"></footer>
+      <Footer height="7">{""}</Footer>
 
       <Navigation />
     </section>

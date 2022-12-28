@@ -19,27 +19,12 @@
     height:66%;
 }
 
-.GameSetup__footer{
-    width:100%;
-    height:7%;
-    background-color: #000;
-    border-radius: 30px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-}
 
 .GameSetup__container form{
     display: flex;
     flex-direction: column;
     width:65%;
     max-width: 400px;
-}
-.GameSetup__heading{
-    margin-bottom: 30px;
-    font-size: 2em;
-    background: linear-gradient(to left, #000 14%, #CF1512 75%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .GameSetup__difficulty{
