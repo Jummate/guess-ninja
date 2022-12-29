@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Button from "../../components/button/Button";
+import Header from "../../components/header/Header";
 import Modal from "../../components/modal/Modal";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
@@ -45,10 +46,14 @@ const GamePreparation = () => {
         </Modal>
       ) : null}
 
-      <h1 className="GamePrep__heading">This is Game preparation page</h1>
+      <Header
+        hOneText="Game Preparation"
+        hFourText="it's about get down thick!"
+        height="20"
+      />
+
       <h2 style={{ textAlign: "center" }}>
-        Timmy thinks of a number {numberToGuess} between {start} and {end} in an
-        array of {numberArray.join(", ")}
+        Timmy thinks of a number between {start} and {end}
       </h2>
       <Button
         buttonSize="btn--large"

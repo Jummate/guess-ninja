@@ -4,6 +4,7 @@ import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
 import Modal from "../../components/modal/Modal";
 import { generateRandomPlayers } from "../../utils/random-player";
+import ThinkingDoll from "../../assets/thinking.gif";
 
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
@@ -134,6 +135,13 @@ const GuessTaking = () => {
 
       <div className="next-player-container">
         <div className="next-player-item-1">
+          <img
+            className="GuessTaking__image"
+            src={ThinkingDoll}
+            alt="Thinking Doll"
+          />
+        </div>
+        <div className="next-player-item-2">
           {selectedMode === "Multi" ? (
             <h1>
               <span>
@@ -143,7 +151,7 @@ const GuessTaking = () => {
               it's your turn
             </h1>
           ) : (
-            <label>Single Playing</label>
+            <span>Single Playing</span>
           )}
           {/* <Input
             type="number"
@@ -151,7 +159,7 @@ const GuessTaking = () => {
             onChange={(e) => setPlayerGuess(e.target.value)}
           /> */}
         </div>
-        <div className="next-player-item-2">
+        <div className="next-player-item-3">
           <h1>Attempt: </h1>
           <h2>
             {attemptMade} of {numOfAttempt}

@@ -5,19 +5,16 @@
     border-radius: 20px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color:var(--danger);
     font-weight: bolder;
 }
 
-.GameInfo__heading{
-    margin-bottom: 30px;
-    background: linear-gradient(to left, #000 19%, #CF1512 75%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.GameInfo__container h4{
-    text-align: center;
+.GameInfo__body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:66%;
 }
