@@ -6,6 +6,7 @@ import { AppContext } from "../../utils/context";
 import Modal from "../../components/modal/Modal";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Overlay from "../../components/Overlay";
 // import { showAlert } from "../../utils/alert";
 import { FaStar } from "react-icons/fa";
 
@@ -21,6 +22,7 @@ const PlayerRegistration = () => {
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
   const [player, setPlayer] = useState("");
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const registerPlayer = () => {
     newGame.addPlayer(player);
@@ -56,6 +58,7 @@ const PlayerRegistration = () => {
             payload: { difficulty, newGame },
           }),
       });
+      setShowOverlay(true);
       // contextDispatch({
       //   type: "OPEN_PLAYER_REG_MODAL",
       // });
@@ -120,6 +123,7 @@ const PlayerRegistration = () => {
 
       <Footer height="10">{""}</Footer>
 
+      {showOverlay && <Overlay />}
       <Navigation />
     </section>
   );
