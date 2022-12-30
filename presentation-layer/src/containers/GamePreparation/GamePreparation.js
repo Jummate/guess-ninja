@@ -53,7 +53,7 @@ const GamePreparation = () => {
       />
 
       <h2 style={{ textAlign: "center" }}>
-        Timmy thinks of a number between {start} and {end}
+        Timmy thinks of a number {numberToGuess} between {start} and {end}
       </h2>
       <Button
         buttonSize="btn--large"
@@ -68,7 +68,7 @@ const GamePreparation = () => {
         START
       </Button>
 
-      <footer>
+      {/* <footer>
         <Button
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
@@ -80,7 +80,7 @@ const GamePreparation = () => {
         >
           Quit
         </Button>
-      </footer>
+      </footer> */}
     </section>
   );
 };

@@ -5,6 +5,7 @@ import { AppContext } from "../../utils/context";
 import Modal from "../../components/modal/Modal";
 import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
+import swal from "sweetalert";
 
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
@@ -46,8 +47,34 @@ const GuessTaking = () => {
   }, [playersAlreadyGuessed]);
 
   const processPlayerGuess = useCallback(() => {
-    if (checkAndConfirmGuess(numberToGuess, playersAlreadyGuessed.at(-1))) {
-      contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+    const winningPlayer = playersAlreadyGuessed.at(-1);
+    if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
+      swal({
+        title: "Correct!",
+        text: `${winningPlayer.getPlayerName().toUpperCase()} wins it!`,
+        icon: "success",
+        buttons: {
+          continue: {
+            text: "Continue",
+            value: "continue",
+          },
+          quit: {
+            text: "Quit Game",
+            value: "quit",
+          },
+        },
+      }).then((value) => {
+        switch (value) {
+          case "continue":
+            contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+            break;
+
+          default:
+            contextDispatch({ type: "SHOW_HOME_PAGE" });
+            break;
+        }
+      });
+      // contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
       return;
     }
     if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
@@ -144,7 +171,7 @@ const GuessTaking = () => {
         <div className="next-player-item-2">
           {selectedMode === "Multi" ? (
             <h1>
-              <span>
+              <span style={{ color: "#000" }}>
                 {nextPlayerToGuess?.getPlayerName().toUpperCase()}
                 {", "}
               </span>
@@ -160,7 +187,7 @@ const GuessTaking = () => {
           /> */}
         </div>
         <div className="next-player-item-3">
-          <h1>Attempt: </h1>
+          <h1 style={{ color: "#000" }}>Attempt: </h1>
           <h2>
             {attemptMade} of {numOfAttempt}
           </h2>
@@ -180,7 +207,7 @@ const GuessTaking = () => {
         ))}
       </div>
 
-      <footer>
+      {/* <footer>
         <Button
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
@@ -188,7 +215,7 @@ const GuessTaking = () => {
         >
           Quit
         </Button>
-      </footer>
+      </footer> */}
     </section>
   );
 };

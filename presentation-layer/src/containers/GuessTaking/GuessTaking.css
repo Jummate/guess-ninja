@@ -36,8 +36,8 @@ footer{
 .next-player-container{
     height:25%;
     width:100%;
-    display:grid;
-    grid-template-columns: 35% 30% 35%;
+    display:flex;
+    /* grid-template-columns: 35% 30% 35%; */
     /* display: flex; */
 }
 .number-buttons-container{
@@ -46,18 +46,26 @@ footer{
     background-color: #000;
     overflow-y: auto;
 }
+.next-player-item-1{
+    display:flex;
+    width:35%;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #CF1512; */
+}
 .next-player-item-2{
     display:flex;
+    width:30%;
     align-items: center;
     justify-content: center;
     /* background-color: #CF1512; */
 }
 .next-player-item-3{
     display:flex;
+    width:35%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: blue; */
 
 }
 
