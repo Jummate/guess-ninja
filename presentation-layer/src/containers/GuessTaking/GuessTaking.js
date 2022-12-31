@@ -125,7 +125,7 @@ const GuessTaking = () => {
 
   return (
     <section className="GuessTaking__container">
-      {isOpenQuit ? (
+      {/* {isOpenQuit ? (
         <Modal
           title="Confirmation"
           onClose={() => contextDispatch({ type: "CLOSE_QUIT_MODAL" })}
@@ -148,7 +148,7 @@ const GuessTaking = () => {
             </Button>
           </p>
         </Modal>
-      ) : null}
+      ) : null} */}
 
       {/* <div className="GuessTaking__header">
 
