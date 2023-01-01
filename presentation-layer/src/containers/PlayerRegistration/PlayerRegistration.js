@@ -60,43 +60,10 @@ const PlayerRegistration = () => {
           }),
       });
       setShowOverlay(true);
-      // contextDispatch({
-      //   type: "OPEN_PLAYER_REG_MODAL",
-      // });
     }
   };
   return (
     <section className="PlayerReg__container">
-      {/* Modal starts---------------------------- */}
-      {/* {isOpenPlayerReg ? (
-        <Modal
-          title="Confirmation"
-          onClose={() => contextDispatch({ type: "CLOSE_PLAYER_REG_MODAL" })}
-        >
-          <h2>
-            COMPLETED{" "}
-            <span>
-              <FaStar />
-            </span>
-          </h2>
-          <h3>Players successfully registered!</h3>
-          <p>
-            <Button
-              buttonSize="btn--large"
-              buttonStyle="btn--gradient"
-              onClick={() =>
-                contextDispatch({
-                  type: "SHOW_GAME_INFO_PAGE",
-                  payload: { difficulty, newGame },
-                })
-              }
-            >
-              Proceed
-            </Button>
-          </p>
-        </Modal>
-      ) : null} */}
-
       <Header
         hOneText="Registration of Players"
         hFourText="Let's get to meet our players"
