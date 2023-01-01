@@ -72,3 +72,20 @@ footer{
 .next-player-item-1 span{
     color:#000
 }
+
+.swal-button:hover{
+    background-color: #000 !important;
+}
+.swal-button--quit{
+    background-color: var(--danger);
+    color: var(--light);
+}
+
+.swal-button--continue{
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.swal-text{
+    font-weight: bolder;
+}
