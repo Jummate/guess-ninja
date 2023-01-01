@@ -84,3 +84,8 @@
     font-size: 20px;
 }
 
+.w-80{
+    width:80%;
+    max-width: 500px;
+}
+

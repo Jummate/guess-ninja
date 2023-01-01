@@ -45,7 +45,7 @@ const PlayerRegistration = () => {
     if (playerCount === Number(numOfPlayer)) {
       toast("All players successfully registered", {
         position: "top-center",
-        autoClose: 1500,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

@@ -37,16 +37,8 @@ const GuessTaking = () => {
   const attemptMade = Math.floor(
     Number(combinedAttempts) / Number(numOfPlayer)
   );
-  {
-    console.log(attemptMade, combinedAttempts);
-  }
-
-  // const clearInputField = (e) => {
-  //   setPlayerGuess("");
-  // };
 
   const incrementCombinedAttempts = useCallback(() => {
-    console.log("called attempt made");
     if (Number(combinedAttempts) < Number(numOfAttempt) * Number(numOfPlayer)) {
       setCombinedAttempts((prev) => prev + 1);
     }
@@ -56,6 +48,7 @@ const GuessTaking = () => {
     const winningPlayer = playersAlreadyGuessed.at(-1);
     const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
+      winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
       swal({
         title: `${winningPlayerName} wins!`,
         text: `The number to guess was ${numberToGuess}`,
@@ -76,7 +69,7 @@ const GuessTaking = () => {
             value: "continue",
           },
           quit: {
-            text: "Quit Game",
+            text: "End Game",
             value: "quit",
           },
         },
@@ -87,11 +80,21 @@ const GuessTaking = () => {
             break;
 
           default:
-            contextDispatch({ type: "SHOW_HOME_PAGE" });
+            swal({
+              title: "Are you sure you want to end the game?",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willEnd) => {
+              if (willEnd) {
+                contextDispatch({ type: "SHOW_HOME_PAGE" });
+              } else {
+                contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+              }
+            });
             break;
         }
       });
-      // contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
       return;
     }
     if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
@@ -104,11 +107,6 @@ const GuessTaking = () => {
       }
     }
   }, [playersAlreadyGuessed]);
-
-  // const handleClick = () => {
-  //   savePlayersAlreadyGuessed();
-  //   clearInputField();
-  // };
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
@@ -129,7 +127,6 @@ const GuessTaking = () => {
   };
 
   useEffect(() => {
-    console.log("Youuu");
     setNextPlayerToGuess(
       generateRandomPlayers(newGame.getPlayersInvolved(), playersAlreadyGuessed)
     );

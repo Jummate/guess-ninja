@@ -85,6 +85,9 @@ footer{
     background-color: var(--primary);
     color: var(--light);
 }
+.swal-title{
+    font-size: 20px;
+}
 
 .swal-text{
     font-weight: bolder;
