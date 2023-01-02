@@ -8,16 +8,88 @@ header{
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     font-weight: bolder;
+    padding: 0 15px;
+    padding-bottom: 5px;
 }
 
 header h1{
     background: linear-gradient(to right, #49cdcb 14%, #CF1512 75%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
 header h4{
     font-style: italic;
-    margin-top: 20px;
-
+    margin-top: 8px;
+    font-size: 1.2rem;
+    text-align: center;
 }
+
+@media screen and (min-width:320px) and (max-width:480px){
+    
+    header h4{
+        font-size: 1.5rem;
+    }
+
+    header h1{
+      font-size: 3.0rem;
+    }
+}
+
+@media screen and (min-width:481px){
+    
+    header h4{
+        font-size: 1.8rem;
+    }
+
+    header h1{
+      font-size: 3.6rem;
+    }
+}
+
+@media screen and (min-width:769px){
+    header h4{
+        font-size: 2.0rem;
+    }
+
+    header h1{
+      font-size: 4.0rem;
+    }
+}
+
+@media screen and (min-width:1024px){
+    header h4{
+        font-size: 2.2rem;
+    }
+
+    header h1{
+      font-size: 4.4rem;
+    }
+}
+
+/*
+@media screen and (min-width:600px){
+    .action-buttons-wrapper{
+        position:absolute;
+        flex-direction: row;
+        height: 70px;
+        right:50%;
+        top:80%;
+        bottom:0;
+        transform: translateX(50%);   
+    }
+    
+}
+
+@media screen and (min-width:769px){
+    .Welcome__heading{
+        font-size: 8.0rem;
+    }
+}
+
+@media screen and (min-width:1024px){
+    .Welcome__heading{
+        font-size: 10rem;
+    }
+} */

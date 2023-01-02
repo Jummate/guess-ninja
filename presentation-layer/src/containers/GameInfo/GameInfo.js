@@ -19,10 +19,9 @@ const GameInfo = () => {
     <section className="GameInfo__container">
       <Header
         hOneText="Game Details"
-        hFourText="You are almost ready to get started. Here are the details about the
-        current game"
+        hFourText="Confirm the configuration of the game"
         mt="40"
-        height="20"
+        height="23"
       />
 
       <div className="GameInfo__body">
@@ -51,7 +50,7 @@ const GameInfo = () => {
         </Button>
       </div>
 
-      <Footer height="7">{""}</Footer>
+      {/* <Footer height="7">{""}</Footer> */}
 
       <Navigation />
     </section>

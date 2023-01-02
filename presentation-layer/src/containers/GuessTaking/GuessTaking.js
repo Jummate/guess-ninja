@@ -103,7 +103,53 @@ const GuessTaking = () => {
         setPlayersAlreadyGuessed([]);
       }
       if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-        contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+        swal({
+          title: `Oops! No winner in this round!`,
+          text: `The number to guess was ${numberToGuess}`,
+          icon: "error",
+          closeOnClickOutside: false,
+          closeOnEsc: false,
+          dangerMode: true,
+          // content: {
+          //   element: "p",
+          //   attributes: {
+          //     innerHTML: "You are trying",
+          //   },
+          // },
+
+          buttons: {
+            continue: {
+              text: "Start A New Round",
+              value: "continue",
+            },
+            quit: {
+              text: "End Game",
+              value: "quit",
+            },
+          },
+        }).then((value) => {
+          switch (value) {
+            case "continue":
+              contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+              break;
+
+            default:
+              swal({
+                title: "Are you sure you want to end the game?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willEnd) => {
+                if (willEnd) {
+                  contextDispatch({ type: "SHOW_HOME_PAGE" });
+                } else {
+                  contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+                }
+              });
+              break;
+          }
+        });
+        // contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
       }
     }
   }, [playersAlreadyGuessed]);
@@ -141,35 +187,6 @@ const GuessTaking = () => {
 
   return (
     <section className="GuessTaking__container">
-      {/* {isOpenQuit ? (
-        <Modal
-          title="Confirmation"
-          onClose={() => contextDispatch({ type: "CLOSE_QUIT_MODAL" })}
-        >
-          <h3>Are you sure you want to quit?</h3>
-          <p>
-            <Button
-              buttonSize="btn--medium"
-              buttonStyle="btn--gradient"
-              onClick={() => contextDispatch({ type: "SHOW_HOME_PAGE" })}
-            >
-              OK
-            </Button>
-            <Button
-              buttonSize="btn--medium"
-              buttonStyle="btn--gradient"
-              onClick={() => contextDispatch({ type: "CLOSE_QUIT_MODAL" })}
-            >
-              CANCEL
-            </Button>
-          </p>
-        </Modal>
-      ) : null} */}
-
-      {/* <div className="GuessTaking__header">
-
-        <h1 className="GuessTaking__header-text">Take A Guess</h1>
-      </div> */}
       <Header
         hOneText="Take A Guess"
         tRadius="30"
@@ -177,33 +194,31 @@ const GuessTaking = () => {
       />
 
       <div className="next-player-container">
-        <div className="next-player-item-1">
-          <img
-            className="GuessTaking__image"
-            src={ThinkingDoll}
-            alt="Thinking Doll"
-          />
+        <div className="next-player-wrapper">
+          <div className="next-player-item-1">
+            <img
+              className="GuessTaking__image"
+              src={ThinkingDoll}
+              alt="Thinking Doll"
+            />
+          </div>
+          <div className="next-player-item-2">
+            {selectedMode === "Multi" ? (
+              <h1>
+                <span style={{ color: "#000" }}>
+                  {nextPlayerToGuess?.getPlayerName().toUpperCase()}
+                  {", "}
+                </span>
+                it's your turn
+              </h1>
+            ) : (
+              <span>Single Playing</span>
+            )}
+          </div>
         </div>
-        <div className="next-player-item-2">
-          {selectedMode === "Multi" ? (
-            <h1>
-              <span style={{ color: "#000" }}>
-                {nextPlayerToGuess?.getPlayerName().toUpperCase()}
-                {", "}
-              </span>
-              it's your turn
-            </h1>
-          ) : (
-            <span>Single Playing</span>
-          )}
-          {/* <Input
-            type="number"
-            value={playerGuess}
-            onChange={(e) => setPlayerGuess(e.target.value)}
-          /> */}
-        </div>
+
         <div className="next-player-item-3">
-          <h1 style={{ color: "#000" }}>Attempt: </h1>
+          <h1 style={{ color: "#000", marginRight: "10px" }}>Attempt: </h1>
           <h2>
             {Number(combinedAttempts) % Number(numOfPlayer) === 0
               ? attemptMade
@@ -219,6 +234,7 @@ const GuessTaking = () => {
             key={number}
             buttonSize="btn--medium"
             buttonStyle="btn--danger--solid"
+            width="w-10"
             onClick={handleNumberButtonClick}
           >
             {number}

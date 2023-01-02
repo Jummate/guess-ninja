@@ -14,6 +14,7 @@
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     max-width: 400px;
+    text-align: center;
 }
 
 .btn:hover{
@@ -86,6 +87,41 @@
 
 .w-80{
     width:80%;
-    max-width: 500px;
 }
+
+.w-60{
+    width:60%;
+}
+.w-40{
+    width:40%;
+}
+.w-20{
+    width:20%;
+}
+
+.w-10{
+    /* width: 10%; */
+}
+
+.w-5{
+    width: 5%;
+}
+@media screen and (min-width: 480px){
+    .w-10{
+        width:20%;
+        max-width: 120px;
+    }
+}
+@media screen and (min-width: 768px){
+    .w-10{
+        /* width:20%;
+        max-width: 150px; */
+        font-size:25px
+    }
+}
+
+
+
+
+
 

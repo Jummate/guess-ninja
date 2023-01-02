@@ -67,7 +67,7 @@ const GameSetup = () => {
         hOneText="Game Settings"
         hFourText="Every activity begins with a plan"
         mt="40"
-        height="20"
+        height="23"
       />
       <div className="GameSetup__body">
         <form>
@@ -124,7 +124,7 @@ const GameSetup = () => {
           </Button>
         </form>
       </div>
-      <Footer height="7">{""}</Footer>
+      {/* <Footer height="7">{""}</Footer> */}
 
       <Navigation />
     </section>
