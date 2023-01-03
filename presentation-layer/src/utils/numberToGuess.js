@@ -12,7 +12,11 @@ export const generateNumberToGuess = (
   );
 
   let start = numberArray[0];
-  let end = numberArray.at(-1);
+
+  let end = !Array.prototype.at
+    ? numberArray[numberArray.length - 1]
+    : numberArray.at(-1);
+
   let randomIndex = generateRandomNum(0, numberArray.length - 1);
   let numberToGuess = numberArray[randomIndex];
 

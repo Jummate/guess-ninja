@@ -45,7 +45,11 @@ const GuessTaking = () => {
   }, [playersAlreadyGuessed]);
 
   const processPlayerGuess = useCallback(() => {
-    const winningPlayer = playersAlreadyGuessed.at(-1);
+    // const winningPlayer = playersAlreadyGuessed.at(-1);
+    const winningPlayer = !Array.prototype.at
+      ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
+      : playersAlreadyGuessed.at(-1);
+
     const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
