@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import Modal from "../../components/modal/Modal";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
-
+import RobotRomeo from "../../assets/romeo-robot.webp";
 import "./GamePreparation.css";
 
 const GamePreparation = () => {
@@ -51,22 +51,33 @@ const GamePreparation = () => {
         hFourText="it's about get down thick!"
         height="20"
       />
-
-      <h2 style={{ textAlign: "center" }}>
-        Timmy thinks of a number {numberToGuess} between {start} and {end}
-      </h2>
-      <Button
-        buttonSize="btn--large"
-        buttonStyle="btn--gradient"
-        onClick={() =>
-          contextDispatch({
-            type: "SHOW_GUESS_TAKING_PAGE",
-            payload: { numberToGuess, numberArray },
-          })
-        }
-      >
-        START
-      </Button>
+      <div className="GamePrep__body">
+        <div className="GamePrep__body-item-1">
+          <img
+            src={RobotRomeo}
+            className="GamePrep__image"
+          />
+        </div>
+        <div className="GamePrep__body-item-2">
+          <h2 style={{ textAlign: "center" }}>
+            Romeo thinks of a number {numberToGuess} between{" "}
+            <span style={{ backgroundColor: "##" }}>{start}</span> and{" "}
+            <span>{end}</span>
+          </h2>
+          <Button
+            buttonSize="btn--large"
+            buttonStyle="btn--gradient"
+            onClick={() =>
+              contextDispatch({
+                type: "SHOW_GUESS_TAKING_PAGE",
+                payload: { numberToGuess, numberArray },
+              })
+            }
+          >
+            START
+          </Button>
+        </div>
+      </div>
 
       {/* <footer>
         <Button
