@@ -56,17 +56,33 @@ const GamePreparation = () => {
           <img
             src={RobotRomeo}
             className="GamePrep__image"
+            alt="Robot Romeo"
           />
         </div>
         <div className="GamePrep__body-item-2">
-          <h2 style={{ textAlign: "center" }}>
-            Romeo thinks of a number {numberToGuess} between{" "}
-            <span style={{ backgroundColor: "##" }}>{start}</span> and{" "}
-            <span>{end}</span>
-          </h2>
+          <p>
+            {" "}
+            Romeo picked a number {numberToGuess} from a box containing numbers
+            between{" "}
+            <span
+              style={{ backgroundColor: "red", color: "#fff", padding: "2px" }}
+            >
+              {start}
+            </span>{" "}
+            and{" "}
+            <span
+              style={{ backgroundColor: "red", color: "#fff", padding: "2px" }}
+            >
+              {end}
+            </span>
+          </p>
+          <br />
+          <p>What number is he holding?</p>
+
           <Button
-            buttonSize="btn--large"
+            buttonSize="btn--medium"
             buttonStyle="btn--gradient"
+            // width="w-20"
             onClick={() =>
               contextDispatch({
                 type: "SHOW_GUESS_TAKING_PAGE",

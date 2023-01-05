@@ -55,7 +55,7 @@ const GuessTaking = () => {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
       swal({
         title: `${winningPlayerName} wins!`,
-        text: `The number to guess was ${numberToGuess}`,
+        text: `Romeo picked ${numberToGuess}`,
         icon: "success",
         closeOnClickOutside: false,
         closeOnEsc: false,
@@ -109,7 +109,7 @@ const GuessTaking = () => {
       if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
         swal({
           title: `Oops! No winner in this round!`,
-          text: `The number to guess was ${numberToGuess}`,
+          text: `Romeo picked ${numberToGuess}`,
           icon: "error",
           closeOnClickOutside: false,
           closeOnEsc: false,
