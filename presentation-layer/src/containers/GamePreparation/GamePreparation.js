@@ -60,23 +60,30 @@ const GamePreparation = () => {
           />
         </div>
         <div className="GamePrep__body-item-2">
-          <p>
+          <p style={{ marginBottom: "10px" }}>
             {" "}
             Romeo picked a number {numberToGuess} from a box containing numbers
             between{" "}
             <span
-              style={{ backgroundColor: "red", color: "#fff", padding: "2px" }}
+              style={{
+                backgroundColor: "maroon",
+                color: "#fff",
+                padding: "2px",
+              }}
             >
               {start}
             </span>{" "}
             and{" "}
             <span
-              style={{ backgroundColor: "red", color: "#fff", padding: "2px" }}
+              style={{
+                backgroundColor: "maroon",
+                color: "#fff",
+                padding: "2px",
+              }}
             >
               {end}
             </span>
           </p>
-          <br />
           <p>What number is he holding?</p>
 
           <Button
