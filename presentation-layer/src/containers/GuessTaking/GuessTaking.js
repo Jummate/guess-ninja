@@ -101,6 +101,7 @@ const GuessTaking = () => {
       });
       return;
     }
+
     if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
       if (Number(combinedAttempts) % Number(numOfPlayer) === 0) {
         newGame.resetPlayersPlayStatus();
@@ -161,10 +162,62 @@ const GuessTaking = () => {
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
     // setPlayerGuess(numberClicked);
+    const winningPlayer = !Array.prototype.at
+      ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
+      : playersAlreadyGuessed.at(-1);
+
     setNumArray(
       numArray.filter((number) => Number(number) !== Number(numberClicked))
     );
     savePlayersAlreadyGuessed(Number(numberClicked));
+
+    if (!checkAndConfirmGuess(numberToGuess, winningPlayer)) {
+      swal({
+        title: "Oops!",
+        text: `Incorrect guess!`,
+        icon: "error",
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+        dangerMode: true,
+        // content: {
+        //   element: "p",
+        //   attributes: {
+        //     innerHTML: "You are trying",
+        //   },
+        // },
+
+        buttons: {
+          continue: {
+            text: "Continue",
+            value: "continue",
+          },
+          quit: {
+            text: "End Game",
+            value: "quit",
+          },
+        },
+      }).then((value) => {
+        switch (value) {
+          case "continue":
+            break;
+
+          default:
+            swal({
+              title: "Are you sure you want to end the game?",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willEnd) => {
+              if (willEnd) {
+                contextDispatch({ type: "SHOW_HOME_PAGE" });
+              } else {
+                contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+              }
+            });
+            break;
+        }
+      });
+    }
   };
 
   const savePlayersAlreadyGuessed = (guessedNum) => {
