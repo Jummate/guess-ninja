@@ -12,7 +12,7 @@
     margin:15px;
     cursor: pointer;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     max-width: 400px;
     text-align: center;
 }
