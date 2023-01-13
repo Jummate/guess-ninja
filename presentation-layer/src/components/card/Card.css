@@ -1,0 +1,17 @@
+
+.Card__container{
+    border-bottom: 1px ridge rgb(156, 152, 152);
+    line-height: 1.5;
+    padding-left: 3px;
+}
+.Card__container p{
+    color:rgb(36, 34, 34);
+ }
+.Card__container p::before{
+   content: "~";
+   color:#e8f8f7;
+}
+
+.Card__container h5{
+    color: var(--danger)
+}

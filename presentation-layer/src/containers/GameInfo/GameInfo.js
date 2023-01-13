@@ -4,6 +4,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
 import { AppContext } from "../../utils/context";
+import Card from "../../components/card/Card";
 
 import "./GameInfo.css";
 
@@ -25,17 +26,50 @@ const GameInfo = () => {
       />
 
       <div className="GameInfo__body">
-        <ul type="square">
-          <li>Game Mode: {selectedMode}</li>
-          <li>No of players: {selectedMode === "Multi" ? numOfPlayer : 1}</li>
-          <li>Difficulty: {difficulty}</li>
-          <li>
-            Players involved:{" "}
-            {selectedMode === "Multi"
-              ? newGame.getPlayersInvolvedByName().join(", ")
-              : "n/a"}
-          </li>
-        </ul>
+        <div className="GameInfo__wrapper">
+          <Card
+            headerText="Game Mode"
+            content={selectedMode}
+          />
+
+          <Card
+            headerText="Number of Players"
+            content={selectedMode === "Multi" ? numOfPlayer : 1}
+          />
+
+          <Card
+            headerText="Players involved"
+            content={
+              selectedMode === "Multi"
+                ? newGame.getPlayersInvolvedByName().join(", ")
+                : "n/a"
+            }
+          />
+
+          <Card
+            headerText="Game Mode"
+            content={selectedMode}
+          />
+
+          <Card
+            headerText="Game Mode"
+            content={selectedMode}
+          />
+
+          {/* <ul type="square">
+            <li>
+              <span></span>Game Mode: {selectedMode}
+            </li>
+            <li>No of players: {selectedMode === "Multi" ? numOfPlayer : 1}</li>
+            <li>Difficulty: {difficulty}</li>
+            <li>
+              Players involved:{" "}
+              {selectedMode === "Multi"
+                ? newGame.getPlayersInvolvedByName().join(", ")
+                : "n/a"}
+            </li>
+          </ul> */}
+        </div>
 
         <Button
           buttonSize="btn--large"
