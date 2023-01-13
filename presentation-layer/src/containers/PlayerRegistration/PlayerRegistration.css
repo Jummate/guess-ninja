@@ -8,15 +8,26 @@
     align-items: center;
     color:var(--danger);
     font-weight: bolder;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .PlayerReg__body{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width:100%;
     height:71%;
+}
+.PlayerReg__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:97%;
+    height:97%;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
 }
 .PlayerReg__body-item-1{
     display: flex;

@@ -1,7 +1,8 @@
 .GameInfo__container{
     height:98%;
     width:98%;
-    background-color: #e8f8f7;
+    /* background-color: #e8f8f7; */
+    background-color: rgb(10, 9, 9);
     border-radius: 20px;
     display:flex;
     flex-direction: column;
@@ -17,6 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .GameInfo__wrapper{
@@ -26,9 +28,10 @@
     padding: 15px;
     display: grid;
     grid-template-columns: 50% 50%;
+    background-color: black;
     /* justify-content: center; */
     /* align-items: center; */
-    border-radius: 40px;
-    box-shadow: 2px 2px 8px gray, -2px -2px 8px gray;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgb(25, 24, 24), -2px -2px 8px rgb(25, 24, 24);
     overflow-y: auto;
 }

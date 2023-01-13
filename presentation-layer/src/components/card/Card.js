@@ -5,7 +5,7 @@ import "./Card.css";
 const Card = ({ headerText, content }) => {
   return (
     <article className="Card__container">
-      <h5>{headerText}</h5>
+      <h6>{headerText}</h6>
       <p>{content}</p>
     </article>
   );

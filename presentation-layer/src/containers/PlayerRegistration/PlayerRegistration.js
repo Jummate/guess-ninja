@@ -66,29 +66,31 @@ const PlayerRegistration = () => {
     <section className="PlayerReg__container">
       <Header
         hOneText="Register Players"
-        hFourText="Let's get to meet our players"
+        hFourText="It's KYC time! Let's know our players"
         mt="40"
         height="25"
       />
 
       <div className="PlayerReg__body">
-        <div className="PlayerReg__body-item-1">
-          <label>Player {playerCount}:</label>
-          <Input
-            value={player}
-            onChange={(e) => setPlayer(e.target.value)}
-            width="w-80"
-          />
-        </div>
-        <div className="PlayerReg__body-item-2">
-          <Button
-            buttonSize="btn--medium"
-            buttonStyle="btn--gradient"
-            onClick={handleClick}
-            width="w-80"
-          >
-            Enter
-          </Button>
+        <div className="PlayerReg__wrapper">
+          <div className="PlayerReg__body-item-1">
+            <label>Player {playerCount}:</label>
+            <Input
+              value={player}
+              onChange={(e) => setPlayer(e.target.value)}
+              width="w-80"
+            />
+          </div>
+          <div className="PlayerReg__body-item-2">
+            <Button
+              buttonSize="btn--medium"
+              buttonStyle="btn--gradient"
+              onClick={handleClick}
+              width="w-80"
+            >
+              Enter
+            </Button>
+          </div>
         </div>
       </div>
 

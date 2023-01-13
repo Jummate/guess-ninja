@@ -14,9 +14,20 @@
     width: 100%;
     height:80%;
     display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.GamePrep__wrapper{
+    width: 95%;
+    height:95%;
+    display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: #000; */
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
 }
 
 .GamePrep__image{
@@ -46,10 +57,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color:#000;
+    color: var(--light);
     padding: 10px;
-    /* background-color: blue; */
+    background-color: #000;
     line-height: 1.3;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* border-radius: 20px; */
 }
 
 .GamePrep__body-item-2 p{

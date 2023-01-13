@@ -28,17 +28,17 @@ const GameInfo = () => {
       <div className="GameInfo__body">
         <div className="GameInfo__wrapper">
           <Card
-            headerText="Game Mode"
+            headerText="Game Mode:"
             content={selectedMode}
           />
 
           <Card
-            headerText="Number of Players"
+            headerText="Number of Players:"
             content={selectedMode === "Multi" ? numOfPlayer : 1}
           />
 
           <Card
-            headerText="Players involved"
+            headerText="Players involved:"
             content={
               selectedMode === "Multi"
                 ? newGame.getPlayersInvolvedByName().join(", ")
@@ -47,13 +47,8 @@ const GameInfo = () => {
           />
 
           <Card
-            headerText="Game Mode"
-            content={selectedMode}
-          />
-
-          <Card
-            headerText="Game Mode"
-            content={selectedMode}
+            headerText="Difficulty:"
+            content={difficulty}
           />
 
           {/* <ul type="square">

@@ -70,39 +70,40 @@ const GameSetup = () => {
         height="23"
       />
       <div className="GameSetup__body">
-        <form>
-          {selectedMode === "Multi" ? (
+        <div className="GameSetup__wrapper">
+          <form>
+            {selectedMode === "Multi" ? (
+              <div className="GameSetup__item">
+                <label>Number of Players</label>
+                <Input
+                  type="number"
+                  value={numOfPlayer}
+                  onChange={(e) => setNumOfPlayer(e.target.value)}
+                />
+              </div>
+            ) : null}
+
             <div className="GameSetup__item">
-              <label>Number of Players</label>
+              <label>Number of attempts</label>
               <Input
                 type="number"
-                value={numOfPlayer}
-                onChange={(e) => setNumOfPlayer(e.target.value)}
+                value={numOfAttempt}
+                onChange={(e) => setNumOfAttempt(e.target.value)}
               />
             </div>
-          ) : null}
 
-          <div className="GameSetup__item">
-            <label>Number of attempts</label>
-            <Input
-              type="number"
-              value={numOfAttempt}
-              onChange={(e) => setNumOfAttempt(e.target.value)}
-            />
-          </div>
+            <div className="GameSetup__item">
+              <label>Difficulty</label>
 
-          <div className="GameSetup__item">
-            <label>Difficulty</label>
-
-            <Select
-              options={options}
-              defaultValue={options[0]}
-              styles={customStyles}
-              // value={difficulty}
-              onChange={handleChange}
-              // onChange={(e) => setDifficulty(e.target.value)}
-            />
-            {/* <select
+              <Select
+                options={options}
+                defaultValue={options[0]}
+                styles={customStyles}
+                // value={difficulty}
+                onChange={handleChange}
+                // onChange={(e) => setDifficulty(e.target.value)}
+              />
+              {/* <select
             name="difficulty"
             className="GameSetup__difficulty"
             de
@@ -113,16 +114,17 @@ const GameSetup = () => {
             <option value="Moderate">Moderate</option>
             <option value="Hard">Hard</option>
           </select> */}
-          </div>
+            </div>
 
-          <Button
-            buttonSize="btn--medium"
-            buttonStyle="btn--gradient"
-            onClick={handleClick}
-          >
-            CONTINUE
-          </Button>
-        </form>
+            <Button
+              buttonSize="btn--medium"
+              buttonStyle="btn--gradient"
+              onClick={handleClick}
+            >
+              CONTINUE
+            </Button>
+          </form>
+        </div>
       </div>
       {/* <Footer height="7">{""}</Footer> */}
 

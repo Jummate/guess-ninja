@@ -17,31 +17,33 @@ const GameMode = () => {
         height="20"
         bg="#0d0d0d"
       />
-      <div className="GameMode__btn-wrapper">
-        <Button
-          buttonSize="btn--large"
-          buttonStyle="btn--gradient"
-          onClick={() =>
-            contextDispatch({
-              type: "SHOW_GAME_SETUP_PAGE",
-              payload: { selectedMode: "Single" },
-            })
-          }
-        >
-          One Player
-        </Button>
-        <Button
-          buttonSize="btn--large"
-          buttonStyle="btn--gradient"
-          onClick={() =>
-            contextDispatch({
-              type: "SHOW_GAME_SETUP_PAGE",
-              payload: { selectedMode: "Multi" },
-            })
-          }
-        >
-          Multiplayer
-        </Button>
+      <div className="GameMode__btn-container">
+        <div className="GameMode__btn-wrapper">
+          <Button
+            buttonSize="btn--large"
+            buttonStyle="btn--gradient"
+            onClick={() =>
+              contextDispatch({
+                type: "SHOW_GAME_SETUP_PAGE",
+                payload: { selectedMode: "Single" },
+              })
+            }
+          >
+            One Player
+          </Button>
+          <Button
+            buttonSize="btn--large"
+            buttonStyle="btn--gradient"
+            onClick={() =>
+              contextDispatch({
+                type: "SHOW_GAME_SETUP_PAGE",
+                payload: { selectedMode: "Multi" },
+              })
+            }
+          >
+            Multiplayer
+          </Button>
+        </div>
       </div>
 
       <Navigation />
