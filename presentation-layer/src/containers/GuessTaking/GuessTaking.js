@@ -1,8 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
-import Modal from "../../components/modal/Modal";
 import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
 import swal from "sweetalert";
@@ -16,7 +14,6 @@ const GuessTaking = () => {
   const context = useContext(AppContext);
   const {
     initialState: {
-      isOpenQuit,
       numberToGuess,
       newGame,
       selectedMode,
@@ -27,7 +24,6 @@ const GuessTaking = () => {
     contextDispatch,
   } = context;
   const [playersAlreadyGuessed, setPlayersAlreadyGuessed] = useState([]);
-  // const [playerGuess, setPlayerGuess] = useState("");
   const [nextPlayerToGuess, setNextPlayerToGuess] = useState(
     generateRandomPlayers(newGame.getPlayersInvolved(), playersAlreadyGuessed)
   );
@@ -45,7 +41,6 @@ const GuessTaking = () => {
   }, [playersAlreadyGuessed]);
 
   const processPlayerGuess = useCallback(() => {
-    // const winningPlayer = playersAlreadyGuessed.at(-1);
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
@@ -115,12 +110,6 @@ const GuessTaking = () => {
           closeOnClickOutside: false,
           closeOnEsc: false,
           dangerMode: true,
-          // content: {
-          //   element: "p",
-          //   attributes: {
-          //     innerHTML: "You are trying",
-          //   },
-          // },
 
           buttons: {
             continue: {
@@ -154,14 +143,12 @@ const GuessTaking = () => {
               break;
           }
         });
-        // contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
       }
     }
   }, [playersAlreadyGuessed]);
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
-    // setPlayerGuess(numberClicked);
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
@@ -179,12 +166,6 @@ const GuessTaking = () => {
         closeOnClickOutside: false,
         closeOnEsc: false,
         dangerMode: true,
-        // content: {
-        //   element: "p",
-        //   attributes: {
-        //     innerHTML: "You are trying",
-        //   },
-        // },
 
         buttons: {
           continue: {
@@ -298,16 +279,6 @@ const GuessTaking = () => {
           </Button>
         ))}
       </div>
-
-      {/* <footer>
-        <Button
-          buttonSize="btn--medium"
-          buttonStyle="btn--gradient"
-          onClick={() => contextDispatch({ type: "OPEN_QUIT_MODAL" })}
-        >
-          Quit
-        </Button>
-      </footer> */}
     </section>
   );
 };

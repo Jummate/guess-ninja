@@ -26,24 +26,6 @@ const Welcome = () => {
         GET STARTED
       </Button>
 
-      {/* <aside className="action-buttons-wrapper">
-        <Button
-          buttonSize="btn--small"
-          buttonStyle="btn--gradient"
-          onClick={() => contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" })}
-        >
-          GAME GUIDE
-        </Button>
-
-        <Button
-          buttonSize="btn--small"
-          buttonStyle="btn--gradient"
-          onClick={() => contextDispatch({ type: "SHOW_GAME_MODE_PAGE" })}
-        >
-          START
-        </Button>
-      </aside> */}
-
       {showMenu ? (
         <Menu>
           <Button

@@ -9,14 +9,6 @@
 
 }
 
-.GameMode__heading{
-    margin-bottom: 30px;
-    background: #121FCF;
-    background: linear-gradient(to left, #49cdcb 19%, #CF1512 75%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-}
 .GameMode__btn-container{
     display: flex;
     justify-content: center;
@@ -37,10 +29,7 @@
     border-radius: 20px;
     box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
 }
-.GameMode__text{
-    margin-bottom: 30px;
 
-}
 
 @media screen and (min-width: 767px) {
     .GameMode__btn-wrapper{

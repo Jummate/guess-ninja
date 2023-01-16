@@ -1,6 +1,4 @@
 export const defaultState = {
-  isOpenQuit: false,
-  isOpenPlayerReg: false,
   homePageActive: true,
   gameModeActive: false,
   gameSetupActive: false,

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import Modal from "../../components/modal/Modal";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
 import RobotRomeo from "../../assets/romeo-robot.webp";
@@ -10,7 +9,7 @@ import "./GamePreparation.css";
 const GamePreparation = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { isOpenQuit, numOfPlayer, numOfAttempt, difficulty },
+    initialState: { numOfPlayer, numOfAttempt, difficulty },
     contextDispatch,
   } = context;
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
@@ -45,7 +44,7 @@ const GamePreparation = () => {
                 style={{
                   backgroundColor: "maroon",
                   color: "#fff",
-                  padding: "2px",
+                  padding: "1px 3px",
                 }}
               >
                 {start}
@@ -55,13 +54,19 @@ const GamePreparation = () => {
                 style={{
                   backgroundColor: "maroon",
                   color: "#fff",
-                  padding: "2px",
+                  padding: "1px 3px",
                 }}
               >
                 {end}
               </span>
             </p>
-            <p>What number is he holding?</p>
+            <p
+              style={{
+                color: "red",
+              }}
+            >
+              What number is he holding?
+            </p>
 
             <Button
               buttonSize="btn--medium"
@@ -79,20 +84,6 @@ const GamePreparation = () => {
           </div>
         </div>
       </div>
-
-      {/* <footer>
-        <Button
-          buttonSize="btn--medium"
-          buttonStyle="btn--gradient"
-          onClick={() =>
-            contextDispatch({
-              type: "OPEN_QUIT_MODAL",
-            })
-          }
-        >
-          Quit
-        </Button>
-      </footer> */}
     </section>
   );
 };

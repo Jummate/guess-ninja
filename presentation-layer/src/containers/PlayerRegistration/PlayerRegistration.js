@@ -3,13 +3,8 @@ import Navigation from "../../components/nav/Navigation";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
-import Modal from "../../components/modal/Modal";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 import Overlay from "../../components/Overlay";
-// import { showAlert } from "../../utils/alert";
-
-import { FaStar } from "react-icons/fa";
 
 import { toast } from "react-toastify";
 
@@ -18,7 +13,7 @@ import "./PlayerRegistration.css";
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, difficulty, isOpenPlayerReg, newGame },
+    initialState: { numOfPlayer, difficulty, newGame },
     contextDispatch,
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
@@ -93,8 +88,6 @@ const PlayerRegistration = () => {
           </div>
         </div>
       </div>
-
-      {/* <Footer height="10">{""}</Footer> */}
 
       {showOverlay && <Overlay />}
       <Navigation />

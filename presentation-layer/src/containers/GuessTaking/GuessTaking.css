@@ -28,12 +28,6 @@
     width:55%;
 }
 
-footer{
-    position: absolute;
-    bottom:0;
-    right:0;
-}
-
 .next-player-container{
     height:35%;
     width:100%;
@@ -41,14 +35,12 @@ footer{
     flex-direction: column;
     overflow-y: auto;
     font-size: 1.1rem;
-    /* grid-template-columns: 35% 30% 35%; */
-    /* display: flex; */
+ 
 }
 .next-player-wrapper{
     padding: 5px;
     display:flex;
     height:70%;
-    /* width:65%; */
     align-items: center;
     justify-content: space-around;
     border-bottom: 2px solid rgb(226, 222, 222);
@@ -115,12 +107,7 @@ footer{
     .next-player-container{
         font-size: 1.3rem;
     }
-    /* .next-player-item-3{
-        flex-direction: row;
-        background-color: blue;
-    
-    } */
-    
+  
 }
 
 @media screen and (min-width:768px){

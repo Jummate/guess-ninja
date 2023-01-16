@@ -5,7 +5,6 @@ import Input from "../../components/input/Input";
 import Navigation from "../../components/nav/Navigation";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 import { AppContext } from "../../utils/context";
 import { GuessGame } from "../../utils/game";
 
@@ -99,21 +98,8 @@ const GameSetup = () => {
                 options={options}
                 defaultValue={options[0]}
                 styles={customStyles}
-                // value={difficulty}
                 onChange={handleChange}
-                // onChange={(e) => setDifficulty(e.target.value)}
               />
-              {/* <select
-            name="difficulty"
-            className="GameSetup__difficulty"
-            de
-            value={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-          >
-            <option value="Easy">Easy</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Hard">Hard</option>
-          </select> */}
             </div>
 
             <Button
@@ -126,7 +112,6 @@ const GameSetup = () => {
           </form>
         </div>
       </div>
-      {/* <Footer height="7">{""}</Footer> */}
 
       <Navigation />
     </section>

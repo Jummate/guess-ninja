@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Button from "../../components/button/Button";
-import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
 import { AppContext } from "../../utils/context";
@@ -50,20 +49,6 @@ const GameInfo = () => {
             headerText="Difficulty:"
             content={difficulty}
           />
-
-          {/* <ul type="square">
-            <li>
-              <span></span>Game Mode: {selectedMode}
-            </li>
-            <li>No of players: {selectedMode === "Multi" ? numOfPlayer : 1}</li>
-            <li>Difficulty: {difficulty}</li>
-            <li>
-              Players involved:{" "}
-              {selectedMode === "Multi"
-                ? newGame.getPlayersInvolvedByName().join(", ")
-                : "n/a"}
-            </li>
-          </ul> */}
         </div>
 
         <Button
@@ -78,8 +63,6 @@ const GameInfo = () => {
           Start Game
         </Button>
       </div>
-
-      {/* <Footer height="7">{""}</Footer> */}
 
       <Navigation />
     </section>
