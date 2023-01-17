@@ -11,7 +11,14 @@ const GameInfo = () => {
   const context = useContext(AppContext);
 
   const {
-    initialState: { numOfPlayer, difficulty, selectedMode, newGame },
+    initialState: {
+      numOfPlayer,
+      difficulty,
+      selectedMode,
+      newGame,
+      onePlayerGameType,
+      multiPlayerGameType,
+    },
     contextDispatch,
   } = context;
 
@@ -44,10 +51,18 @@ const GameInfo = () => {
                 : "n/a"
             }
           />
-
           <Card
             headerText="Difficulty:"
             content={difficulty}
+          />
+
+          <Card
+            headerText="Game Type:"
+            content={
+              selectedMode === "Single"
+                ? onePlayerGameType
+                : multiPlayerGameType
+            }
           />
         </div>
 

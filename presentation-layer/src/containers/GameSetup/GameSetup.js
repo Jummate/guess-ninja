@@ -19,7 +19,7 @@ const GameSetup = () => {
   };
 
   const {
-    initialState: { selectedMode },
+    initialState: { selectedMode, multiPlayerGameType, onePlayerGameType },
     contextDispatch,
   } = context;
   const nextPage =
@@ -91,16 +91,30 @@ const GameSetup = () => {
               />
             </div>
 
-            <div className="GameSetup__item">
-              <label>Difficulty</label>
+            {selectedMode === "Multi" && multiPlayerGameType === "Session" ? (
+              <div className="GameSetup__item">
+                <label>Number of games in a session</label>
+                <Input
+                  type="number"
+                  value={numOfAttempt}
+                  onChange={(e) => setNumOfAttempt(e.target.value)}
+                />
+              </div>
+            ) : null}
 
-              <Select
-                options={options}
-                defaultValue={options[0]}
-                styles={customStyles}
-                onChange={handleChange}
-              />
-            </div>
+            {selectedMode === "Single" &&
+            onePlayerGameType === "Constant" ? null : (
+              <div className="GameSetup__item">
+                <label>Difficulty</label>
+
+                <Select
+                  options={options}
+                  defaultValue={options[0]}
+                  styles={customStyles}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
 
             <Button
               buttonSize="btn--medium"

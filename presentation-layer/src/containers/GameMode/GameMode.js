@@ -72,7 +72,7 @@ const GameMode = () => {
                       })
                     }
                   >
-                    PROGRESSIVE
+                    Progressive
                   </Button>
 
                   <Button
@@ -89,7 +89,7 @@ const GameMode = () => {
                       })
                     }
                   >
-                    CONSTANT
+                    Constant
                   </Button>
 
                   <Button
@@ -106,7 +106,7 @@ const GameMode = () => {
                       })
                     }
                   >
-                    RANDOM
+                    Random
                   </Button>
                 </>
               ) : null}
@@ -122,12 +122,12 @@ const GameMode = () => {
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: "Multi",
-                          onePlayerGameType: `${e.target.textContent.trim()}`,
+                          multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    ONE-TIME
+                    Regular
                   </Button>
 
                   <Button
@@ -139,12 +139,12 @@ const GameMode = () => {
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: "Multi",
-                          onePlayerGameType: `${e.target.textContent.trim()}`,
+                          multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    SESSION
+                    Session
                   </Button>
 
                   {/* <Button

@@ -57,6 +57,8 @@ const reducer = (state, action) => {
         showMode: true,
         showSetup: false,
         selectedMode: action.payload.selectedMode,
+        multiPlayerGameType: action.payload.multiPlayerGameType,
+        onePlayerGameType: action.payload.onePlayerGameType,
       };
 
     case "SHOW_PLAYER_REG_PAGE":

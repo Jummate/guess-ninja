@@ -1,5 +1,5 @@
 .input{
-    margin-top: 5px;
+    margin-top: 2px;
     padding: 10px 15px;
     width:100%;
     letter-spacing: 1.5px;
@@ -8,7 +8,7 @@
     outline: none;
     box-shadow: 1px 1px 3px #49cdcb, -1px -1px 3px #00000069;
     max-width: 400px;
-    font-size: 13px;
+    font-size: 12px;
 }
 .input::placeholder{
     color:var(--danger)
