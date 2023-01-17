@@ -1,4 +1,5 @@
 export const defaultState = {
+  onePlayerGameType: "",
   homePageActive: true,
   gameModeActive: false,
   gameSetupActive: false,

@@ -28,6 +28,8 @@
     background: linear-gradient(to right, #49cdcb 19%, #CF1512 75%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+
 
 }
 
