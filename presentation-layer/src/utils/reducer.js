@@ -79,6 +79,7 @@ const reducer = (state, action) => {
         numOfAttempt: action.payload.numOfAttempt,
         difficulty: action.payload.difficulty,
         newGame: action.payload.newGame,
+        numOfGamesInSession: action.payload.numOfGamesInSession,
       };
     case "SHOW_GAME_INFO_PAGE":
       return {

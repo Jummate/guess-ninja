@@ -12,6 +12,7 @@ const GameSetup = () => {
   const context = useContext(AppContext);
   const [numOfPlayer, setNumOfPlayer] = useState("");
   const [numOfAttempt, setNumOfAttempt] = useState("");
+  const [numOfGamesInSession, setNumOfGamesInSession] = useState("");
   const [difficulty, setDifficulty] = useState("Easy");
 
   const initializeGame = () => {
@@ -34,6 +35,7 @@ const GameSetup = () => {
         difficulty,
         newGame,
         numOfAttempt,
+        numOfGamesInSession,
       },
     });
   };
@@ -96,8 +98,8 @@ const GameSetup = () => {
                 <label>Number of games in a session</label>
                 <Input
                   type="number"
-                  value={numOfAttempt}
-                  onChange={(e) => setNumOfAttempt(e.target.value)}
+                  value={numOfGamesInSession}
+                  onChange={(e) => setNumOfGamesInSession(e.target.value)}
                 />
               </div>
             ) : null}

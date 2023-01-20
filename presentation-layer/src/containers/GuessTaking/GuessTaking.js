@@ -20,6 +20,7 @@ const GuessTaking = () => {
       numOfAttempt,
       numOfPlayer,
       numberArray,
+      multiPlayerGameType,
     },
     contextDispatch,
   } = context;
