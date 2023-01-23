@@ -5,6 +5,12 @@ import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
 import swal from "sweetalert";
 
+import {
+  alertIncorrectGuess,
+  alertNoWinner,
+  alertSuccess,
+} from "../../utils/alert";
+
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import { checkAllPlayersHaveGuessed } from "../../utils/allPlayersHaveGuessed";
@@ -49,52 +55,7 @@ const GuessTaking = () => {
     const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
-      swal({
-        title: `${winningPlayerName} wins!`,
-        text: `Romeo picked ${numberToGuess}`,
-        icon: "success",
-        closeOnClickOutside: false,
-        closeOnEsc: false,
-        dangerMode: true,
-        // content: {
-        //   element: "p",
-        //   attributes: {
-        //     innerHTML: "You are trying",
-        //   },
-        // },
-
-        buttons: {
-          continue: {
-            text: "Continue",
-            value: "continue",
-          },
-          quit: {
-            text: "End Game",
-            value: "quit",
-          },
-        },
-      }).then((value) => {
-        switch (value) {
-          case "continue":
-            contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-            break;
-
-          default:
-            swal({
-              title: "Are you sure you want to end the game?",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-            }).then((willEnd) => {
-              if (willEnd) {
-                contextDispatch({ type: "SHOW_HOME_PAGE" });
-              } else {
-                contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-              }
-            });
-            break;
-        }
-      });
+      alertSuccess(winningPlayerName, numberToGuess, contextDispatch);
       return;
     }
 
@@ -104,46 +65,7 @@ const GuessTaking = () => {
         setPlayersAlreadyGuessed([]);
       }
       if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-        swal({
-          title: `Oops! No winner in this round!`,
-          text: `Romeo picked ${numberToGuess}`,
-          icon: "error",
-          closeOnClickOutside: false,
-          closeOnEsc: false,
-          dangerMode: true,
-
-          buttons: {
-            continue: {
-              text: "Start A New Round",
-              value: "continue",
-            },
-            quit: {
-              text: "End Game",
-              value: "quit",
-            },
-          },
-        }).then((value) => {
-          switch (value) {
-            case "continue":
-              contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-              break;
-
-            default:
-              swal({
-                title: "Are you sure you want to end the game?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-              }).then((willEnd) => {
-                if (willEnd) {
-                  contextDispatch({ type: "SHOW_HOME_PAGE" });
-                } else {
-                  contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-                }
-              });
-              break;
-          }
-        });
+        alertNoWinner(numberToGuess, contextDispatch);
       }
     }
   }, [playersAlreadyGuessed]);
@@ -160,45 +82,7 @@ const GuessTaking = () => {
     savePlayersAlreadyGuessed(Number(numberClicked));
 
     if (!checkAndConfirmGuess(numberToGuess, winningPlayer)) {
-      swal({
-        title: "Oops!",
-        text: `Incorrect guess!`,
-        icon: "error",
-        closeOnClickOutside: false,
-        closeOnEsc: false,
-        dangerMode: true,
-
-        buttons: {
-          continue: {
-            text: "Continue",
-            value: "continue",
-          },
-          quit: {
-            text: "End Game",
-            value: "quit",
-          },
-        },
-      }).then((value) => {
-        switch (value) {
-          case "continue":
-            break;
-
-          default:
-            swal({
-              title: "Are you sure you want to end the game?",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-            }).then((willEnd) => {
-              if (willEnd) {
-                contextDispatch({ type: "SHOW_HOME_PAGE" });
-              } else {
-                contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-              }
-            });
-            break;
-        }
-      });
+      alertIncorrectGuess(contextDispatch);
     }
   };
 
