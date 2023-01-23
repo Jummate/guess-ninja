@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import { AppContext } from "../../utils/context";
@@ -7,9 +7,19 @@ import RobotRomeo from "../../assets/romeo-robot.webp";
 import "./GamePreparation.css";
 
 const GamePreparation = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const timeLoading = () => {
+    setTimeout(() => setIsLoading(false), 3000);
+  };
+  timeLoading();
+  const Loading = () => (
+    <div className="loading">
+      <h3>Loading...</h3>
+    </div>
+  );
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, numOfAttempt, difficulty },
+    initialState: { numOfPlayer, numOfAttempt, difficulty, multiGameType },
     contextDispatch,
   } = context;
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
@@ -20,6 +30,7 @@ const GamePreparation = () => {
 
   return (
     <section className="GamePrep__container">
+      {isLoading && <Loading />}
       <Header
         hOneText="Game Preparation"
         hFourText="it's about get down thick!"

@@ -3,7 +3,6 @@ import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
 import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
-import swal from "sweetalert";
 
 import {
   alertIncorrectGuess,
