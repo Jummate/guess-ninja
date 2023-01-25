@@ -15,9 +15,12 @@ import reducer from "./utils/reducer";
 import { AppContext } from "./utils/context";
 import GuessTaking from "./containers/GuessTaking/GuessTaking";
 import { defaultState } from "./utils/defaultState";
+import Table from "./components/table/Table";
+import { getScore, columns } from "./utils/score";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);
+  const scoreData = getScore(state?.newGame?.getPlayersInvolved());
 
   return (
     <AppContext.Provider
@@ -36,6 +39,12 @@ function App() {
           {state.gameGuideActive ? <GameGuide /> : null}
         </div>
         <ToastContainer />
+        {state.showScoreTable ? (
+          <Table
+            data={scoreData}
+            columns={columns}
+          />
+        ) : null}
       </main>
     </AppContext.Provider>
   );

@@ -23,7 +23,7 @@ export const alertSuccess = (
   contextDispatch
 ) => {
   return swal({
-    title: `${winningPlayerName} wins!}`,
+    title: `${winningPlayerName} wins!`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "success",
     closeOnClickOutside: false,
@@ -62,7 +62,9 @@ export const alertSuccess = (
         });
         break;
       case "view-score":
-        console.log("Youuuuuuu");
+        contextDispatch({
+          type: "SHOW_SCORE_TABLE",
+        });
         break;
 
       default:
