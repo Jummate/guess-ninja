@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
+import Loading from "../../components/loading/Loading";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
 import RobotRomeo from "../../assets/romeo-robot.webp";
@@ -8,29 +9,51 @@ import "./GamePreparation.css";
 
 const GamePreparation = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const timeLoading = () => {
-    setTimeout(() => setIsLoading(false), 3000);
-  };
-  timeLoading();
-  const Loading = () => (
-    <div className="loading">
-      <h3>Loading...</h3>
-    </div>
-  );
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, numOfAttempt, difficulty, multiGameType },
+    initialState: {
+      selectedMode,
+      numOfPlayer,
+      numOfAttempt,
+      difficulty,
+      multiPlayerGameType,
+      sessionCount,
+    },
     contextDispatch,
   } = context;
+
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
     numOfAttempt,
     numOfPlayer,
     difficulty
   );
 
+  const isSessionGame =
+    selectedMode === "Multi" &&
+    multiPlayerGameType.toString().toLowerCase() === "session"
+      ? true
+      : false;
+
+  // console.log(sessionCount);
+
+  // const count = sessionCount && sessionCount > 1 ? sessionCount : 1;
+
+  // console.log(count);
+
+  const timeLoading = () => {
+    setTimeout(() => setIsLoading(false), 3000);
+  };
+
+  timeLoading();
+
   return (
     <section className="GamePrep__container">
-      {isLoading && <Loading />}
+      {isLoading && (
+        <Loading
+          isSessionGame={isSessionGame}
+          sessionCount={sessionCount}
+        />
+      )}
       <Header
         hOneText="Game Preparation"
         hFourText="it's about get down thick!"

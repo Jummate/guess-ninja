@@ -18,6 +18,7 @@ export const alertQuit = (contextDispatch) => {
 export const alertSuccess = (
   winningPlayerName,
   numberToGuess,
+  sessionCount,
   contextDispatch
 ) => {
   return swal({
@@ -51,7 +52,13 @@ export const alertSuccess = (
   }).then((value) => {
     switch (value) {
       case "continue":
-        contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+        contextDispatch({
+          type: "SET_NEW_SESSION_COUNT",
+          payload: { sessionCount: sessionCount + 1 },
+        });
+        contextDispatch({
+          type: "SHOW_GAME_PREP_PAGE",
+        });
         break;
       case "view-score":
         console.log("Youuuuuuu");

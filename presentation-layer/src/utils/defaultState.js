@@ -19,4 +19,5 @@ export const defaultState = {
   numOfAttempt: 0,
   numberArray: null,
   numOfGamesInSession: 0,
+  sessionCount: 1,
 };

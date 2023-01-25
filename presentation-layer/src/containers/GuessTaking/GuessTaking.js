@@ -25,7 +25,8 @@ const GuessTaking = () => {
       numOfAttempt,
       numOfPlayer,
       numberArray,
-      multiPlayerGameType,
+      sessionCount,
+      numOfGamesInSession,
     },
     contextDispatch,
   } = context;
@@ -54,7 +55,12 @@ const GuessTaking = () => {
     const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
-      alertSuccess(winningPlayerName, numberToGuess, contextDispatch);
+      alertSuccess(
+        winningPlayerName,
+        numberToGuess,
+        sessionCount,
+        contextDispatch
+      );
       return;
     }
 

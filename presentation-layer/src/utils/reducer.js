@@ -110,6 +110,7 @@ const reducer = (state, action) => {
         gameGuideActive: false,
         gamePrepActive: true,
         guessTakingActive: false,
+        // sessionCount: action?.payload?.sessionCount,
       };
     case "SHOW_GUESS_TAKING_PAGE":
       return {
@@ -125,6 +126,9 @@ const reducer = (state, action) => {
         numberToGuess: action.payload.numberToGuess,
         numberArray: action.payload.numberArray,
       };
+
+    case "SET_NEW_SESSION_COUNT":
+      return { ...state, sessionCount: action.payload.sessionCount };
 
     default:
       throw new Error("No matching action type");
