@@ -19,10 +19,11 @@ export const alertSuccess = (
   winningPlayerName,
   numberToGuess,
   sessionCount,
+  winningPlayer,
   contextDispatch
 ) => {
   return swal({
-    title: `${winningPlayerName} wins!`,
+    title: `${winningPlayerName} wins!}`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "success",
     closeOnClickOutside: false,

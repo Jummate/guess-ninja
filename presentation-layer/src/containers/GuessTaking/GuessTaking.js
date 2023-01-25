@@ -3,6 +3,7 @@ import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
 import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
+import { difficultyValue } from "../../utils/difficultyValue";
 
 import {
   alertIncorrectGuess,
@@ -26,6 +27,7 @@ const GuessTaking = () => {
       numOfPlayer,
       numberArray,
       sessionCount,
+      difficulty,
       numOfGamesInSession,
     },
     contextDispatch,
@@ -55,10 +57,15 @@ const GuessTaking = () => {
     const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
+      winningPlayer.setPlayerScore(
+        winningPlayer.getPlayerScore() +
+          difficultyValue[difficulty.toString().toLowerCase()]
+      );
       alertSuccess(
         winningPlayerName,
         numberToGuess,
         sessionCount,
+        winningPlayer,
         contextDispatch
       );
       return;
