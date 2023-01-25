@@ -34,12 +34,6 @@ const GamePreparation = () => {
       ? true
       : false;
 
-  // console.log(sessionCount);
-
-  // const count = sessionCount && sessionCount > 1 ? sessionCount : 1;
-
-  // console.log(count);
-
   const timeLoading = () => {
     setTimeout(() => setIsLoading(false), 3000);
   };

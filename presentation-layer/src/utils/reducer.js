@@ -110,7 +110,6 @@ const reducer = (state, action) => {
         gameGuideActive: false,
         gamePrepActive: true,
         guessTakingActive: false,
-        // sessionCount: action?.payload?.sessionCount,
       };
     case "SHOW_GUESS_TAKING_PAGE":
       return {
