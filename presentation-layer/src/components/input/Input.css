@@ -9,6 +9,8 @@
     box-shadow: 1px 1px 3px #49cdcb, -1px -1px 3px #00000069;
     max-width: 400px;
     font-size: 12px;
+    font-family: 'Orbitron', sans-serif;
+
 }
 .input::placeholder{
     color:var(--danger)
