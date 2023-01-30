@@ -3,7 +3,7 @@ import { calculateRandomNumbersLength } from "./randomNumberFormula";
 import { generateRandomNum } from "./random-number";
 
 export const generateNumberToGuess = (
-  numOfPlayers,
+  numOfPlayers = 1,
   numOfAttempt,
   difficulty
 ) => {

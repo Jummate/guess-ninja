@@ -1,8 +1,14 @@
-import { React } from "react";
+import { React, useContext } from "react";
+import { AppContext } from "../../utils/context";
 import Button from "../button/Button";
 import "./Table.css";
 
 const Table = ({ data = [], columns }) => {
+  const context = useContext(AppContext);
+  const {
+    initialState: { sessionCount },
+    contextDispatch,
+  } = context;
   return (
     <div className="table-container">
       <div className="table-wrapper">
@@ -35,9 +41,21 @@ const Table = ({ data = [], columns }) => {
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
           width="w-60"
-          // onClick={() => (
-          //   contextDispatch({ type: "SHOW_HOME_PAGE" }), setShowMenu(!showMenu)
-          // )}
+          onClick={() =>
+            // closeFunc({
+            //   type: "SHOW_SCORE_TABLE",
+            //   payload: { showScoreTable: false },
+            // })
+            {
+              contextDispatch({
+                type: "SET_NEW_SESSION_COUNT",
+                payload: { sessionCount: sessionCount + 1 },
+              });
+              contextDispatch({
+                type: "SHOW_GAME_PREP_PAGE",
+              });
+            }
+          }
         >
           CLOSE
         </Button>

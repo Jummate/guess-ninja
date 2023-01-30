@@ -64,6 +64,7 @@ export const alertSuccess = (
       case "view-score":
         contextDispatch({
           type: "SHOW_SCORE_TABLE",
+          payload: { showScoreTable: true },
         });
         break;
 

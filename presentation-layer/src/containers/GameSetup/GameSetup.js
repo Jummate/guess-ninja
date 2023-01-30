@@ -23,11 +23,13 @@ const GameSetup = () => {
     initialState: { selectedMode, multiPlayerGameType, onePlayerGameType },
     contextDispatch,
   } = context;
+
   const nextPage =
     selectedMode === "Single" ? "SHOW_GAME_INFO_PAGE" : "SHOW_PLAYER_REG_PAGE";
 
   const handleClick = () => {
     const newGame = initializeGame();
+    selectedMode === "Single" && newGame.addPlayer(["You"]);
     contextDispatch({
       type: nextPage,
       payload: {
@@ -75,7 +77,7 @@ const GameSetup = () => {
           <form>
             {selectedMode === "Multi" ? (
               <div className="GameSetup__item">
-                <label>Number of Players</label>
+                <label>Number of Players </label>
                 <Input
                   type="number"
                   value={numOfPlayer}

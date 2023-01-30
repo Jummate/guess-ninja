@@ -103,6 +103,7 @@ const reducer = (state, action) => {
         showScoreTable: false,
         difficulty: action.payload.difficulty,
         newGame: action.payload.newGame,
+        numOfAttempt: action.payload.numOfAttempt,
       };
 
     case "SHOW_GAME_PREP_PAGE":
@@ -136,15 +137,15 @@ const reducer = (state, action) => {
     case "SHOW_SCORE_TABLE":
       return {
         ...state,
-        homePageActive: false,
-        gameModeActive: false,
-        gameSetupActive: false,
-        gameInfoActive: false,
-        playerRegActive: false,
-        gamePrepActive: false,
-        guessTakingActive: false,
-        gameGuideActive: false,
-        showScoreTable: true,
+        // homePageActive: false,
+        // gameModeActive: false,
+        // gameSetupActive: false,
+        // gameInfoActive: false,
+        // playerRegActive: false,
+        // gamePrepActive: false,
+        // guessTakingActive: false,
+        // gameGuideActive: false,
+        showScoreTable: action.payload.showScoreTable,
       };
 
     case "SET_NEW_SESSION_COUNT":

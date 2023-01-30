@@ -38,19 +38,19 @@ const GameInfo = () => {
             content={selectedMode}
           />
 
-          <Card
-            headerText="Number of Players:"
-            content={selectedMode === "Multi" ? numOfPlayer : 1}
-          />
+          {selectedMode === "Multi" ? (
+            <Card
+              headerText="Number of Players:"
+              content={selectedMode === "Multi" ? numOfPlayer : 1}
+            />
+          ) : null}
 
-          <Card
-            headerText="Players involved:"
-            content={
-              selectedMode === "Multi"
-                ? newGame.getPlayersInvolvedByName().join(", ")
-                : "n/a"
-            }
-          />
+          {selectedMode === "Multi" ? (
+            <Card
+              headerText="Players involved:"
+              content={newGame.getPlayersInvolvedByName().join(", ")}
+            />
+          ) : null}
           <Card
             headerText="Difficulty:"
             content={difficulty}

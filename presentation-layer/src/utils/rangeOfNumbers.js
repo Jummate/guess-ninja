@@ -1,4 +1,4 @@
-import { generateRandomNum } from './random-number';
+import { generateRandomNum } from "./random-number";
 
 export const generateRangeOfNumbers = (arrayLength) => {
   let startingNum = generateRandomNum();

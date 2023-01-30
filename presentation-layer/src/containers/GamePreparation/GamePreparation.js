@@ -23,8 +23,8 @@ const GamePreparation = () => {
   } = context;
 
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
-    numOfAttempt,
     numOfPlayer,
+    numOfAttempt,
     difficulty
   );
 

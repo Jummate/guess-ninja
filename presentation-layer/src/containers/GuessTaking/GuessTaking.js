@@ -39,10 +39,12 @@ const GuessTaking = () => {
   const [combinedAttempts, setCombinedAttempts] = useState(0);
   const [numArray, setNumArray] = useState(numberArray);
 
+  //needed------------------------
   const attemptMade = Math.floor(
     Number(combinedAttempts) / Number(numOfPlayer)
   );
 
+  //needed---------------------------------------------
   const incrementCombinedAttempts = useCallback(() => {
     if (Number(combinedAttempts) < Number(numOfAttempt) * Number(numOfPlayer)) {
       setCombinedAttempts((prev) => prev + 1);
@@ -137,8 +139,8 @@ const GuessTaking = () => {
               alt="Thinking Doll"
             />
           </div>
-          <div className="next-player-item-2">
-            {selectedMode === "Multi" ? (
+          {selectedMode === "Multi" ? (
+            <div className="next-player-item-2">
               <h1>
                 <span style={{ color: "#000" }}>
                   {nextPlayerToGuess?.getPlayerName().toUpperCase()}
@@ -146,10 +148,8 @@ const GuessTaking = () => {
                 </span>
                 it's your turn
               </h1>
-            ) : (
-              <span>Single Playing</span>
-            )}
-          </div>
+            </div>
+          ) : null}
         </div>
 
         <div className="next-player-item-3">

@@ -13,7 +13,7 @@ import "./PlayerRegistration.css";
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, difficulty, newGame },
+    initialState: { numOfPlayer, difficulty, newGame, numOfAttempt },
     contextDispatch,
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
@@ -51,7 +51,7 @@ const PlayerRegistration = () => {
         onClose: () =>
           contextDispatch({
             type: "SHOW_GAME_INFO_PAGE",
-            payload: { difficulty, newGame },
+            payload: { difficulty, newGame, numOfAttempt },
           }),
       });
       setShowOverlay(true);
