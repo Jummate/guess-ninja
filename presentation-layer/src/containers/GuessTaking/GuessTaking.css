@@ -83,6 +83,10 @@
     border-bottom-right-radius: 20px;
 }
 
+/* .swal-button{
+    width:30%
+} */
+
 .swal-button:hover{
     background-color: #000 !important;
 }
@@ -102,6 +106,17 @@
 .swal-text{
     font-weight: bolder;
 }
+
+.swal-footer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* .swal-button-container{
+    width:30%
+} */
 
 @media screen and (min-width:480px) {
     .next-player-container{

@@ -55,8 +55,14 @@ const GuessTaking = () => {
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
+    console.log(winningPlayer);
+    console.log(playersAlreadyGuessed);
 
-    const winningPlayerName = winningPlayer?.getPlayerName().toUpperCase();
+    const winningPlayerName = winningPlayer
+      ?.getPlayerName()
+      .toString()
+      .toUpperCase();
+
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
       winningPlayer.setPlayerScore(
