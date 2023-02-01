@@ -1,6 +1,6 @@
 import swal from "sweetalert";
 
-export const alertQuit = (contextDispatch) => {
+export const alertQuit = (contextDispatch, triggeredByTab = false) => {
   return swal({
     title: "Are you sure you want to end the game?",
     icon: "warning",
@@ -10,7 +10,7 @@ export const alertQuit = (contextDispatch) => {
     if (willEnd) {
       contextDispatch({ type: "SHOW_HOME_PAGE" });
     } else {
-      contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+      !triggeredByTab && contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
     }
   });
 };
@@ -19,11 +19,11 @@ export const alertSuccess = (
   winningPlayerName,
   numberToGuess,
   sessionCount,
-  winningPlayer,
+  selectedMode,
   contextDispatch
 ) => {
   return swal({
-    title: `${winningPlayerName} wins!`,
+    title: `${winningPlayerName} win${selectedMode === "Single" ? "" : "s"}!`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "success",
     closeOnClickOutside: false,
@@ -63,6 +63,10 @@ export const alertSuccess = (
         break;
       case "view-score":
         contextDispatch({
+          type: "UPDATE_TRIGGERED_BY_TAB",
+          payload: { triggeredByTab: false },
+        });
+        contextDispatch({
           type: "SHOW_SCORE_TABLE",
           payload: { showScoreTable: true },
         });
@@ -75,9 +79,18 @@ export const alertSuccess = (
   });
 };
 
-export const alertNoWinner = (numberToGuess, sessionCount, contextDispatch) => {
+export const alertNoWinner = (
+  numberToGuess,
+  sessionCount,
+  selectedMode,
+  contextDispatch
+) => {
   return swal({
-    title: `Oops! No winner in this round!`,
+    title: `Oops! ${
+      selectedMode === "Single"
+        ? "Attempts used up! Try again."
+        : " No winner in this round!"
+    }`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "error",
     closeOnClickOutside: false,

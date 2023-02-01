@@ -28,6 +28,13 @@ export class GuessGame {
     return this.playersInvolved.length;
   }
 
+  updatePlayersNoOfPlays() {
+    this.playersInvolved = this.playersInvolved.map((player) => {
+      player.setPlayerNoOfPlays(player.getPlayerNoOfPlays() + 1);
+      return player;
+    });
+  }
+
   resetPlayersPlayStatus() {
     this.playersInvolved = this.playersInvolved.map((player) => {
       player.setPlayerPlayStatus(false);

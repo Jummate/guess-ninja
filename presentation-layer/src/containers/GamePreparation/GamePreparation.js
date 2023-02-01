@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
+import Navigation from "../../components/nav/Navigation";
 import Loading from "../../components/loading/Loading";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
@@ -51,7 +52,8 @@ const GamePreparation = () => {
       <Header
         hOneText="Game Preparation"
         hFourText="it's about get down thick!"
-        height="20"
+        mt="40"
+        height="23"
       />
       <div className="GamePrep__body">
         <div className="GamePrep__wrapper">
@@ -112,6 +114,7 @@ const GamePreparation = () => {
           </div>
         </div>
       </div>
+      <Navigation />
     </section>
   );
 };

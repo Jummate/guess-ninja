@@ -17,7 +17,7 @@ export const generateNumberToGuess = (
     ? numberArray[numberArray.length - 1]
     : numberArray.at(-1);
 
-  let randomIndex = generateRandomNum(0, numberArray.length - 1);
+  let randomIndex = generateRandomNum(0, numberArray.length);
   let numberToGuess = numberArray[randomIndex];
 
   return {

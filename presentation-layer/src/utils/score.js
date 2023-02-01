@@ -7,6 +7,7 @@ export const getScore = (allPlayers) => {
         name: player.getPlayerName(),
         score: player.getPlayerScore(),
         wins: player.getPlayerNoOfWins(),
+        plays: player.getPlayerNoOfPlays(),
       };
     })
   );
@@ -18,12 +19,18 @@ export const columns = [
     header: "Name",
   },
   {
-    field: "score",
-    header: "Score",
+    field: "plays",
+    header: "Plays",
   },
+
   {
     field: "wins",
-    header: "Number Of Wins",
+    header: "Wins",
+  },
+
+  {
+    field: "score",
+    header: "Score",
   },
 ];
 

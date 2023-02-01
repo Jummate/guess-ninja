@@ -4,6 +4,7 @@ import { AppContext } from "../../utils/context";
 import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
 import { difficultyValue } from "../../utils/difficultyValue";
+import Navigation from "../../components/nav/Navigation";
 
 import {
   alertIncorrectGuess,
@@ -55,8 +56,6 @@ const GuessTaking = () => {
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
-    console.log(winningPlayer);
-    console.log(playersAlreadyGuessed);
 
     const winningPlayerName = winningPlayer
       ?.getPlayerName()
@@ -69,11 +68,14 @@ const GuessTaking = () => {
         winningPlayer.getPlayerScore() +
           difficultyValue[difficulty.toString().toLowerCase()]
       );
+
+      newGame.updatePlayersNoOfPlays();
+
       alertSuccess(
         winningPlayerName,
         numberToGuess,
         sessionCount,
-        winningPlayer,
+        selectedMode,
         contextDispatch
       );
       return;
@@ -85,7 +87,13 @@ const GuessTaking = () => {
         setPlayersAlreadyGuessed([]);
       }
       if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-        alertNoWinner(numberToGuess, sessionCount, contextDispatch);
+        newGame.updatePlayersNoOfPlays();
+        alertNoWinner(
+          numberToGuess,
+          sessionCount,
+          selectedMode,
+          contextDispatch
+        );
       }
     }
   }, [playersAlreadyGuessed]);
@@ -132,8 +140,8 @@ const GuessTaking = () => {
     <section className="GuessTaking__container">
       <Header
         hOneText="Take A Guess"
-        tRadius="30"
-        height="10"
+        mt="40"
+        height="20"
       />
 
       <div className="next-player-container">
@@ -182,6 +190,7 @@ const GuessTaking = () => {
           </Button>
         ))}
       </div>
+      <Navigation />
     </section>
   );
 };

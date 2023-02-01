@@ -7,6 +7,7 @@ export class Player {
     this.noOfWins = 0;
     this.hasPlayed = false;
     this.currentGuess = null;
+    this.noOfPlays = 0;
   }
 
   setGameId(newId) {
@@ -56,6 +57,13 @@ export class Player {
   }
   getPlayerPlayStatus() {
     return this.hasPlayed;
+  }
+
+  setPlayerNoOfPlays(newValue) {
+    this.noOfPlays = newValue;
+  }
+  getPlayerNoOfPlays() {
+    return this.noOfPlays;
   }
 
   isEqualTo(anotherPlayer) {

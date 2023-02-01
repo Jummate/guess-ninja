@@ -14,6 +14,6 @@ const difference = (first, second) => {
 
 export const generateRandomPlayers = (arrayOfPlayers, subArrayOfPlayers) => {
   const availablePlayers = difference(arrayOfPlayers, subArrayOfPlayers);
-  const randomIndex = generateRandomNum(0, availablePlayers.length - 1);
+  const randomIndex = generateRandomNum(0, availablePlayers.length);
   return availablePlayers[randomIndex];
 };

@@ -6,7 +6,7 @@ import "./Table.css";
 const Table = ({ data = [], columns }) => {
   const context = useContext(AppContext);
   const {
-    initialState: { sessionCount },
+    initialState: { sessionCount, triggeredByTab },
     contextDispatch,
   } = context;
   return (
@@ -41,12 +41,8 @@ const Table = ({ data = [], columns }) => {
           buttonSize="btn--medium"
           buttonStyle="btn--gradient"
           width="w-60"
-          onClick={() =>
-            // closeFunc({
-            //   type: "SHOW_SCORE_TABLE",
-            //   payload: { showScoreTable: false },
-            // })
-            {
+          onClick={() => {
+            if (!triggeredByTab) {
               contextDispatch({
                 type: "SET_NEW_SESSION_COUNT",
                 payload: { sessionCount: sessionCount + 1 },
@@ -54,10 +50,15 @@ const Table = ({ data = [], columns }) => {
               contextDispatch({
                 type: "SHOW_GAME_PREP_PAGE",
               });
+            } else {
+              contextDispatch({
+                type: "SHOW_SCORE_TABLE",
+                payload: { showScoreTable: false },
+              });
             }
-          }
+          }}
         >
-          CLOSE
+          CONTINUE
         </Button>
       </div>
     </div>

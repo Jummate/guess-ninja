@@ -28,6 +28,7 @@ const reducer = (state, action) => {
         showHome: true,
         showMode: false,
         showSetup: false,
+        showOtherTabs: false,
       };
 
     case "SHOW_GAME_GUIDE_PAGE":
@@ -45,6 +46,7 @@ const reducer = (state, action) => {
         showHome: false,
         showMode: false,
         showSetup: false,
+        showOtherTabs: false,
       };
     case "SHOW_GAME_SETUP_PAGE":
       return {
@@ -60,6 +62,7 @@ const reducer = (state, action) => {
         showMode: true,
         showSetup: false,
         showScoreTable: false,
+        showOtherTabs: false,
         selectedMode: action.payload.selectedMode,
         multiPlayerGameType: action.payload.multiPlayerGameType,
         onePlayerGameType: action.payload.onePlayerGameType,
@@ -79,6 +82,7 @@ const reducer = (state, action) => {
         showHome: true,
         showMode: true,
         showSetup: true,
+        showOtherTabs: false,
         showScoreTable: false,
         numOfPlayer: action.payload.numOfPlayer,
         numOfAttempt: action.payload.numOfAttempt,
@@ -100,6 +104,7 @@ const reducer = (state, action) => {
         showHome: true,
         showMode: true,
         showSetup: true,
+        showOtherTabs: false,
         showScoreTable: false,
         difficulty: action.payload.difficulty,
         newGame: action.payload.newGame,
@@ -117,6 +122,10 @@ const reducer = (state, action) => {
         gameGuideActive: false,
         gamePrepActive: true,
         guessTakingActive: false,
+        showHome: false,
+        showMode: false,
+        showSetup: false,
+        showOtherTabs: true,
         showScoreTable: false,
       };
     case "SHOW_GUESS_TAKING_PAGE":
@@ -130,6 +139,10 @@ const reducer = (state, action) => {
         gameGuideActive: false,
         gamePrepActive: false,
         guessTakingActive: true,
+        showHome: false,
+        showMode: false,
+        showSetup: false,
+        showOtherTabs: true,
         showScoreTable: false,
         numberToGuess: action.payload.numberToGuess,
         numberArray: action.payload.numberArray,
@@ -137,15 +150,13 @@ const reducer = (state, action) => {
     case "SHOW_SCORE_TABLE":
       return {
         ...state,
-        // homePageActive: false,
-        // gameModeActive: false,
-        // gameSetupActive: false,
-        // gameInfoActive: false,
-        // playerRegActive: false,
-        // gamePrepActive: false,
-        // guessTakingActive: false,
-        // gameGuideActive: false,
         showScoreTable: action.payload.showScoreTable,
+      };
+
+    case "UPDATE_TRIGGERED_BY_TAB":
+      return {
+        ...state,
+        triggeredByTab: action.payload.triggeredByTab,
       };
 
     case "SET_NEW_SESSION_COUNT":
