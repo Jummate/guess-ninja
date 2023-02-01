@@ -75,7 +75,7 @@ export const alertSuccess = (
   });
 };
 
-export const alertNoWinner = (numberToGuess, contextDispatch) => {
+export const alertNoWinner = (numberToGuess, sessionCount, contextDispatch) => {
   return swal({
     title: `Oops! No winner in this round!`,
     text: `Romeo picked ${numberToGuess}`,
@@ -98,6 +98,10 @@ export const alertNoWinner = (numberToGuess, contextDispatch) => {
     switch (value) {
       case "continue":
         contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+        contextDispatch({
+          type: "SET_NEW_SESSION_COUNT",
+          payload: { sessionCount: sessionCount + 1 },
+        });
         break;
 
       default:

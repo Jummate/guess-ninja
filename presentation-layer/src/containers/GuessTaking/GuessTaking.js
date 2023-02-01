@@ -85,7 +85,7 @@ const GuessTaking = () => {
         setPlayersAlreadyGuessed([]);
       }
       if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-        alertNoWinner(numberToGuess, contextDispatch);
+        alertNoWinner(numberToGuess, sessionCount, contextDispatch);
       }
     }
   }, [playersAlreadyGuessed]);
