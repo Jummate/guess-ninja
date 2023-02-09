@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useMemo, useReducer } from "react";
 import ParticlesComponent from "./components/Particles";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
@@ -22,10 +22,13 @@ function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);
   const scoreData = getScore(state?.newGame?.getPlayersInvolved());
 
+  const memoizedValue = useMemo(
+    () => ({ initialState: state, contextDispatch: dispatch }),
+    [state]
+  );
+
   return (
-    <AppContext.Provider
-      value={{ initialState: state, contextDispatch: dispatch }}
-    >
+    <AppContext.Provider value={memoizedValue}>
       <main className="App__container">
         <ParticlesComponent />
         <div className="App__content__wrapper">

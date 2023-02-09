@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
@@ -35,11 +35,10 @@ const GamePreparation = () => {
       ? true
       : false;
 
-  const timeLoading = () => {
-    setTimeout(() => setIsLoading(false), 3000);
-  };
-
-  timeLoading();
+  useEffect(() => {
+    const timerId = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timerId);
+  });
 
   return (
     <section className="GamePrep__container">

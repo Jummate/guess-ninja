@@ -13,7 +13,10 @@ const difference = (first, second) => {
 };
 
 export const generateRandomPlayers = (arrayOfPlayers, subArrayOfPlayers) => {
+  // console.log(arrayOfPlayers);
+  // console.log(subArrayOfPlayers);
   const availablePlayers = difference(arrayOfPlayers, subArrayOfPlayers);
+  // console.log(availablePlayers);
   const randomIndex = generateRandomNum(0, availablePlayers.length);
   return availablePlayers[randomIndex];
 };

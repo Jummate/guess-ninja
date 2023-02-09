@@ -29,7 +29,7 @@ const GuessTaking = () => {
       numberArray,
       sessionCount,
       difficulty,
-      numOfGamesInSession,
+      // numOfGamesInSession,
     },
     contextDispatch,
   } = context;
@@ -40,19 +40,24 @@ const GuessTaking = () => {
   const [combinedAttempts, setCombinedAttempts] = useState(0);
   const [numArray, setNumArray] = useState(numberArray);
 
-  //needed------------------------
-  const attemptMade = Math.floor(
+  // console.log("meeeee");
+
+  const attemptMade = Math.round(
     Number(combinedAttempts) / Number(numOfPlayer)
   );
 
-  //needed---------------------------------------------
-  const incrementCombinedAttempts = useCallback(() => {
+  const incrementCombinedAttempts = () => {
+    // console.log("incerment");
+    // console.log({ combinedAttempts });
     if (Number(combinedAttempts) < Number(numOfAttempt) * Number(numOfPlayer)) {
       setCombinedAttempts((prev) => prev + 1);
     }
-  }, [playersAlreadyGuessed]);
+  };
 
   const processPlayerGuess = useCallback(() => {
+    // console.log("processs");
+    // console.log({ combinedAttempts });
+
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
@@ -61,6 +66,24 @@ const GuessTaking = () => {
       ?.getPlayerName()
       .toString()
       .toUpperCase();
+
+    if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
+      if (Number(combinedAttempts) % Number(numOfPlayer) === 0) {
+        // console.log("okayyyy");
+        newGame.resetPlayersPlayStatus();
+        setPlayersAlreadyGuessed([]);
+      }
+      if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
+        // console.log("no winner");
+        newGame.updatePlayersNoOfPlays();
+        alertNoWinner(
+          numberToGuess,
+          sessionCount,
+          selectedMode,
+          contextDispatch
+        );
+      }
+    }
 
     if (checkAndConfirmGuess(numberToGuess, winningPlayer)) {
       winningPlayer.setPlayerNoOfWins(winningPlayer.getPlayerNoOfWins() + 1);
@@ -78,31 +101,36 @@ const GuessTaking = () => {
         selectedMode,
         contextDispatch
       );
-      return;
     }
-
-    if (checkAllPlayersHaveGuessed(newGame, playersAlreadyGuessed)) {
-      if (Number(combinedAttempts) % Number(numOfPlayer) === 0) {
-        newGame.resetPlayersPlayStatus();
-        setPlayersAlreadyGuessed([]);
-      }
-      if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-        newGame.updatePlayersNoOfPlays();
-        alertNoWinner(
-          numberToGuess,
-          sessionCount,
-          selectedMode,
-          contextDispatch
-        );
-      }
-    }
-  }, [playersAlreadyGuessed]);
+  }, [
+    playersAlreadyGuessed,
+    selectedMode,
+    sessionCount,
+    combinedAttempts,
+    contextDispatch,
+    difficulty,
+    newGame,
+    numOfAttempt,
+    numOfPlayer,
+    numberToGuess,
+  ]);
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
     const winningPlayer = !Array.prototype.at
       ? playersAlreadyGuessed[playersAlreadyGuessed.length - 1]
       : playersAlreadyGuessed.at(-1);
+
+    // const x = generateRandomPlayers(
+    //   newGame.getPlayersInvolved(),
+    //   playersAlreadyGuessed
+    // );
+    // console.log(x);
+
+    setNextPlayerToGuess(
+      generateRandomPlayers(newGame.getPlayersInvolved(), playersAlreadyGuessed)
+    );
+    incrementCombinedAttempts();
 
     setNumArray(
       numArray.filter((number) => Number(number) !== Number(numberClicked))
@@ -124,17 +152,9 @@ const GuessTaking = () => {
   };
 
   useEffect(() => {
-    setNextPlayerToGuess(
-      generateRandomPlayers(newGame.getPlayersInvolved(), playersAlreadyGuessed)
-    );
-    incrementCombinedAttempts();
+    // console.log("youuuuuu");
     processPlayerGuess();
-  }, [
-    playersAlreadyGuessed,
-    newGame,
-    processPlayerGuess,
-    incrementCombinedAttempts,
-  ]);
+  }, [processPlayerGuess]);
 
   return (
     <section className="GuessTaking__container">
@@ -157,7 +177,10 @@ const GuessTaking = () => {
             <div className="next-player-item-2">
               <h1>
                 <span style={{ color: "#000" }}>
-                  {nextPlayerToGuess?.getPlayerName().toUpperCase()}
+                  {nextPlayerToGuess &&
+                  Object.keys(nextPlayerToGuess).length > 0
+                    ? nextPlayerToGuess?.getPlayerName().toUpperCase()
+                    : null}
                   {", "}
                 </span>
                 it's your turn
@@ -169,10 +192,7 @@ const GuessTaking = () => {
         <div className="next-player-item-3">
           <h1 style={{ color: "#000", marginRight: "10px" }}>Attempt: </h1>
           <h2>
-            {Number(combinedAttempts) % Number(numOfPlayer) === 0
-              ? attemptMade
-              : attemptMade + 1}{" "}
-            of {numOfAttempt}
+            {attemptMade + 1} of {numOfAttempt}
           </h2>
         </div>
       </div>
