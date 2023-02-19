@@ -1,6 +1,5 @@
 import { generateRangeOfNumbers } from "./rangeOfNumbers";
 import { calculateRandomNumbersLength } from "./randomNumberFormula";
-import { generateRandomNum } from "./random-number";
 
 export const generateNumberToGuess = (
   numOfPlayers = 1,
@@ -17,8 +16,10 @@ export const generateNumberToGuess = (
     ? numberArray[numberArray.length - 1]
     : numberArray.at(-1);
 
-  let randomIndex = generateRandomNum(0, numberArray.length);
-  let numberToGuess = numberArray[randomIndex];
+  let numberToGuess = [...numberArray].sort(() => Math.random() - 0.5)[0];
+
+  // let randomIndex = generateRandomNum(0, numberArray.length);
+  // let numberToGuess = numberArray[randomIndex];
 
   return {
     start,
