@@ -14,7 +14,6 @@ import {
 
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
-// import { checkAllPlayersHaveGuessed } from "../../utils/allPlayersHaveGuessed";
 import Header from "../../components/header/Header";
 
 const GuessTaking = () => {
@@ -34,18 +33,18 @@ const GuessTaking = () => {
     contextDispatch,
   } = context;
 
-  const [nextPlayerToGuess, setNextPlayerToGuess] = useState(
+  const [randomizedPlayers, setRandomizedPlayers] = useState(
     generateRandomPlayers(newGame.getPlayersInvolved())
   );
   const [count, setCount] = useState(0);
-  const [more, setMore] = useState(nextPlayerToGuess[0]);
+  const [playerToGuess, setPlayerToGuess] = useState(randomizedPlayers[0]);
   const [numArray, setNumArray] = useState(numberArray);
   const [combinedAttempts, setCombinedAttempts] = useState(1);
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
 
-    const currentPlayer = nextPlayerToGuess[count];
+    const currentPlayer = randomizedPlayers[count];
     const currentPlayerName = currentPlayer
       ?.getPlayerName()
       .toString()
@@ -89,7 +88,7 @@ const GuessTaking = () => {
           );
         } else {
           newGame.resetPlayersPlayStatus();
-          setNextPlayerToGuess(
+          setRandomizedPlayers(
             generateRandomPlayers(newGame.getPlayersInvolved())
           );
           setCount(0);
@@ -107,10 +106,10 @@ const GuessTaking = () => {
   };
 
   useEffect(() => {
-    if (count < nextPlayerToGuess.length) {
-      setMore(nextPlayerToGuess[count]);
+    if (count < randomizedPlayers.length) {
+      setPlayerToGuess(randomizedPlayers[count]);
     }
-  }, [count, nextPlayerToGuess]);
+  }, [count, randomizedPlayers]);
 
   return (
     <section className="GuessTaking__container">
@@ -133,7 +132,7 @@ const GuessTaking = () => {
             <div className="next-player-item-2">
               <h1>
                 <span style={{ color: "#000" }}>
-                  {more?.getPlayerName().toUpperCase()}
+                  {playerToGuess?.getPlayerName().toUpperCase()}
                   {", "}
                 </span>
                 it's your turn
