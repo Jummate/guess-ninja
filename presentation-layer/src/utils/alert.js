@@ -1,5 +1,88 @@
 import swal from "sweetalert";
 import { generateRandomDifficulty } from "./random-difficulty";
+import { getSessionWinner } from "./session-winner";
+
+const alertSessionEnd = async (initialState, contextDispatch) => {
+  const {
+    sessionCount,
+    selectedMode,
+    onePlayerGameType,
+    multiPlayerGameType,
+    numOfGamesInSession,
+    newGame,
+  } = initialState;
+
+  const { winningPlayer, maxScore } = getSessionWinner(newGame);
+
+  const value = await swal({
+    title: `END OF SESSION!`,
+    // text: `${winningPlayer} wins the session with a score of ${maxScore}`,
+    icon: "success",
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    dangerMode: true,
+    content: {
+      element: "p",
+      attributes: {
+        innerHTML: `${winningPlayer} wins the session with a score of ${maxScore}`,
+        style: "color: maroon; font-weight: bolder",
+      },
+    },
+    buttons: {
+      continue: {
+        text: "Continue",
+        value: "continue",
+      },
+      viewScore: {
+        text: "View Score",
+        value: "view-score",
+      },
+      quit: {
+        text: "End Game",
+        value: "quit",
+      },
+    },
+  });
+  switch (value) {
+    case "continue":
+      if (selectedMode === "Single" && onePlayerGameType === "Random") {
+        contextDispatch({
+          type: "RANDOMIZE_THE_DIFFICULTY",
+          payload: { difficulty: generateRandomDifficulty() },
+        });
+      } else if (
+        selectedMode === "Multi" &&
+        multiPlayerGameType === "Session" &&
+        Number(numOfGamesInSession) === Number(sessionCount)
+      ) {
+        console.log("session ends");
+      } else {
+        contextDispatch({
+          type: "SET_NEW_SESSION_COUNT",
+          payload: { sessionCount: sessionCount + 1 },
+        });
+        contextDispatch({
+          type: "SHOW_GAME_PREP_PAGE",
+        });
+      }
+
+      break;
+    case "view-score":
+      contextDispatch({
+        type: "UPDATE_TRIGGERED_BY_TAB",
+        payload: { triggeredByTab: false },
+      });
+      contextDispatch({
+        type: "SHOW_SCORE_TABLE",
+        payload: { showScoreTable: true },
+      });
+      break;
+
+    default:
+      alertQuit(contextDispatch);
+      break;
+  }
+};
 
 export const alertQuit = async (contextDispatch, triggeredByTab = false) => {
   const willEnd = await swal({
@@ -20,8 +103,14 @@ export const alertSuccess = async (
   initialState,
   contextDispatch
 ) => {
-  const { numberToGuess, sessionCount, selectedMode, onePlayerGameType } =
-    initialState;
+  const {
+    numberToGuess,
+    sessionCount,
+    selectedMode,
+    onePlayerGameType,
+    multiPlayerGameType,
+    numOfGamesInSession,
+  } = initialState;
 
   const value = await swal({
     title: `${winningPlayerName} win${selectedMode === "Single" ? "" : "s"}!`,
@@ -53,17 +142,24 @@ export const alertSuccess = async (
   });
   switch (value) {
     case "continue":
-      contextDispatch({
-        type: "SET_NEW_SESSION_COUNT",
-        payload: { sessionCount: sessionCount + 1 },
-      });
-      contextDispatch({
-        type: "SHOW_GAME_PREP_PAGE",
-      });
       if (selectedMode === "Single" && onePlayerGameType === "Random") {
         contextDispatch({
           type: "RANDOMIZE_THE_DIFFICULTY",
           payload: { difficulty: generateRandomDifficulty() },
+        });
+      } else if (
+        selectedMode === "Multi" &&
+        multiPlayerGameType === "Session" &&
+        Number(numOfGamesInSession) === Number(sessionCount)
+      ) {
+        alertSessionEnd(initialState, contextDispatch);
+      } else {
+        contextDispatch({
+          type: "SET_NEW_SESSION_COUNT",
+          payload: { sessionCount: sessionCount + 1 },
+        });
+        contextDispatch({
+          type: "SHOW_GAME_PREP_PAGE",
         });
       }
 
