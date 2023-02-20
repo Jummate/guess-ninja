@@ -51,10 +51,13 @@ const GameInfo = () => {
               content={newGame.getPlayersInvolvedByName().join(", ")}
             />
           ) : null}
-          <Card
-            headerText="Difficulty:"
-            content={difficulty}
-          />
+
+          {!["Random", "Progressive"].includes(onePlayerGameType) ? (
+            <Card
+              headerText="Difficulty:"
+              content={difficulty}
+            />
+          ) : null}
 
           <Card
             headerText="Game Type:"

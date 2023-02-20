@@ -26,7 +26,6 @@ const GuessTaking = () => {
       numOfAttempt,
       numOfPlayer,
       numberArray,
-      sessionCount,
       difficulty,
       // numOfGamesInSession,
     },
@@ -43,6 +42,7 @@ const GuessTaking = () => {
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
+    const { initialState } = context;
 
     const currentPlayer = randomizedPlayers[count];
     const currentPlayerName = currentPlayer
@@ -66,13 +66,7 @@ const GuessTaking = () => {
 
       newGame.updatePlayersNoOfPlays();
 
-      alertSuccess(
-        currentPlayerName,
-        numberToGuess,
-        sessionCount,
-        selectedMode,
-        contextDispatch
-      );
+      alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
       if (
         (combinedAttempts + Number(numOfPlayer)) % Number(numOfPlayer) ===
@@ -80,12 +74,7 @@ const GuessTaking = () => {
       ) {
         if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
           newGame.updatePlayersNoOfPlays();
-          alertNoWinner(
-            numberToGuess,
-            sessionCount,
-            selectedMode,
-            contextDispatch
-          );
+          alertNoWinner(initialState, contextDispatch);
         } else {
           newGame.resetPlayersPlayStatus();
           setRandomizedPlayers(

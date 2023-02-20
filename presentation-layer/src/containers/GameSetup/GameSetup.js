@@ -7,6 +7,8 @@ import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import { AppContext } from "../../utils/context";
 import { GuessGame } from "../../utils/game";
+import { generateRandomDifficulty } from "../../utils/random-difficulty";
+import { options } from "../../utils/difficulty-options";
 
 const GameSetup = () => {
   const context = useContext(AppContext);
@@ -30,11 +32,15 @@ const GameSetup = () => {
   const handleClick = () => {
     const newGame = initializeGame();
     selectedMode === "Single" && newGame.addPlayer(["You"]);
+    let modifiedDifficulty =
+      selectedMode === "Single" && onePlayerGameType === "Random"
+        ? generateRandomDifficulty()
+        : difficulty;
     contextDispatch({
       type: nextPage,
       payload: {
         numOfPlayer,
-        difficulty,
+        difficulty: modifiedDifficulty,
         newGame,
         numOfAttempt,
         numOfGamesInSession,
@@ -45,11 +51,7 @@ const GameSetup = () => {
   const handleChange = (selectedOption) => {
     setDifficulty(selectedOption.value);
   };
-  const options = [
-    { value: "Easy", label: "Easy" },
-    { value: "Medium", label: "Medium" },
-    { value: "Hard", label: "Hard" },
-  ];
+
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -107,7 +109,7 @@ const GameSetup = () => {
             ) : null}
 
             {selectedMode === "Single" &&
-            onePlayerGameType === "Constant" ? null : (
+            ["Random", "Progressive"].includes(onePlayerGameType) ? null : (
               <div className="GameSetup__item">
                 <label>Difficulty</label>
 

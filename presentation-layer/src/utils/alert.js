@@ -1,28 +1,29 @@
 import swal from "sweetalert";
+import { generateRandomDifficulty } from "./random-difficulty";
 
-export const alertQuit = (contextDispatch, triggeredByTab = false) => {
-  return swal({
+export const alertQuit = async (contextDispatch, triggeredByTab = false) => {
+  const willEnd = await swal({
     title: "Are you sure you want to end the game?",
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  }).then((willEnd) => {
-    if (willEnd) {
-      contextDispatch({ type: "SHOW_HOME_PAGE" });
-    } else {
-      !triggeredByTab && contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-    }
   });
+  if (willEnd) {
+    contextDispatch({ type: "SHOW_HOME_PAGE" });
+  } else {
+    !triggeredByTab && contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+  }
 };
 
-export const alertSuccess = (
+export const alertSuccess = async (
   winningPlayerName,
-  numberToGuess,
-  sessionCount,
-  selectedMode,
+  initialState,
   contextDispatch
 ) => {
-  return swal({
+  const { numberToGuess, sessionCount, selectedMode, onePlayerGameType } =
+    initialState;
+
+  const value = await swal({
     title: `${winningPlayerName} win${selectedMode === "Single" ? "" : "s"}!`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "success",
@@ -35,7 +36,6 @@ export const alertSuccess = (
     //     innerHTML: "You are trying",
     //   },
     // },
-
     buttons: {
       continue: {
         text: "Continue",
@@ -50,45 +50,49 @@ export const alertSuccess = (
         value: "quit",
       },
     },
-  }).then((value) => {
-    switch (value) {
-      case "continue":
-        contextDispatch({
-          type: "SET_NEW_SESSION_COUNT",
-          payload: { sessionCount: sessionCount + 1 },
-        });
-        contextDispatch({
-          type: "SHOW_GAME_PREP_PAGE",
-        });
-        break;
-      case "view-score":
-        contextDispatch({
-          type: "UPDATE_TRIGGERED_BY_TAB",
-          payload: { triggeredByTab: false },
-        });
-        contextDispatch({
-          type: "SHOW_SCORE_TABLE",
-          payload: { showScoreTable: true },
-        });
-        break;
-
-      default:
-        alertQuit(contextDispatch);
-        break;
-    }
   });
+  switch (value) {
+    case "continue":
+      contextDispatch({
+        type: "SET_NEW_SESSION_COUNT",
+        payload: { sessionCount: sessionCount + 1 },
+      });
+      contextDispatch({
+        type: "SHOW_GAME_PREP_PAGE",
+      });
+      if (selectedMode === "Single" && onePlayerGameType === "Random") {
+        contextDispatch({
+          type: "RANDOMIZE_THE_DIFFICULTY",
+          payload: { difficulty: generateRandomDifficulty() },
+        });
+      }
+
+      break;
+    case "view-score":
+      contextDispatch({
+        type: "UPDATE_TRIGGERED_BY_TAB",
+        payload: { triggeredByTab: false },
+      });
+      contextDispatch({
+        type: "SHOW_SCORE_TABLE",
+        payload: { showScoreTable: true },
+      });
+      break;
+
+    default:
+      alertQuit(contextDispatch);
+      break;
+  }
 };
 
-export const alertNoWinner = (
-  numberToGuess,
-  sessionCount,
-  selectedMode,
-  contextDispatch
-) => {
-  return swal({
+export const alertNoWinner = async (initialState, contextDispatch) => {
+  const { numberToGuess, sessionCount, selectedMode, onePlayerGameType } =
+    initialState;
+
+  const value = await swal({
     title: `Oops! ${
       selectedMode === "Single"
-        ? "Attempts used up! Try again."
+        ? "Wrong guess! Attempts used up! Try again."
         : " No winner in this round!"
     }`,
     text: `Romeo picked ${numberToGuess}`,
@@ -107,25 +111,30 @@ export const alertNoWinner = (
         value: "quit",
       },
     },
-  }).then((value) => {
-    switch (value) {
-      case "continue":
-        contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-        contextDispatch({
-          type: "SET_NEW_SESSION_COUNT",
-          payload: { sessionCount: sessionCount + 1 },
-        });
-        break;
-
-      default:
-        alertQuit(contextDispatch);
-        break;
-    }
   });
+  switch (value) {
+    case "continue":
+      contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+      contextDispatch({
+        type: "SET_NEW_SESSION_COUNT",
+        payload: { sessionCount: sessionCount + 1 },
+      });
+      if (selectedMode === "Single" && onePlayerGameType === "Random") {
+        contextDispatch({
+          type: "RANDOMIZE_THE_DIFFICULTY",
+          payload: { difficulty: generateRandomDifficulty() },
+        });
+      }
+      break;
+
+    default:
+      alertQuit(contextDispatch);
+      break;
+  }
 };
 
-export const alertIncorrectGuess = (contextDispatch) => {
-  return swal({
+export const alertIncorrectGuess = async (contextDispatch) => {
+  const value = await swal({
     title: "Oops!",
     text: `Incorrect guess!`,
     icon: "error",
@@ -143,16 +152,15 @@ export const alertIncorrectGuess = (contextDispatch) => {
         value: "quit",
       },
     },
-  }).then((value) => {
-    switch (value) {
-      case "continue":
-        break;
-
-      default:
-        alertQuit(contextDispatch);
-        break;
-    }
   });
+  switch (value) {
+    case "continue":
+      break;
+
+    default:
+      alertQuit(contextDispatch);
+      break;
+  }
 };
 
-module.export = { alertSuccess, alertQuit, alertNoWinner, alertIncorrectGuess };
+// module.export = { alertSuccess, alertQuit, alertNoWinner, alertIncorrectGuess };

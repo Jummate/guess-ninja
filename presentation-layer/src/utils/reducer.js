@@ -159,6 +159,12 @@ const reducer = (state, action) => {
         triggeredByTab: action.payload.triggeredByTab,
       };
 
+    case "RANDOMIZE_THE_DIFFICULTY":
+      return {
+        ...state,
+        difficulty: action.payload.difficulty,
+      };
+
     case "SET_NEW_SESSION_COUNT":
       return { ...state, sessionCount: action.payload.sessionCount };
 
