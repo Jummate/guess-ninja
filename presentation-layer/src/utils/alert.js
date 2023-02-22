@@ -66,7 +66,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   }
 };
 
-export const alertQuit = async (contextDispatch, triggeredByTab = false) => {
+export const alertQuit = async (contextDispatch, triggeredByTab = true) => {
   const willEnd = await swal({
     title: "Are you sure you want to end the game?",
     icon: "warning",
@@ -131,6 +131,9 @@ export const alertSuccess = async (
           type: "RANDOMIZE_THE_DIFFICULTY",
           payload: { difficulty: generateRandomDifficulty() },
         });
+        contextDispatch({
+          type: "SHOW_GAME_PREP_PAGE",
+        });
       } else if (
         selectedMode === "Multi" &&
         multiPlayerGameType === "Session" &&
@@ -160,7 +163,7 @@ export const alertSuccess = async (
       break;
 
     default:
-      alertQuit(contextDispatch);
+      alertQuit(contextDispatch, false);
       break;
   }
 };
@@ -208,7 +211,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
       break;
 
     default:
-      alertQuit(contextDispatch);
+      alertQuit(contextDispatch, false);
       break;
   }
 };
@@ -238,7 +241,7 @@ export const alertIncorrectGuess = async (contextDispatch) => {
       break;
 
     default:
-      alertQuit(contextDispatch);
+      alertQuit(contextDispatch, false);
       break;
   }
 };
