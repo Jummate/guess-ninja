@@ -2,13 +2,23 @@ import { React, useContext } from "react";
 import { AppContext } from "../../utils/context";
 import Button from "../button/Button";
 import "./Table.css";
+import { alertSessionEnd } from "../../utils/alert";
 
 const Table = ({ data = [], columns }) => {
   const context = useContext(AppContext);
   const {
-    initialState: { sessionCount, triggeredByTab },
+    initialState: {
+      sessionCount,
+      triggeredByTab,
+      numOfGamesInSession,
+      selectedMode,
+      newGame,
+      multiPlayerGameType,
+    },
     contextDispatch,
   } = context;
+
+  const { initialState } = context;
   return (
     <div className="table-container">
       <div className="table-wrapper">
@@ -43,13 +53,21 @@ const Table = ({ data = [], columns }) => {
           width="w-60"
           onClick={() => {
             if (!triggeredByTab) {
-              contextDispatch({
-                type: "SET_NEW_SESSION_COUNT",
-                payload: { sessionCount: sessionCount + 1 },
-              });
-              contextDispatch({
-                type: "SHOW_GAME_PREP_PAGE",
-              });
+              if (
+                selectedMode === "Multi" &&
+                multiPlayerGameType === "Session" &&
+                Number(numOfGamesInSession) === Number(sessionCount)
+              ) {
+                alertSessionEnd(initialState, contextDispatch);
+              } else {
+                contextDispatch({
+                  type: "SET_NEW_SESSION_COUNT",
+                  payload: { sessionCount: sessionCount + 1 },
+                });
+                contextDispatch({
+                  type: "SHOW_GAME_PREP_PAGE",
+                });
+              }
             } else {
               contextDispatch({
                 type: "SHOW_SCORE_TABLE",

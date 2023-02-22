@@ -2,15 +2,8 @@ import swal from "sweetalert";
 import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
 
-const alertSessionEnd = async (initialState, contextDispatch) => {
-  const {
-    sessionCount,
-    selectedMode,
-    onePlayerGameType,
-    multiPlayerGameType,
-    numOfGamesInSession,
-    newGame,
-  } = initialState;
+export const alertSessionEnd = async (initialState, contextDispatch) => {
+  const { newGame } = initialState;
 
   const { winningPlayer, maxScore } = getSessionWinner(newGame);
 
@@ -29,43 +22,32 @@ const alertSessionEnd = async (initialState, contextDispatch) => {
       },
     },
     buttons: {
-      continue: {
-        text: "Continue",
-        value: "continue",
+      newSession: {
+        text: " New Session",
+        value: "new-session",
       },
       viewScore: {
         text: "View Score",
         value: "view-score",
       },
-      quit: {
-        text: "End Game",
-        value: "quit",
+      home: {
+        text: "Home",
+        value: "home",
       },
     },
   });
   switch (value) {
-    case "continue":
-      if (selectedMode === "Single" && onePlayerGameType === "Random") {
-        contextDispatch({
-          type: "RANDOMIZE_THE_DIFFICULTY",
-          payload: { difficulty: generateRandomDifficulty() },
-        });
-      } else if (
-        selectedMode === "Multi" &&
-        multiPlayerGameType === "Session" &&
-        Number(numOfGamesInSession) === Number(sessionCount)
-      ) {
-        console.log("session ends");
-      } else {
-        contextDispatch({
-          type: "SET_NEW_SESSION_COUNT",
-          payload: { sessionCount: sessionCount + 1 },
-        });
-        contextDispatch({
-          type: "SHOW_GAME_PREP_PAGE",
-        });
-      }
-
+    case "new-session":
+      newGame.resetPlayersScore();
+      newGame.resetPlayerNoOfWins();
+      newGame.resetPlayerNoOfPlays();
+      contextDispatch({
+        type: "SET_NEW_SESSION_COUNT",
+        payload: { sessionCount: 1 },
+      });
+      contextDispatch({
+        type: "SHOW_GAME_PREP_PAGE",
+      });
       break;
     case "view-score":
       contextDispatch({
@@ -79,7 +61,7 @@ const alertSessionEnd = async (initialState, contextDispatch) => {
       break;
 
     default:
-      alertQuit(contextDispatch);
+      contextDispatch({ type: "SHOW_HOME_PAGE" });
       break;
   }
 };
@@ -97,6 +79,8 @@ export const alertQuit = async (contextDispatch, triggeredByTab = false) => {
     !triggeredByTab && contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
   }
 };
+
+//Success Alert----------------------
 
 export const alertSuccess = async (
   winningPlayerName,

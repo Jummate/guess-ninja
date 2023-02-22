@@ -42,6 +42,27 @@ export class GuessGame {
     });
   }
 
+  resetPlayersScore() {
+    this.playersInvolved = this.playersInvolved.map((player) => {
+      player.setPlayerScore(0);
+      return player;
+    });
+  }
+
+  resetPlayerNoOfWins() {
+    this.playersInvolved = this.playersInvolved.map((player) => {
+      player.setPlayerNoOfWins(0);
+      return player;
+    });
+  }
+
+  resetPlayerNoOfPlays() {
+    this.playersInvolved = this.playersInvolved.map((player) => {
+      player.setPlayerNoOfPlays(0);
+      return player;
+    });
+  }
+
   // getStat() {
   //   return this.playersInvolved
   //     .map((player) => player.getPlayerPlayStatus())

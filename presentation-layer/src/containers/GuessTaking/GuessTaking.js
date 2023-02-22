@@ -65,6 +65,7 @@ const GuessTaking = () => {
       );
 
       newGame.updatePlayersNoOfPlays();
+      newGame.resetPlayersPlayStatus();
 
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
