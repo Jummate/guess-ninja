@@ -15,7 +15,7 @@
 }
 .loading h1{
     color: var(--danger);
-    font-size: 50px;
+    font-size: 3.3rem;
     margin-bottom: 20px;
 }
 .loading h3{
