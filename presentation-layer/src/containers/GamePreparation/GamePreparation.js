@@ -49,8 +49,8 @@ const GamePreparation = () => {
         />
       )}
       <Header
-        hOneText="Game Preparation"
-        hFourText="it's about get down thick!"
+        hOneText="Game Prep"
+        hFourText="Brace up! it's about time!"
         mt="40"
         height="23"
       />
@@ -67,8 +67,8 @@ const GamePreparation = () => {
           <div className="GamePrep__body-item-2">
             <p style={{ marginBottom: "10px" }}>
               {" "}
-              Romeo picked a number {numberToGuess} from a box containing
-              numbers between{" "}
+              <span style={{ color: "#49cdcb" }}>ROMEO</span> picked a number{" "}
+              {numberToGuess} from a box containing numbers between{" "}
               <span
                 style={{
                   backgroundColor: "maroon",
@@ -94,7 +94,8 @@ const GamePreparation = () => {
                 color: "red",
               }}
             >
-              What number is he holding?
+              What number does <span style={{ color: "#49cdcb" }}>ROMEO</span>{" "}
+              have?
             </p>
 
             <Button

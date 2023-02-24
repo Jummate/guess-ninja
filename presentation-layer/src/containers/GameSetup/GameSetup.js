@@ -44,6 +44,7 @@ const GameSetup = () => {
         newGame,
         numOfAttempt,
         numOfGamesInSession,
+        multiPlayerGameType,
       },
     });
   };
@@ -69,7 +70,7 @@ const GameSetup = () => {
   return (
     <section className="GameSetup__container">
       <Header
-        hOneText="Game Settings"
+        hOneText="Settings"
         hFourText="Every activity begins with a plan"
         mt="40"
         height="23"
@@ -79,7 +80,7 @@ const GameSetup = () => {
           <form>
             {selectedMode === "Multi" ? (
               <div className="GameSetup__item">
-                <label>Number of Players </label>
+                <label>No of Players:</label>
                 <Input
                   type="number"
                   value={numOfPlayer}
@@ -89,7 +90,7 @@ const GameSetup = () => {
             ) : null}
 
             <div className="GameSetup__item">
-              <label>Number of attempts</label>
+              <label>No of Attempts:</label>
               <Input
                 type="number"
                 value={numOfAttempt}
@@ -99,7 +100,7 @@ const GameSetup = () => {
 
             {selectedMode === "Multi" && multiPlayerGameType === "Session" ? (
               <div className="GameSetup__item">
-                <label>Number of games in a session</label>
+                <label>No of Games:</label>
                 <Input
                   type="number"
                   value={numOfGamesInSession}
@@ -111,7 +112,7 @@ const GameSetup = () => {
             {selectedMode === "Single" &&
             ["Random", "Progressive"].includes(onePlayerGameType) ? null : (
               <div className="GameSetup__item">
-                <label>Difficulty</label>
+                <label>Difficulty:</label>
 
                 <Select
                   options={options}

@@ -34,7 +34,7 @@ const Welcome = () => {
             width="w-80"
             onClick={() => contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" })}
           >
-            GAME GUIDE
+            GUIDE
           </Button>
 
           <Button

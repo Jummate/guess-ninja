@@ -36,9 +36,15 @@
 
 .GameSetup__body form{
     display: flex;
-    flex-direction: column;
-    width:70%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    width:90%;
+    /* height:100%; */
     max-width: 400px;
+    font-size: 1.1rem;
+
 }
 
 .GameSetup__difficulty{
@@ -48,10 +54,20 @@
     font-weight: 100;
 }
 .GameSetup__item{
-    margin-bottom:5px;
+    margin-bottom:8px;
+    margin-right: 5px;
+    width:45%;
+    /* font-size: 1.1rem; */
 }
 .GameSetup__body label{
     margin-bottom: 2px;
-    font-size: 1.2rem;
+    /* font-size: 1.1rem; */
     font-weight: bolder;
+}
+
+@media screen and (min-width:480px){
+    .GameSetup__body form{
+        font-size: 1.3rem;
+    
+    }
 }

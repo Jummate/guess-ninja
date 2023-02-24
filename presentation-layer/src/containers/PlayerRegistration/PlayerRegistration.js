@@ -13,7 +13,14 @@ import "./PlayerRegistration.css";
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
   const {
-    initialState: { numOfPlayer, difficulty, newGame, numOfAttempt },
+    initialState: {
+      numOfPlayer,
+      difficulty,
+      newGame,
+      numOfAttempt,
+      numOfGamesInSession,
+      multiPlayerGameType,
+    },
     contextDispatch,
   } = context;
   const [playerCount, setPlayerCount] = useState(1);
@@ -51,7 +58,13 @@ const PlayerRegistration = () => {
         onClose: () =>
           contextDispatch({
             type: "SHOW_GAME_INFO_PAGE",
-            payload: { difficulty, newGame, numOfAttempt },
+            payload: {
+              difficulty,
+              newGame,
+              numOfAttempt,
+              numOfGamesInSession,
+              multiPlayerGameType,
+            },
           }),
       });
       setShowOverlay(true);
@@ -60,8 +73,8 @@ const PlayerRegistration = () => {
   return (
     <section className="PlayerReg__container">
       <Header
-        hOneText="Register Players"
-        hFourText="It's KYC time! Let's know our players"
+        hOneText="Registration"
+        hFourText="It's KYC time! Meet the players"
         mt="40"
         height="25"
       />
@@ -69,7 +82,9 @@ const PlayerRegistration = () => {
       <div className="PlayerReg__body">
         <div className="PlayerReg__wrapper">
           <div className="PlayerReg__body-item-1">
-            <label>Player {playerCount}:</label>
+            <label>
+              Player <span style={{ color: "#49cdcb" }}>{playerCount}</span>
+            </label>
             <Input
               value={player}
               onChange={(e) => setPlayer(e.target.value)}

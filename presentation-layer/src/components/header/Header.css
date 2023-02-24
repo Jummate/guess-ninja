@@ -42,7 +42,7 @@ header h4{
 @media screen and (min-width:481px){
     
     header h4{
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     header h1{
@@ -52,21 +52,21 @@ header h4{
 
 @media screen and (min-width:769px){
     header h4{
-        font-size: 2.0rem;
+        font-size: 1.8rem;
     }
 
     header h1{
-      font-size: 4.0rem;
+      font-size: 3.8rem;
     }
 }
 
 @media screen and (min-width:1024px){
     header h4{
-        font-size: 2.2rem;
+        font-size: 2.0rem;
     }
 
     header h1{
-      font-size: 4.4rem;
+      font-size: 4.0rem;
     }
 }
 

@@ -5,42 +5,54 @@ import { alertQuit } from "../../utils/alert";
 
 const Navigation = () => {
   const context = useContext(AppContext);
+
+  const {
+    initialState: {
+      selectedMode,
+      showHome,
+      showMode,
+      showSetup,
+      multiPlayerGameType,
+      onePlayerGameType,
+      showOtherTabs,
+    },
+    contextDispatch,
+  } = context;
+
   return (
     <section className="Navigation__container">
       <ul className="Navigation__wrapper">
-        {context.initialState.showHome ? (
-          <li
-            onClick={() => context.contextDispatch({ type: "SHOW_HOME_PAGE" })}
-          >
+        {showHome ? (
+          <li onClick={() => contextDispatch({ type: "SHOW_HOME_PAGE" })}>
             Home
           </li>
         ) : null}
-        {context.initialState.showMode ? (
-          <li
-            onClick={() =>
-              context.contextDispatch({ type: "SHOW_GAME_MODE_PAGE" })
-            }
-          >
+        {showMode ? (
+          <li onClick={() => contextDispatch({ type: "SHOW_GAME_MODE_PAGE" })}>
             Mode
           </li>
         ) : null}
-        {context.initialState.showSetup ? (
+        {showSetup ? (
           <li
             onClick={() =>
-              context.contextDispatch({
+              contextDispatch({
                 type: "SHOW_GAME_SETUP_PAGE",
-                payload: { selectedMode: context.initialState.selectedMode },
+                payload: {
+                  selectedMode: selectedMode,
+                  multiPlayerGameType: multiPlayerGameType,
+                  onePlayerGameType: onePlayerGameType,
+                },
               })
             }
           >
             Setup
           </li>
         ) : null}
-        {context.initialState.showOtherTabs ? (
+        {showOtherTabs ? (
           <>
             <li
               onClick={() => {
-                context.contextDispatch({
+                contextDispatch({
                   type: "UPDATE_TRIGGERED_BY_TAB",
                   payload: { triggeredByTab: true },
                 });
@@ -50,10 +62,10 @@ const Navigation = () => {
                 });
               }}
             >
-              View-Score
+              Scores
             </li>
 
-            <li onClick={() => alertQuit(context.contextDispatch)}>Quit</li>
+            <li onClick={() => alertQuit(contextDispatch)}>Quit</li>
           </>
         ) : null}
       </ul>

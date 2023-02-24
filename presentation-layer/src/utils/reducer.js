@@ -89,6 +89,7 @@ const reducer = (state, action) => {
         difficulty: action.payload.difficulty,
         newGame: action.payload.newGame,
         numOfGamesInSession: action.payload.numOfGamesInSession,
+        multiPlayerGameType: action.payload.multiPlayerGameType,
       };
     case "SHOW_GAME_INFO_PAGE":
       return {

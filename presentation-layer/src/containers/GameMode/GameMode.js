@@ -35,7 +35,7 @@ const GameMode = () => {
             //   })
             // }
           >
-            One Player
+            Single Player
           </Button>
           <Button
             buttonSize="btn--large"
@@ -56,7 +56,7 @@ const GameMode = () => {
 
           {showMenu ? (
             <Menu>
-              {mode === "One Player" ? (
+              {mode === "Single Player" ? (
                 <>
                   <Button
                     buttonSize="btn--large"

@@ -18,6 +18,7 @@ const GameInfo = () => {
       newGame,
       onePlayerGameType,
       multiPlayerGameType,
+      numOfGamesInSession,
     },
     contextDispatch,
   } = context;
@@ -26,7 +27,7 @@ const GameInfo = () => {
     <section className="GameInfo__container">
       <Header
         hOneText="Game Details"
-        hFourText="Confirm the configuration of the game"
+        hFourText="Confirm the info about the game"
         mt="40"
         height="23"
       />
@@ -67,6 +68,13 @@ const GameInfo = () => {
                 : multiPlayerGameType
             }
           />
+
+          {selectedMode === "Multi" && multiPlayerGameType === "Session" ? (
+            <Card
+              headerText="Number of Games:"
+              content={numOfGamesInSession}
+            />
+          ) : null}
         </div>
 
         <Button
