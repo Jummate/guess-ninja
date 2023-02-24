@@ -132,13 +132,22 @@ const GuessTaking = () => {
         </div>
 
         <div className="next-player-item-3">
-          <h1 style={{ color: "#000", marginRight: "10px" }}>Attempt: </h1>
-          <h2>
-            {Math.floor(
-              (combinedAttempts + Number(numOfPlayer) - 1) / Number(numOfPlayer)
-            )}{" "}
-            of {numOfAttempt}
-          </h2>
+          <div>
+            <span style={{ color: "#000", marginRight: "2px" }}>Attempt: </span>
+            <span>
+              {Math.floor(
+                (combinedAttempts + Number(numOfPlayer) - 1) /
+                  Number(numOfPlayer)
+              )}{" "}
+              of {numOfAttempt}
+            </span>
+          </div>
+          <div>
+            <span style={{ color: "#000", marginRight: "2px" }}>
+              Difficulty:{" "}
+            </span>
+            <span>{difficulty}</span>
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,15 @@ import React from "react";
 
 import "./Input.css";
 
-const Input = ({ type = "text", placeholder, value, width, onChange }) => {
+const Input = ({
+  type = "text",
+  placeholder,
+  value,
+  width,
+  onChange,
+  min = 2,
+  max = 5,
+}) => {
   return (
     <input
       type={type}
@@ -10,6 +18,8 @@ const Input = ({ type = "text", placeholder, value, width, onChange }) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      min={min}
+      max={max}
     />
   );
 };
