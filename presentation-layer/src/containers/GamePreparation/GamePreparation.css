@@ -59,11 +59,14 @@
     justify-content: center;
     color: var(--light);
     padding: 10px;
+    padding-top: 12px;
     background-color: #000;
     line-height: 1.4;
 
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+
+    overflow: auto;
     /* border-radius: 20px; */
 }
 
@@ -76,19 +79,19 @@
 
 @media screen and (min-width: 480px) {
     .GamePrep__body-item-2 p{
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 }
 
 @media screen and (min-width: 767px) {
     .GamePrep__body-item-2 p{
-        font-size: 1.9rem;
+        font-size: 1.7rem;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .GamePrep__body-item-2 p{
-        font-size: 2.1rem;
+        font-size: 1.9rem;
     }
 }
 
