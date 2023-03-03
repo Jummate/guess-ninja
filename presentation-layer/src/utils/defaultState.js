@@ -23,4 +23,5 @@ export const defaultState = {
   numberArray: null,
   numOfGamesInSession: 0,
   sessionCount: 1,
+  counter: 1,
 };

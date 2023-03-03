@@ -1,6 +1,18 @@
 import swal from "sweetalert";
 import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
+import { difficultyOptions } from "./reusable-variables";
+
+const computeNewDifficulty = (options, difficulty, noOfPlayer, count) => {
+  const optionLength = Object.keys(options).length;
+  let index = Object.values(options).indexOf(difficulty);
+  let newDifficulty = Object.values(options)[++index % optionLength];
+  console.log({ optionLength, count });
+  let newNumOfPlayer =
+    Number(count) % optionLength === 0 ? ++noOfPlayer % 4 : noOfPlayer % 4;
+
+  return { newDifficulty, newNumOfPlayer };
+};
 
 export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { newGame } = initialState;
@@ -94,7 +106,18 @@ export const alertSuccess = async (
     onePlayerGameType,
     multiPlayerGameType,
     numOfGamesInSession,
+    difficulty,
+    numOfPlayer,
+    numOfAttempt,
+    counter,
   } = initialState;
+
+  const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
+    difficultyOptions,
+    difficulty,
+    numOfPlayer,
+    counter
+  );
 
   const value = await swal({
     title: `${winningPlayerName} win${selectedMode === "Single" ? "" : "s"}!`,
@@ -136,15 +159,43 @@ export const alertSuccess = async (
         });
       } else if (
         selectedMode === "Multi" &&
-        multiPlayerGameType === "Session" &&
-        Number(numOfGamesInSession) === Number(sessionCount)
+        multiPlayerGameType === "Session"
       ) {
-        alertSessionEnd(initialState, contextDispatch);
-      } else {
+        if (Number(numOfGamesInSession) === Number(sessionCount)) {
+          alertSessionEnd(initialState, contextDispatch);
+        } else {
+          contextDispatch({
+            type: "SET_NEW_SESSION_COUNT",
+            payload: { sessionCount: sessionCount + 1 },
+          });
+          contextDispatch({
+            type: "SHOW_GAME_PREP_PAGE",
+          });
+        }
+      } else if (
+        selectedMode === "Single" &&
+        onePlayerGameType === "Progressive"
+      ) {
+        console.log({ newDifficulty, newNumOfPlayer });
         contextDispatch({
-          type: "SET_NEW_SESSION_COUNT",
-          payload: { sessionCount: sessionCount + 1 },
+          type: "COMPUTE_NEW_DIFFICULTY",
+          payload: {
+            numOfPlayer: newNumOfPlayer,
+            difficulty: newDifficulty,
+            numOfAttempt,
+          },
         });
+        contextDispatch({
+          type: "INCREMENT_COUNTER",
+          payload: {
+            counter: counter + 1,
+          },
+        });
+
+        contextDispatch({
+          type: "SHOW_GAME_PREP_PAGE",
+        });
+      } else {
         contextDispatch({
           type: "SHOW_GAME_PREP_PAGE",
         });
@@ -169,8 +220,24 @@ export const alertSuccess = async (
 };
 
 export const alertNoWinner = async (initialState, contextDispatch) => {
-  const { numberToGuess, sessionCount, selectedMode, onePlayerGameType } =
-    initialState;
+  const {
+    numberToGuess,
+    sessionCount,
+    selectedMode,
+    onePlayerGameType,
+    multiPlayerGameType,
+    difficulty,
+    numOfPlayer,
+    numOfAttempt,
+    counter,
+  } = initialState;
+
+  const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
+    difficultyOptions,
+    difficulty,
+    numOfPlayer,
+    counter
+  );
 
   const value = await swal({
     title: `Oops! ${
@@ -198,14 +265,33 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
   switch (value) {
     case "continue":
       contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
-      contextDispatch({
-        type: "SET_NEW_SESSION_COUNT",
-        payload: { sessionCount: sessionCount + 1 },
-      });
+
+      if (selectedMode === "Multi" && multiPlayerGameType === "Session") {
+        contextDispatch({
+          type: "SET_NEW_SESSION_COUNT",
+          payload: { sessionCount: sessionCount + 1 },
+        });
+      }
       if (selectedMode === "Single" && onePlayerGameType === "Random") {
         contextDispatch({
           type: "RANDOMIZE_THE_DIFFICULTY",
           payload: { difficulty: generateRandomDifficulty() },
+        });
+      }
+      if (selectedMode === "Single" && onePlayerGameType === "Progressive") {
+        contextDispatch({
+          type: "COMPUTE_NEW_DIFFICULTY",
+          payload: {
+            numOfPlayer: newNumOfPlayer,
+            difficulty: newDifficulty,
+            numOfAttempt,
+          },
+        });
+        contextDispatch({
+          type: "INCREMENT_COUNTER",
+          payload: {
+            counter: counter + 1,
+          },
         });
       }
       break;

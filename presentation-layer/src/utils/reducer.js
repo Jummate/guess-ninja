@@ -166,8 +166,19 @@ const reducer = (state, action) => {
         difficulty: action.payload.difficulty,
       };
 
+    case "COMPUTE_NEW_DIFFICULTY":
+      return {
+        ...state,
+        numOfPlayer: action.payload.numOfPlayer,
+        difficulty: action.payload.difficulty,
+        numOfAttempt: action.payload.numOfAttempt,
+      };
+
     case "SET_NEW_SESSION_COUNT":
       return { ...state, sessionCount: action.payload.sessionCount };
+
+    case "INCREMENT_COUNTER":
+      return { ...state, counter: action.payload.counter };
 
     default:
       throw new Error("No matching action type");

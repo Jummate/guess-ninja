@@ -26,9 +26,27 @@
 .Navigation__wrapper li{
     margin-left: 10px;
     cursor: pointer;
+    font-size: 1.3rem;
   
 }
 .Navigation__wrapper li:hover{
     color: #ffffffaf;
     /* text-decoration: underline; */
 }
+
+@media screen and (min-width:340px) and (max-width:480px){
+    
+    .Navigation__wrapper li{
+        font-size: 1.5rem;
+      
+    }
+}
+
+@media screen and (min-width:481px){
+    .Navigation__wrapper li{
+        font-size: 1.7rem;
+      
+    }
+  
+}
+

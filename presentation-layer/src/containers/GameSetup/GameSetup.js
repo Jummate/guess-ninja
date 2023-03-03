@@ -31,15 +31,27 @@ const GameSetup = () => {
 
   const handleClick = () => {
     const newGame = initializeGame();
+
     selectedMode === "Single" && newGame.addPlayer(["You"]);
+
     let modifiedDifficulty =
       selectedMode === "Single" && onePlayerGameType === "Random"
         ? generateRandomDifficulty()
         : difficulty;
+    // modifiedDifficulty =
+    //   selectedMode === "Single" && onePlayerGameType === "Progressive"
+    //     ? gen
+    //     : difficulty;
+
+    let modifiedNumOfPlayer =
+      selectedMode === "Single" && onePlayerGameType === "Progressive"
+        ? 1
+        : numOfPlayer;
+
     contextDispatch({
       type: nextPage,
       payload: {
-        numOfPlayer,
+        numOfPlayer: modifiedNumOfPlayer,
         difficulty: modifiedDifficulty,
         newGame,
         numOfAttempt,

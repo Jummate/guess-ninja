@@ -19,10 +19,12 @@ const GameInfo = () => {
       onePlayerGameType,
       multiPlayerGameType,
       numOfGamesInSession,
+      numOfAttempt,
     },
     contextDispatch,
   } = context;
 
+  console.log(numOfAttempt);
   return (
     <section className="GameInfo__container">
       <Header

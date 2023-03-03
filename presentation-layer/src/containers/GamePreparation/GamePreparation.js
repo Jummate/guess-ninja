@@ -23,6 +23,8 @@ const GamePreparation = () => {
     contextDispatch,
   } = context;
 
+  console.log({ numOfPlayer, difficulty, numOfAttempt });
+
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
     numOfPlayer,
     numOfAttempt,
@@ -38,7 +40,7 @@ const GamePreparation = () => {
   useEffect(() => {
     const timerId = setTimeout(() => setIsLoading(false), 3000);
     return () => clearTimeout(timerId);
-  });
+  }, []);
 
   return (
     <section className="GamePrep__container">
