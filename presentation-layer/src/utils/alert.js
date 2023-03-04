@@ -1,17 +1,7 @@
 import swal from "sweetalert";
 import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
-import { difficultyOptions } from "./reusable-variables";
-
-const computeNewDifficulty = (options, difficulty, noOfPlayer, count) => {
-  const optionLength = Object.keys(options).length;
-  let index = Object.values(options).indexOf(difficulty);
-  let newDifficulty = Object.values(options)[++index % optionLength];
-  let newNumOfPlayer =
-    Number(count) % optionLength === 0 ? ++noOfPlayer % 4 : noOfPlayer % 4;
-
-  return { newDifficulty, newNumOfPlayer };
-};
+import { computeNewDifficulty } from "./new-difficulty";
 
 export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { newGame } = initialState;
@@ -112,7 +102,6 @@ export const alertSuccess = async (
   } = initialState;
 
   const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
-    difficultyOptions,
     difficulty,
     numOfPlayer,
     counter
@@ -231,7 +220,6 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
   } = initialState;
 
   const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
-    difficultyOptions,
     difficulty,
     numOfPlayer,
     counter
