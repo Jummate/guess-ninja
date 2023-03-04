@@ -24,7 +24,6 @@ const GameInfo = () => {
     contextDispatch,
   } = context;
 
-  console.log(numOfAttempt);
   return (
     <section className="GameInfo__container">
       <Header

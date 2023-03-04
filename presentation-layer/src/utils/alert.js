@@ -7,7 +7,6 @@ const computeNewDifficulty = (options, difficulty, noOfPlayer, count) => {
   const optionLength = Object.keys(options).length;
   let index = Object.values(options).indexOf(difficulty);
   let newDifficulty = Object.values(options)[++index % optionLength];
-  console.log({ optionLength, count });
   let newNumOfPlayer =
     Number(count) % optionLength === 0 ? ++noOfPlayer % 4 : noOfPlayer % 4;
 
@@ -176,7 +175,6 @@ export const alertSuccess = async (
         selectedMode === "Single" &&
         onePlayerGameType === "Progressive"
       ) {
-        console.log({ newDifficulty, newNumOfPlayer });
         contextDispatch({
           type: "COMPUTE_NEW_DIFFICULTY",
           payload: {

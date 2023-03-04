@@ -23,8 +23,6 @@ const GamePreparation = () => {
     contextDispatch,
   } = context;
 
-  console.log({ numOfPlayer, difficulty, numOfAttempt });
-
   const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
     numOfPlayer,
     numOfAttempt,
