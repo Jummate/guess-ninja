@@ -5,6 +5,7 @@ import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/thinking.gif";
 import { difficultyValue } from "../../utils/difficultyValue";
 import Navigation from "../../components/nav/Navigation";
+import { game_mode } from "../../utils/reusable-variables";
 
 import {
   alertIncorrectGuess,
@@ -17,6 +18,7 @@ import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import Header from "../../components/header/Header";
 
 const GuessTaking = () => {
+  const { MULTI } = game_mode;
   const context = useContext(AppContext);
   const {
     initialState: {
@@ -27,7 +29,6 @@ const GuessTaking = () => {
       numOfPlayer,
       numberArray,
       difficulty,
-      // numOfGamesInSession,
     },
     contextDispatch,
   } = context;
@@ -118,7 +119,7 @@ const GuessTaking = () => {
               alt="Thinking Doll"
             />
           </div>
-          {selectedMode === "Multi" ? (
+          {selectedMode === `${MULTI}` ? (
             <div className="next-player-item-2">
               <h1>
                 <span style={{ color: "#000" }}>

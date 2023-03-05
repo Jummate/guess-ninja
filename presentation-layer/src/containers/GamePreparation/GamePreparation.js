@@ -6,9 +6,17 @@ import Loading from "../../components/loading/Loading";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
 import RobotRomeo from "../../assets/romeo-robot.webp";
+import {
+  game_mode,
+  mode_type,
+  color_type,
+} from "../../utils/reusable-variables";
 import "./GamePreparation.css";
 
 const GamePreparation = () => {
+  const { MULTI } = game_mode;
+  const { SESSION } = mode_type;
+  const { PRIMARY } = color_type;
   const [isLoading, setIsLoading] = useState(true);
   const context = useContext(AppContext);
   const {
@@ -30,8 +38,8 @@ const GamePreparation = () => {
   );
 
   const isSessionGame =
-    selectedMode === "Multi" &&
-    multiPlayerGameType.toString().toLowerCase() === "session"
+    selectedMode === `${MULTI}` &&
+    multiPlayerGameType.toString().toLowerCase() === `${SESSION}`
       ? true
       : false;
 
@@ -67,7 +75,7 @@ const GamePreparation = () => {
           <div className="GamePrep__body-item-2">
             <p style={{ marginBottom: "10px" }}>
               {" "}
-              <span style={{ color: "#49cdcb" }}>ROMEO</span> picked a number{" "}
+              <span style={{ color: `${PRIMARY}` }}>ROMEO</span> picked a number{" "}
               {numberToGuess} from a box containing numbers between{" "}
               <span
                 style={{
@@ -94,8 +102,8 @@ const GamePreparation = () => {
                 color: "red",
               }}
             >
-              What number does <span style={{ color: "#49cdcb" }}>ROMEO</span>{" "}
-              have?
+              What number does{" "}
+              <span style={{ color: `${PRIMARY}` }}>ROMEO</span> have?
             </p>
 
             <Button

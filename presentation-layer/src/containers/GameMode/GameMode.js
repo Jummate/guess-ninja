@@ -5,8 +5,17 @@ import Navigation from "../../components/nav/Navigation";
 import { AppContext } from "../../utils/context";
 import Header from "../../components/header/Header";
 import Menu from "../../components/Menu";
+import {
+  game_mode,
+  mode_type,
+  color_type,
+} from "../../utils/reusable-variables";
 
 const GameMode = () => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, CONSTANT, REGULAR, PROGRESSIVE } = mode_type;
+  const { LIGHTER } = color_type;
+
   const context = useContext(AppContext);
   const { contextDispatch } = context;
   const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +27,7 @@ const GameMode = () => {
         hFourText="Click to indicate the preferred mode"
         mt="40"
         height="20"
-        bg="#0d0d0d"
+        bg={LIGHTER}
       />
       <div className="GameMode__btn-container">
         <div className="GameMode__btn-wrapper">
@@ -66,13 +75,13 @@ const GameMode = () => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
-                          selectedMode: "Single",
+                          selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    Progressive
+                    {PROGRESSIVE}
                   </Button>
 
                   <Button
@@ -83,13 +92,13 @@ const GameMode = () => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
-                          selectedMode: "Single",
+                          selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    Constant
+                    {CONSTANT}
                   </Button>
 
                   <Button
@@ -100,13 +109,13 @@ const GameMode = () => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
-                          selectedMode: "Single",
+                          selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    Random
+                    {RANDOM}
                   </Button>
                 </>
               ) : null}
@@ -121,13 +130,13 @@ const GameMode = () => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
-                          selectedMode: "Multi",
+                          selectedMode: `${MULTI}`,
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    Regular
+                    {REGULAR}
                   </Button>
 
                   <Button
@@ -138,31 +147,14 @@ const GameMode = () => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
-                          selectedMode: "Multi",
+                          selectedMode: `${MULTI}`,
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       })
                     }
                   >
-                    Session
+                    {SESSION}
                   </Button>
-
-                  {/* <Button
-                    buttonSize="btn--large"
-                    buttonStyle="btn--gradient"
-                    width="w-80"
-                    onClick={(e) =>
-                      contextDispatch({
-                        type: "SHOW_GAME_SETUP_PAGE",
-                        payload: {
-                          selectedMode: "Multi",
-                          onePlayerGameType: `${e.target.textContent.trim()}`,
-                        },
-                      })
-                    }
-                  >
-                    RANDOM
-                  </Button> */}
                 </>
               ) : null}
 

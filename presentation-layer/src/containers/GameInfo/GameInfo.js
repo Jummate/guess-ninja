@@ -4,10 +4,13 @@ import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
 import { AppContext } from "../../utils/context";
 import Card from "../../components/card/Card";
+import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 import "./GameInfo.css";
 
 const GameInfo = () => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
   const context = useContext(AppContext);
 
   const {
@@ -19,7 +22,6 @@ const GameInfo = () => {
       onePlayerGameType,
       multiPlayerGameType,
       numOfGamesInSession,
-      numOfAttempt,
     },
     contextDispatch,
   } = context;
@@ -40,21 +42,21 @@ const GameInfo = () => {
             content={selectedMode}
           />
 
-          {selectedMode === "Multi" ? (
+          {selectedMode === `${MULTI}` ? (
             <Card
               headerText="Number of Players:"
-              content={selectedMode === "Multi" ? numOfPlayer : 1}
+              content={selectedMode === `${MULTI}` ? numOfPlayer : 1}
             />
           ) : null}
 
-          {selectedMode === "Multi" ? (
+          {selectedMode === `${MULTI}` ? (
             <Card
               headerText="Players involved:"
               content={newGame.getPlayersInvolvedByName().join(", ")}
             />
           ) : null}
 
-          {!["Random", "Progressive"].includes(onePlayerGameType) ? (
+          {![`${RANDOM}`, `${PROGRESSIVE}`].includes(onePlayerGameType) ? (
             <Card
               headerText="Difficulty:"
               content={difficulty}
@@ -64,13 +66,14 @@ const GameInfo = () => {
           <Card
             headerText="Game Type:"
             content={
-              selectedMode === "Single"
+              selectedMode === `${SINGLE}`
                 ? onePlayerGameType
                 : multiPlayerGameType
             }
           />
 
-          {selectedMode === "Multi" && multiPlayerGameType === "Session" ? (
+          {selectedMode === `${MULTI}` &&
+          multiPlayerGameType === `${SESSION}` ? (
             <Card
               headerText="Number of Games:"
               content={numOfGamesInSession}

@@ -9,6 +9,11 @@ import { AppContext } from "../../utils/context";
 import { GuessGame } from "../../utils/game";
 import { generateRandomDifficulty } from "../../utils/random-difficulty";
 import { options } from "../../utils/difficulty-options";
+import {
+  game_mode,
+  mode_type,
+  color_type,
+} from "../../utils/reusable-variables";
 
 const GameSetup = () => {
   const context = useContext(AppContext);
@@ -16,6 +21,10 @@ const GameSetup = () => {
   const [numOfAttempt, setNumOfAttempt] = useState("");
   const [numOfGamesInSession, setNumOfGamesInSession] = useState("");
   const [difficulty, setDifficulty] = useState("Easy");
+
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
+  const { PRIMARY } = color_type;
 
   const initializeGame = () => {
     return new GuessGame();
@@ -27,24 +36,22 @@ const GameSetup = () => {
   } = context;
 
   const nextPage =
-    selectedMode === "Single" ? "SHOW_GAME_INFO_PAGE" : "SHOW_PLAYER_REG_PAGE";
+    selectedMode === `${SINGLE}`
+      ? "SHOW_GAME_INFO_PAGE"
+      : "SHOW_PLAYER_REG_PAGE";
 
   const handleClick = () => {
     const newGame = initializeGame();
 
-    selectedMode === "Single" && newGame.addPlayer(["You"]);
+    selectedMode === `${SINGLE}` && newGame.addPlayer(["You"]);
 
     let modifiedDifficulty =
-      selectedMode === "Single" && onePlayerGameType === "Random"
+      selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`
         ? generateRandomDifficulty()
         : difficulty;
-    // modifiedDifficulty =
-    //   selectedMode === "Single" && onePlayerGameType === "Progressive"
-    //     ? gen
-    //     : difficulty;
 
     let modifiedNumOfPlayer =
-      selectedMode === "Single" && onePlayerGameType === "Progressive"
+      selectedMode === `${SINGLE}` && onePlayerGameType === `${PROGRESSIVE}`
         ? 1
         : numOfPlayer;
 
@@ -71,7 +78,7 @@ const GameSetup = () => {
       color: "black",
       cursor: "pointer",
       fontWeight: "bolder",
-      backgroundColor: state.isSelected ? "#49cdcb" : "white",
+      backgroundColor: state.isSelected ? `${PRIMARY}` : "white",
     }),
     // control: (provided) => ({
     //   ...provided,
@@ -90,7 +97,7 @@ const GameSetup = () => {
       <div className="GameSetup__body">
         <div className="GameSetup__wrapper">
           <form>
-            {selectedMode === "Multi" ? (
+            {selectedMode === `${MULTI}` ? (
               <div className="GameSetup__item">
                 <label>No of Players:</label>
                 <Input
@@ -110,7 +117,8 @@ const GameSetup = () => {
               />
             </div>
 
-            {selectedMode === "Multi" && multiPlayerGameType === "Session" ? (
+            {selectedMode === `${MULTI}` &&
+            multiPlayerGameType === `${SESSION}` ? (
               <div className="GameSetup__item">
                 <label>No of Games:</label>
                 <Input
@@ -121,8 +129,10 @@ const GameSetup = () => {
               </div>
             ) : null}
 
-            {selectedMode === "Single" &&
-            ["Random", "Progressive"].includes(onePlayerGameType) ? null : (
+            {selectedMode === `${SINGLE}` &&
+            [`${RANDOM}`, `${PROGRESSIVE}`].includes(
+              onePlayerGameType
+            ) ? null : (
               <div className="GameSetup__item">
                 <label>Difficulty:</label>
 

@@ -2,6 +2,7 @@ import swal from "sweetalert";
 import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
 import { computeNewDifficulty } from "./new-difficulty";
+import { game_mode, mode_type } from "./reusable-variables";
 
 export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { newGame } = initialState;
@@ -88,6 +89,8 @@ export const alertSuccess = async (
   initialState,
   contextDispatch
 ) => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
   const {
     numberToGuess,
     sessionCount,
@@ -108,7 +111,9 @@ export const alertSuccess = async (
   );
 
   const value = await swal({
-    title: `${winningPlayerName} win${selectedMode === "Single" ? "" : "s"}!`,
+    title: `${winningPlayerName} win${
+      selectedMode === `${SINGLE}` ? "" : "s"
+    }!`,
     text: `Romeo picked ${numberToGuess}`,
     icon: "success",
     closeOnClickOutside: false,
@@ -137,7 +142,7 @@ export const alertSuccess = async (
   });
   switch (value) {
     case "continue":
-      if (selectedMode === "Single" && onePlayerGameType === "Random") {
+      if (selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`) {
         contextDispatch({
           type: "RANDOMIZE_THE_DIFFICULTY",
           payload: { difficulty: generateRandomDifficulty() },
@@ -146,8 +151,8 @@ export const alertSuccess = async (
           type: "SHOW_GAME_PREP_PAGE",
         });
       } else if (
-        selectedMode === "Multi" &&
-        multiPlayerGameType === "Session"
+        selectedMode === `${MULTI}` &&
+        multiPlayerGameType === `${SESSION}`
       ) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
           alertSessionEnd(initialState, contextDispatch);
@@ -161,8 +166,8 @@ export const alertSuccess = async (
           });
         }
       } else if (
-        selectedMode === "Single" &&
-        onePlayerGameType === "Progressive"
+        selectedMode === `${SINGLE}` &&
+        onePlayerGameType === `${PROGRESSIVE}`
       ) {
         contextDispatch({
           type: "COMPUTE_NEW_DIFFICULTY",
@@ -207,6 +212,8 @@ export const alertSuccess = async (
 };
 
 export const alertNoWinner = async (initialState, contextDispatch) => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
   const {
     numberToGuess,
     sessionCount,
@@ -227,7 +234,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
 
   const value = await swal({
     title: `Oops! ${
-      selectedMode === "Single"
+      selectedMode === `${SINGLE}`
         ? "Wrong guess! Attempts used up! Try again."
         : " No winner in this round!"
     }`,
@@ -252,19 +259,22 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
     case "continue":
       contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
 
-      if (selectedMode === "Multi" && multiPlayerGameType === "Session") {
+      if (selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`) {
         contextDispatch({
           type: "SET_NEW_SESSION_COUNT",
           payload: { sessionCount: sessionCount + 1 },
         });
       }
-      if (selectedMode === "Single" && onePlayerGameType === "Random") {
+      if (selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`) {
         contextDispatch({
           type: "RANDOMIZE_THE_DIFFICULTY",
           payload: { difficulty: generateRandomDifficulty() },
         });
       }
-      if (selectedMode === "Single" && onePlayerGameType === "Progressive") {
+      if (
+        selectedMode === `${SINGLE}` &&
+        onePlayerGameType === `${PROGRESSIVE}`
+      ) {
         contextDispatch({
           type: "COMPUTE_NEW_DIFFICULTY",
           payload: {

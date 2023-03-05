@@ -4,8 +4,11 @@ import Button from "../button/Button";
 import "./Table.css";
 import { alertSessionEnd } from "../../utils/alert";
 import { generateRandomDifficulty } from "../../utils/random-difficulty";
+import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 const Table = ({ data = [], columns }) => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM } = mode_type;
   const context = useContext(AppContext);
   const {
     initialState: {
@@ -54,7 +57,10 @@ const Table = ({ data = [], columns }) => {
           width="w-60"
           onClick={() => {
             if (!triggeredByTab) {
-              if (selectedMode === "Single" && onePlayerGameType === "Random") {
+              if (
+                selectedMode === `${SINGLE}` &&
+                onePlayerGameType === `${RANDOM}`
+              ) {
                 contextDispatch({
                   type: "RANDOMIZE_THE_DIFFICULTY",
                   payload: { difficulty: generateRandomDifficulty() },
@@ -63,8 +69,8 @@ const Table = ({ data = [], columns }) => {
                   type: "SHOW_GAME_PREP_PAGE",
                 });
               } else if (
-                selectedMode === "Multi" &&
-                multiPlayerGameType === "Session" &&
+                selectedMode === `${MULTI}` &&
+                multiPlayerGameType === `${SESSION}` &&
                 Number(numOfGamesInSession) === Number(sessionCount)
               ) {
                 alertSessionEnd(initialState, contextDispatch);
