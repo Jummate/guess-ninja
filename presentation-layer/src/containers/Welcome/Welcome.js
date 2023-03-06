@@ -50,10 +50,10 @@ const Welcome = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             width="w-80"
-            onClick={() => (
-              contextDispatch({ type: "SHOW_HOME_PAGE" }),
-              setShowMenu(!showMenu)
-            )}
+            onClick={() => {
+              contextDispatch({ type: "SHOW_HOME_PAGE" });
+              setShowMenu(!showMenu);
+            }}
           >
             BACK
           </Button>

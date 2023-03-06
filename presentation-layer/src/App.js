@@ -1,5 +1,5 @@
 import React, { useMemo, useReducer } from "react";
-import ParticlesComponent from "./components/Particles";
+import Confetti from "./components/Confetti";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,7 +30,7 @@ function App() {
   return (
     <AppContext.Provider value={memoizedValue}>
       <main className="App__container">
-        <ParticlesComponent />
+        <Confetti />
         <div className="App__content__wrapper">
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}

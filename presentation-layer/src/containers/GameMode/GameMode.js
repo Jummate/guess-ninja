@@ -34,31 +34,20 @@ const GameMode = () => {
           <Button
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
-            onClick={(e) => (
-              setShowMenu(!showMenu), setMode(e.target.textContent.trim())
-            )}
-            // onClick={() =>
-            //   contextDispatch({
-            //     type: "SHOW_GAME_SETUP_PAGE",
-            //     payload: { selectedMode: "Single" },
-            //   })
-            // }
+            onClick={(e) => {
+              setShowMenu(!showMenu);
+              setMode(e.target.textContent.trim());
+            }}
           >
             Single Player
           </Button>
           <Button
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
-            onClick={(e) => (
-              setShowMenu(!showMenu), setMode(e.target.textContent.trim())
-            )}
-            // onClick={() => (
-            //   contextDispatch({
-            //     type: "SHOW_GAME_SETUP_PAGE",
-            //     payload: { selectedMode: "Multi" },
-            //   }),
-            //   setMode("Multi")
-            // )}
+            onClick={(e) => {
+              setShowMenu(!showMenu);
+              setMode(e.target.textContent.trim());
+            }}
           >
             Multiplayer
           </Button>
@@ -162,10 +151,10 @@ const GameMode = () => {
                 buttonSize="btn--large"
                 buttonStyle="btn--gradient"
                 width="w-80"
-                onClick={() => (
-                  contextDispatch({ type: "SHOW_HOME_PAGE" }),
-                  setShowMenu(!showMenu)
-                )}
+                onClick={() => {
+                  contextDispatch({ type: "SHOW_HOME_PAGE" });
+                  setShowMenu(!showMenu);
+                }}
               >
                 BACK
               </Button>
