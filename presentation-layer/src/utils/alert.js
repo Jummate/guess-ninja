@@ -25,19 +25,18 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { winningPlayer, maxScore } = getSessionWinner(newGame);
 
   const value = await swal({
-    title: `END OF SESSION!`,
-    // text: `${winningPlayer} wins the session with a score of ${maxScore}`,
     icon: "success",
     closeOnClickOutside: false,
     closeOnEsc: false,
     dangerMode: true,
     content: {
-      element: "p",
+      element: "div",
       attributes: {
-        innerHTML: `${winningPlayer} wins the session with a score of ${maxScore}`,
-        style: "color: maroon; font-weight: bolder",
+        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><h4>${winningPlayer} wins the session with a score of ${maxScore}</h4>`,
+        // style: "color: maroon; font-weight: bolder",
       },
     },
+
     buttons: {
       newSession: {
         text: " New Session",
@@ -125,21 +124,22 @@ export const alertSuccess = async (
     counter
   );
 
+  const title = `${winningPlayerName} win${
+    selectedMode === `${SINGLE}` ? "" : "s"
+  }!`;
+
   const value = await swal({
-    title: `${winningPlayerName} win${
-      selectedMode === `${SINGLE}` ? "" : "s"
-    }!`,
-    text: `Romeo picked ${numberToGuess}`,
     icon: "success",
     closeOnClickOutside: false,
     closeOnEsc: false,
     dangerMode: true,
-    // content: {
-    //   element: "p",
-    //   attributes: {
-    //     innerHTML: "You are trying",
-    //   },
-    // },
+    content: {
+      element: "div",
+      attributes: {
+        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">${title}</h3><br /><h4>Romeo picked ${numberToGuess}</h4>`,
+        // style: "color: maroon; font-weight: bolder",
+      },
+    },
     buttons: {
       continue: {
         text: "Continue",
@@ -247,14 +247,20 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
     counter
   );
 
+  const errorMsg =
+    selectedMode === `${SINGLE}`
+      ? "Wrong guess! Attempts used up! Try again."
+      : " No winner in this round!";
+
   const value = await swal({
-    title: `Oops! ${
-      selectedMode === `${SINGLE}`
-        ? "Wrong guess! Attempts used up! Try again."
-        : " No winner in this round!"
-    }`,
-    text: `Romeo picked ${numberToGuess}`,
     icon: "error",
+    content: {
+      element: "div",
+      attributes: {
+        innerHTML: `<h3 style="color: maroon; font-weight: bolder">${errorMsg}</h3><br /><h4>Romeo picked ${numberToGuess}</h4>`,
+        // style: "color: maroon; font-weight: bolder",
+      },
+    },
     closeOnClickOutside: false,
     closeOnEsc: false,
     dangerMode: true,
@@ -315,9 +321,16 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
 
 export const alertIncorrectGuess = async (contextDispatch) => {
   const value = await swal({
-    title: "Oops!",
-    text: `Incorrect guess!`,
+    // title: "Oops!",
+    // text: `Incorrect guess!`,
     icon: "error",
+    content: {
+      element: "h2",
+      attributes: {
+        textContent: "Wrong guess!",
+        style: "color: maroon; font-weight: bolder",
+      },
+    },
     closeOnClickOutside: false,
     closeOnEsc: false,
     dangerMode: true,
