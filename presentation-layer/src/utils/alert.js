@@ -32,13 +32,15 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
     content: {
       element: "div",
       attributes: {
-        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><h4>${winningPlayer} wins the session with a score of ${maxScore}</h4>`,
+        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><h4>${winningPlayer} wins the session with ${maxScore} point${
+          maxScore > 1 ? "s" : ""
+        } </h4>`,
         // style: "color: maroon; font-weight: bolder",
       },
     },
 
     buttons: {
-      newSession: {
+      continue: {
         text: " New Session",
         value: "new-session",
       },
@@ -46,7 +48,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
         text: "View Score",
         value: "view-score",
       },
-      home: {
+      quit: {
         text: "Home",
         value: "home",
       },

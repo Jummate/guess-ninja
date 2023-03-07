@@ -38,8 +38,7 @@ const GamePreparation = () => {
   );
 
   const isSessionGame =
-    selectedMode === `${MULTI}` &&
-    multiPlayerGameType.toString().toLowerCase() === `${SESSION}`
+    selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`
       ? true
       : false;
 
