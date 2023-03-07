@@ -4,6 +4,21 @@ import { getSessionWinner } from "./session-winner";
 import { computeNewDifficulty } from "./new-difficulty";
 import { game_mode, mode_type } from "./reusable-variables";
 
+export const alertError = (errorMsg) => {
+  swal({
+    icon: "error",
+    buttons: {
+      confirm: true,
+    },
+    content: {
+      element: "p",
+      attributes: {
+        textContent: `${errorMsg}`,
+      },
+    },
+  });
+};
+
 export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { newGame } = initialState;
 

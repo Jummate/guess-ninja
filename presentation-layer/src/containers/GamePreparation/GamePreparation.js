@@ -5,7 +5,7 @@ import Navigation from "../../components/nav/Navigation";
 import Loading from "../../components/loading/Loading";
 import { AppContext } from "../../utils/context";
 import { generateNumberToGuess } from "../../utils/numberToGuess";
-import RobotRomeo from "../../assets/romeo-robot.webp";
+import RobotRomeo from "../../assets/images/romeo-robot.webp";
 import {
   game_mode,
   mode_type,

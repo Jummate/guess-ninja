@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Button from "../../components/button/Button";
 import { AppContext } from "../../utils/context";
 import { generateRandomPlayers } from "../../utils/random-player";
-import ThinkingDoll from "../../assets/thinking.gif";
+import ThinkingDoll from "../../assets/images/thinking.gif";
 import { difficultyValue } from "../../utils/difficultyValue";
 import Navigation from "../../components/nav/Navigation";
 import { game_mode } from "../../utils/reusable-variables";

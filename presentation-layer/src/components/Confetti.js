@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 
 const Confetti = () => {
   const root = document.getElementById("root");
-  const [windowDimenson, setWindowDimension] = useState({
+  const [rootDimenson, setRootDimension] = useState({
     width: root.innerWidth,
     height: root.innerHeight,
   });
 
   const monitorDimension = () => {
-    setWindowDimension({
+    setRootDimension({
       width: root.innerWidth,
       height: root.innerHeight,
     });
@@ -22,10 +22,9 @@ const Confetti = () => {
   return (
     <>
       <ReactConfetti
-        width={windowDimenson.width}
-        height={windowDimenson.height}
+        width={rootDimenson.width}
+        height={rootDimenson.height}
         opacity={0.1}
-        numberOfPieces={200}
       />
     </>
   );

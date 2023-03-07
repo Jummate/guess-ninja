@@ -13,7 +13,9 @@
 
 }
 .input::placeholder{
-    color:var(--danger)
+    color:var(--danger);
+    font-weight: bolder;
+    font-size:0.8rem
 }
 
 .input:focus{

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
-import NinjaImage from "../../assets/ninja-gaming-joystick-sport-logo-icon.jpg";
+import NinjaImage from "../../assets/images/ninja-gaming-joystick-sport-logo-icon.jpg";
 import "./Welcome.css";
 import { AppContext } from "../../utils/context";
 import Menu from "../../components/Menu";
