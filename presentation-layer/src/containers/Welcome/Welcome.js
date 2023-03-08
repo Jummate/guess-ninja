@@ -4,11 +4,13 @@ import NinjaImage from "../../assets/images/ninja-gaming-joystick-sport-logo-ico
 import "./Welcome.css";
 import { AppContext } from "../../utils/context";
 import Menu from "../../components/Menu";
+import Confetti from "../../components/Confetti";
 
 const Welcome = () => {
   const [showMenu, setShowMenu] = useState(false);
   const context = useContext(AppContext);
   const { contextDispatch } = context;
+
   return (
     <div className="Welcome__container">
       <h1 className="Welcome__heading">Guess Ninja</h1>
@@ -59,6 +61,7 @@ const Welcome = () => {
           </Button>
         </Menu>
       ) : null}
+      <Confetti />
     </div>
   );
 };

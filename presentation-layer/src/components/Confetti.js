@@ -1,30 +1,33 @@
 import ReactConfetti from "react-confetti";
 import React, { useEffect, useState } from "react";
 
-const Confetti = () => {
-  const root = document.getElementById("root");
-  const [rootDimenson, setRootDimension] = useState({
-    width: root.innerWidth,
-    height: root.innerHeight,
+const Confetti = ({ opacity = 0.1 }) => {
+  // const {
+  //   initialState: { confettiOpacity },
+  // } = context;
+  // const root = document.getElementById("root");
+  const [windowDimenson, setWindowDimension] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
   });
 
   const monitorDimension = () => {
-    setRootDimension({
-      width: root.innerWidth,
-      height: root.innerHeight,
+    setWindowDimension({
+      width: window.innerWidth,
+      height: window.innerHeight,
     });
   };
 
   useEffect(() => {
-    root.addEventListener("resize", monitorDimension);
-    return root.removeEventListener("resize", monitorDimension);
+    window.addEventListener("resize", monitorDimension);
+    return window.removeEventListener("resize", monitorDimension);
   });
   return (
     <>
       <ReactConfetti
-        width={rootDimenson.width}
-        height={rootDimenson.height}
-        opacity={0.1}
+        width={windowDimenson.width}
+        height={windowDimenson.height}
+        opacity={opacity}
       />
     </>
   );

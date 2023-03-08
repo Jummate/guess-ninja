@@ -10,6 +10,7 @@ import {
   mode_type,
   color_type,
 } from "../../utils/reusable-variables";
+import Confetti from "../../components/Confetti";
 
 const GameMode = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -164,6 +165,7 @@ const GameMode = () => {
       </div>
 
       <Navigation />
+      <Confetti />
     </section>
   );
 };

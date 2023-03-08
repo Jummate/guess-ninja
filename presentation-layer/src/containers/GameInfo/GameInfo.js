@@ -7,6 +7,7 @@ import Card from "../../components/card/Card";
 import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 import "./GameInfo.css";
+import Confetti from "../../components/Confetti";
 
 const GameInfo = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -95,6 +96,7 @@ const GameInfo = () => {
       </div>
 
       <Navigation />
+      <Confetti opacity={0.06} />
     </section>
   );
 };

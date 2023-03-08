@@ -30,7 +30,6 @@ function App() {
   return (
     <AppContext.Provider value={memoizedValue}>
       <main className="App__container">
-        <Confetti />
         <div className="App__content__wrapper">
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}

@@ -24,4 +24,5 @@ export const defaultState = {
   numOfGamesInSession: 0,
   sessionCount: 1,
   counter: 1,
+  showConfetti: true,
 };

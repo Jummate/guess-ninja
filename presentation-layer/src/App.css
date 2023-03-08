@@ -24,3 +24,11 @@
   align-items: center;
 }
 
+/* @media screen and (orientation: landscape) {
+  .App__content__wrapper{
+   
+    max-width: 500px;
+    
+  }
+} */
+

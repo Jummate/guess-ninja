@@ -125,6 +125,11 @@
     }
 }
 
+/* @media screen and (orientation: landscape){
+    .btn{
+       padding:6px
+    }
+} */
 
 
 

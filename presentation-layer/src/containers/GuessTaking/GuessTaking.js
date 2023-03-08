@@ -16,6 +16,7 @@ import {
 import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import Header from "../../components/header/Header";
+import Confetti from "../../components/Confetti";
 
 const GuessTaking = () => {
   const { MULTI } = game_mode;
@@ -40,6 +41,7 @@ const GuessTaking = () => {
   const [playerToGuess, setPlayerToGuess] = useState(randomizedPlayers[0]);
   const [numArray, setNumArray] = useState(numberArray);
   const [combinedAttempts, setCombinedAttempts] = useState(1);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
@@ -67,6 +69,8 @@ const GuessTaking = () => {
 
       newGame.updatePlayersNoOfPlays();
       newGame.resetPlayersPlayStatus();
+
+      setShowConfetti(true);
 
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
@@ -166,6 +170,7 @@ const GuessTaking = () => {
         ))}
       </div>
       <Navigation />
+      {showConfetti ? <Confetti opacity={1.0} /> : null}
     </section>
   );
 };

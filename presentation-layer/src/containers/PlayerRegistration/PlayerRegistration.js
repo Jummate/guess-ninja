@@ -9,6 +9,7 @@ import Overlay from "../../components/Overlay";
 import { toast } from "react-toastify";
 
 import "./PlayerRegistration.css";
+import Confetti from "../../components/Confetti";
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
@@ -106,6 +107,7 @@ const PlayerRegistration = () => {
 
       {showOverlay && <Overlay />}
       <Navigation />
+      <Confetti opacity={0.05} />
     </section>
   );
 };

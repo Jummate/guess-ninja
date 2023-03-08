@@ -9,6 +9,7 @@
     align-items: center;
     color:var(--danger);
     font-weight: bolder;
+    overflow: auto;
 }
 
 .GameInfo__body{
@@ -35,3 +36,10 @@
     box-shadow: 2px 2px 8px rgb(25, 24, 24), -2px -2px 8px rgb(25, 24, 24);
     overflow-y: auto;
 }
+
+/* @media screen and (orientation:landscape) {
+    .GameInfo__container{
+       font-size: 0.7rem;;
+    }
+    
+} */

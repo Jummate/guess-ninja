@@ -15,6 +15,7 @@ import {
   color_type,
 } from "../../utils/reusable-variables";
 import { validateField } from "../../utils/validation";
+import Confetti from "../../components/Confetti";
 
 const GameSetup = () => {
   const context = useContext(AppContext);
@@ -44,6 +45,15 @@ const GameSetup = () => {
     selectedMode === `${SINGLE}`
       ? "SHOW_GAME_INFO_PAGE"
       : "SHOW_PLAYER_REG_PAGE";
+
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     // attemptRef?.current?.focus();
+  //     handleClick();
+  //   }
+  // };
+
+  // window.addEventListener("keyup", handleKeyPress);
 
   const handleClick = () => {
     if (
@@ -169,6 +179,7 @@ const GameSetup = () => {
       </div>
 
       <Navigation />
+      <Confetti />
     </section>
   );
 };
