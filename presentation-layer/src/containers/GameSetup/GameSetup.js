@@ -16,6 +16,7 @@ import {
 } from "../../utils/reusable-variables";
 import { validateField } from "../../utils/validation";
 import Confetti from "../../components/Confetti";
+import { playButtonClick } from "../../utils/game-sound";
 
 const GameSetup = () => {
   const context = useContext(AppContext);
@@ -170,7 +171,10 @@ const GameSetup = () => {
             <Button
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
-              onClick={handleClick}
+              onClick={() => {
+                playButtonClick();
+                handleClick();
+              }}
             >
               CONTINUE
             </Button>

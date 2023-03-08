@@ -3,6 +3,7 @@ import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
 import { computeNewDifficulty } from "./new-difficulty";
 import { game_mode, mode_type } from "./reusable-variables";
+import { playSessionWon } from "./game-sound";
 
 export const alertError = (errorMsg) => {
   swal({
@@ -159,6 +160,13 @@ export const alertSuccess = async (
   });
   switch (value) {
     case "continue":
+      contextDispatch({
+        type: "PLAY_MUSIC",
+        payload: {
+          playBackgroundMusic: false,
+          playBackgroundMusic2: true,
+        },
+      });
       if (selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`) {
         contextDispatch({
           type: "RANDOMIZE_THE_DIFFICULTY",
@@ -172,6 +180,7 @@ export const alertSuccess = async (
         multiPlayerGameType === `${SESSION}`
       ) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
+          playSessionWon();
           alertSessionEnd(initialState, contextDispatch);
         } else {
           contextDispatch({
@@ -212,6 +221,13 @@ export const alertSuccess = async (
 
       break;
     case "view-score":
+      contextDispatch({
+        type: "PLAY_MUSIC",
+        payload: {
+          playBackgroundMusic: false,
+          playBackgroundMusic2: true,
+        },
+      });
       contextDispatch({
         type: "UPDATE_TRIGGERED_BY_TAB",
         payload: { triggeredByTab: false },

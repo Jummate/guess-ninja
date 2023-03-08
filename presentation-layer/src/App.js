@@ -1,5 +1,4 @@
 import React, { useMemo, useReducer } from "react";
-import Confetti from "./components/Confetti";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +16,9 @@ import GuessTaking from "./containers/GuessTaking/GuessTaking";
 import { defaultState } from "./utils/defaultState";
 import Table from "./components/table/Table";
 import { getScore, columns } from "./utils/score";
+import Sound from "./components/Sound";
+import MinimalBeat from "./assets/sound/minimal.mp3";
+import GameMusic from "./assets/sound/game-music.mp3";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -31,6 +33,8 @@ function App() {
     <AppContext.Provider value={memoizedValue}>
       <main className="App__container">
         <div className="App__content__wrapper">
+          {state.playBackgroundMusic ? <Sound src={MinimalBeat} /> : null}
+          {state.playBackgroundMusic2 ? <Sound src={GameMusic} /> : null}
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}
           {state.gameSetupActive ? <GameSetup /> : null}

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Navigation.css";
 import { AppContext } from "../../utils/context";
 import { alertQuit } from "../../utils/alert";
+import { playQuitNotice } from "../../utils/game-sound";
 
 const Navigation = () => {
   const context = useContext(AppContext);
@@ -65,7 +66,14 @@ const Navigation = () => {
               Scores
             </li>
 
-            <li onClick={() => alertQuit(contextDispatch)}>Quit</li>
+            <li
+              onClick={() => {
+                alertQuit(contextDispatch);
+                playQuitNotice();
+              }}
+            >
+              Quit
+            </li>
           </>
         ) : null}
       </ul>

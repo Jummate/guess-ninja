@@ -17,6 +17,12 @@ import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import Header from "../../components/header/Header";
 import Confetti from "../../components/Confetti";
+import {
+  playAttemptExhausted,
+  playCorrectGuess,
+  playNumberClick,
+  playWrongGuess,
+} from "../../utils/game-sound";
 
 const GuessTaking = () => {
   const { MULTI } = game_mode;
@@ -71,6 +77,14 @@ const GuessTaking = () => {
       newGame.resetPlayersPlayStatus();
 
       setShowConfetti(true);
+      contextDispatch({
+        type: "PLAY_MUSIC",
+        payload: {
+          playBackgroundMusic: false,
+          playBackgroundMusic2: false,
+        },
+      });
+      playCorrectGuess();
 
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
@@ -79,6 +93,7 @@ const GuessTaking = () => {
         0
       ) {
         if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
+          playAttemptExhausted();
           newGame.updatePlayersNoOfPlays();
           alertNoWinner(initialState, contextDispatch);
         } else {
@@ -87,9 +102,11 @@ const GuessTaking = () => {
             generateRandomPlayers(newGame.getPlayersInvolved())
           );
           setCount(0);
+          playWrongGuess();
           alertIncorrectGuess(contextDispatch);
         }
       } else {
+        playWrongGuess();
         alertIncorrectGuess(contextDispatch);
       }
     }
@@ -163,7 +180,10 @@ const GuessTaking = () => {
             buttonSize="btn--medium"
             buttonStyle="btn--danger--solid"
             width="w-10"
-            onClick={handleNumberButtonClick}
+            onClick={(e) => {
+              playNumberClick();
+              handleNumberButtonClick(e);
+            }}
           >
             {number}
           </Button>

@@ -12,6 +12,8 @@ const reducer = (state, action) => {
         guessTakingActive: false,
         gameGuideActive: false,
         showScoreTable: false,
+        playBackgroundMusic2: false,
+        playBackgroundMusic: true,
       };
     case "SHOW_GAME_MODE_PAGE":
       return {
@@ -179,6 +181,13 @@ const reducer = (state, action) => {
 
     case "INCREMENT_COUNTER":
       return { ...state, counter: action.payload.counter };
+
+    case "PLAY_MUSIC":
+      return {
+        ...state,
+        playBackgroundMusic: action.payload.playBackgroundMusic,
+        playBackgroundMusic2: action.payload.playBackgroundMusic2,
+      };
 
     default:
       throw new Error("No matching action type");

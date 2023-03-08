@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 import "./PlayerRegistration.css";
 import Confetti from "../../components/Confetti";
+import { playGameStart } from "../../utils/game-sound";
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
@@ -96,7 +97,10 @@ const PlayerRegistration = () => {
             <Button
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
-              onClick={handleClick}
+              onClick={() => {
+                playGameStart();
+                handleClick();
+              }}
               width="w-80"
             >
               Enter

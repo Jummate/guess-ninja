@@ -9,7 +9,6 @@
     align-items: center;
     color:var(--danger);
     font-weight: bolder;
-    overflow: auto;
 }
 
 .GameInfo__body{

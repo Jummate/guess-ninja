@@ -1,3 +1,14 @@
+
+:root{
+  --primary: #49cdcb;
+  --warning: #ffd028;
+  --danger: #eb3f27;
+  --success: #1e8028;
+  --dark: #181717;
+  --light: #fdfdfd;
+}
+
+
 .App__container{
   color:#fff;
   width:100%;

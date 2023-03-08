@@ -11,6 +11,7 @@ import {
   color_type,
 } from "../../utils/reusable-variables";
 import Confetti from "../../components/Confetti";
+import { playGameStart } from "../../utils/game-sound";
 
 const GameMode = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -36,6 +37,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
+              playGameStart();
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -46,6 +48,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
+              playGameStart();
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -61,15 +64,16 @@ const GameMode = () => {
                     buttonSize="btn--large"
                     buttonStyle="btn--gradient"
                     width="w-80"
-                    onClick={(e) =>
+                    onClick={(e) => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
-                      })
-                    }
+                      });
+                      playGameStart();
+                    }}
                   >
                     {PROGRESSIVE}
                   </Button>
@@ -78,15 +82,16 @@ const GameMode = () => {
                     buttonSize="btn--large"
                     buttonStyle="btn--gradient"
                     width="w-80"
-                    onClick={(e) =>
+                    onClick={(e) => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
-                      })
-                    }
+                      });
+                      playGameStart();
+                    }}
                   >
                     {CONSTANT}
                   </Button>
@@ -95,15 +100,16 @@ const GameMode = () => {
                     buttonSize="btn--large"
                     buttonStyle="btn--gradient"
                     width="w-80"
-                    onClick={(e) =>
+                    onClick={(e) => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: `${SINGLE}`,
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
-                      })
-                    }
+                      });
+                      playGameStart();
+                    }}
                   >
                     {RANDOM}
                   </Button>
@@ -116,15 +122,16 @@ const GameMode = () => {
                     buttonSize="btn--large"
                     buttonStyle="btn--gradient"
                     width="w-80"
-                    onClick={(e) =>
+                    onClick={(e) => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: `${MULTI}`,
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
-                      })
-                    }
+                      });
+                      playGameStart();
+                    }}
                   >
                     {REGULAR}
                   </Button>
@@ -133,15 +140,16 @@ const GameMode = () => {
                     buttonSize="btn--large"
                     buttonStyle="btn--gradient"
                     width="w-80"
-                    onClick={(e) =>
+                    onClick={(e) => {
                       contextDispatch({
                         type: "SHOW_GAME_SETUP_PAGE",
                         payload: {
                           selectedMode: `${MULTI}`,
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
-                      })
-                    }
+                      });
+                      playGameStart();
+                    }}
                   >
                     {SESSION}
                   </Button>
@@ -153,6 +161,7 @@ const GameMode = () => {
                 buttonStyle="btn--gradient"
                 width="w-80"
                 onClick={() => {
+                  playGameStart();
                   contextDispatch({ type: "SHOW_HOME_PAGE" });
                   setShowMenu(!showMenu);
                 }}

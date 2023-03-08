@@ -1,4 +1,5 @@
 import { alertError } from "./alert";
+import { playInputError } from "./game-sound";
 import { color_type } from "./reusable-variables";
 import { game_mode } from "./reusable-variables";
 import { mode_type } from "./reusable-variables";
@@ -94,11 +95,13 @@ export const validateField = (mode, multiGameType, refs) => {
   if (mode === `${SINGLE}`) {
     if (!validateSingle(refs)) {
       IS_OKAY = false;
+      playInputError();
       alertError(errorMsg);
     }
   } else {
     if (!validateMulti(multiGameType, refs)) {
       IS_OKAY = false;
+      playInputError();
       alertError(errorMsg);
     }
   }

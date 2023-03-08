@@ -12,6 +12,7 @@ import {
   color_type,
 } from "../../utils/reusable-variables";
 import "./GamePreparation.css";
+import { playGameStart } from "../../utils/game-sound";
 
 const GamePreparation = () => {
   const { MULTI } = game_mode;
@@ -109,12 +110,13 @@ const GamePreparation = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               // width="w-20"
-              onClick={() =>
+              onClick={() => {
                 contextDispatch({
                   type: "SHOW_GUESS_TAKING_PAGE",
                   payload: { numberToGuess, numberArray },
-                })
-              }
+                });
+                playGameStart();
+              }}
             >
               START
             </Button>

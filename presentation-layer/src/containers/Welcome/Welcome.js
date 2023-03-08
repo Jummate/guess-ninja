@@ -5,6 +5,10 @@ import "./Welcome.css";
 import { AppContext } from "../../utils/context";
 import Menu from "../../components/Menu";
 import Confetti from "../../components/Confetti";
+// import MinimalBeat from "../../assets/minimal.mp3";
+// import GameStart from "../../assets/game-start.mp3";
+// import Sound from "../../components/Sound";
+import { playGameStart } from "../../utils/game-sound";
 
 const Welcome = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -23,7 +27,10 @@ const Welcome = () => {
       <Button
         buttonSize="btn--medium"
         buttonStyle="btn--gradient"
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={() => {
+          playGameStart();
+          setShowMenu(!showMenu);
+        }}
       >
         GET STARTED
       </Button>
@@ -34,7 +41,10 @@ const Welcome = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             width="w-80"
-            onClick={() => contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" })}
+            onClick={() => {
+              contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" });
+              playGameStart();
+            }}
           >
             GUIDE
           </Button>
@@ -43,7 +53,10 @@ const Welcome = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             width="w-80"
-            onClick={() => contextDispatch({ type: "SHOW_GAME_MODE_PAGE" })}
+            onClick={() => {
+              contextDispatch({ type: "SHOW_GAME_MODE_PAGE" });
+              playGameStart();
+            }}
           >
             START
           </Button>
@@ -55,6 +68,7 @@ const Welcome = () => {
             onClick={() => {
               contextDispatch({ type: "SHOW_HOME_PAGE" });
               setShowMenu(!showMenu);
+              playGameStart();
             }}
           >
             BACK

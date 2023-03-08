@@ -25,4 +25,6 @@ export const defaultState = {
   sessionCount: 1,
   counter: 1,
   showConfetti: true,
+  playBackgroundMusic: true,
+  playBackgroundMusic2: false,
 };

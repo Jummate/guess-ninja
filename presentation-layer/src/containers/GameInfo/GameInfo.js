@@ -8,6 +8,7 @@ import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 import "./GameInfo.css";
 import Confetti from "../../components/Confetti";
+import { playGameStart } from "../../utils/game-sound";
 
 const GameInfo = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -85,11 +86,19 @@ const GameInfo = () => {
         <Button
           buttonSize="btn--large"
           buttonStyle="btn--gradient"
-          onClick={() =>
+          onClick={() => {
+            playGameStart();
+            contextDispatch({
+              type: "PLAY_MUSIC",
+              payload: {
+                playBackgroundMusic: false,
+                playBackgroundMusic2: true,
+              },
+            });
             contextDispatch({
               type: "SHOW_GAME_PREP_PAGE",
-            })
-          }
+            });
+          }}
         >
           Start Game
         </Button>
