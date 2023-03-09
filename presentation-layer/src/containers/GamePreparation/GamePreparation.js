@@ -12,7 +12,7 @@ import {
   color_type,
 } from "../../utils/reusable-variables";
 import "./GamePreparation.css";
-import { playGameStart } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GamePreparation = () => {
@@ -117,7 +117,7 @@ const GamePreparation = () => {
                   type: "SHOW_GUESS_TAKING_PAGE",
                   payload: { numberToGuess, numberArray },
                 });
-                !turnSoundOff && playGameStart();
+                !turnSoundOff && playSound(sound.GameStart);
               }}
             >
               START

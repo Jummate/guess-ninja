@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Navigation.css";
 import { AppContext } from "../../utils/context";
 import { alertQuit } from "../../utils/alert";
-import { playQuitNotice } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 
 const Navigation = () => {
   const context = useContext(AppContext);
@@ -69,7 +69,7 @@ const Navigation = () => {
             <li
               onClick={() => {
                 alertQuit(contextDispatch);
-                playQuitNotice();
+                playSound(sound.QuitNotice);
               }}
             >
               Quit

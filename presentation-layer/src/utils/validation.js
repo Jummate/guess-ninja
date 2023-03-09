@@ -1,5 +1,5 @@
 import { alertError } from "./alert";
-import { playInputError } from "./game-sound";
+import { playSound, sound } from "./game-sound";
 import { color_type } from "./reusable-variables";
 import { game_mode } from "./reusable-variables";
 import { mode_type } from "./reusable-variables";
@@ -120,7 +120,7 @@ export const validatePlayerName = (ref, currentGame, turnSoundOff) => {
     !validateDuplicateName(ref, currentGame)
   ) {
     IS_OKAY = false;
-    !turnSoundOff && playInputError();
+    !turnSoundOff && playSound(sound.InputError);
     alertError(errorMsg);
   }
   return IS_OKAY;
@@ -132,13 +132,13 @@ export const validateField = (mode, multiGameType, turnSoundOff, refs) => {
   if (mode === `${SINGLE}`) {
     if (!validateSingle(refs)) {
       IS_OKAY = false;
-      !turnSoundOff && playInputError();
+      !turnSoundOff && playSound(sound.InputError);
       alertError(errorMsg);
     }
   } else {
     if (!validateMulti(multiGameType, refs)) {
       IS_OKAY = false;
-      !turnSoundOff && playInputError();
+      !turnSoundOff && playSound(sound.InputError);
       alertError(errorMsg);
     }
   }

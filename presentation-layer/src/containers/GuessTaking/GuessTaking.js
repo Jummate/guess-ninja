@@ -17,12 +17,7 @@ import "./GuessTaking.css";
 import { checkAndConfirmGuess } from "../../utils/checkGuess";
 import Header from "../../components/header/Header";
 import Confetti from "../../components/Confetti";
-import {
-  playAttemptExhausted,
-  playCorrectGuess,
-  playNumberClick,
-  playWrongGuess,
-} from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GuessTaking = () => {
@@ -86,7 +81,7 @@ const GuessTaking = () => {
           playBackgroundMusic2: false,
         },
       });
-      !turnSoundOff && playCorrectGuess();
+      !turnSoundOff && playSound(sound.CorrectGuess);
 
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
@@ -95,7 +90,7 @@ const GuessTaking = () => {
         0
       ) {
         if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-          !turnSoundOff && playAttemptExhausted();
+          !turnSoundOff && playSound(sound.AttemptExhausted);
           newGame.updatePlayersNoOfPlays();
           alertNoWinner(initialState, contextDispatch);
         } else {
@@ -104,11 +99,11 @@ const GuessTaking = () => {
             generateRandomPlayers(newGame.getPlayersInvolved())
           );
           setCount(0);
-          !turnSoundOff && playWrongGuess();
+          !turnSoundOff && playSound(sound.WrongGuess);
           alertIncorrectGuess(contextDispatch);
         }
       } else {
-        !turnSoundOff && playWrongGuess();
+        !turnSoundOff && playSound(sound.WrongGuess);
         alertIncorrectGuess(contextDispatch);
       }
     }
@@ -183,7 +178,7 @@ const GuessTaking = () => {
             buttonStyle="btn--danger--solid"
             width="w-10"
             onClick={(e) => {
-              !turnSoundOff && playNumberClick();
+              !turnSoundOff && playSound(sound.NumberClick);
               handleNumberButtonClick(e);
             }}
           >

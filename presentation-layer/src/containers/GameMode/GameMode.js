@@ -11,7 +11,7 @@ import {
   color_type,
 } from "../../utils/reusable-variables";
 import Confetti from "../../components/Confetti";
-import { playGameStart } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GameMode = () => {
@@ -41,7 +41,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
-              !turnSoundOff && playGameStart();
+              !turnSoundOff && playSound(sound.GameStart);
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -52,7 +52,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
-              !turnSoundOff && playGameStart();
+              !turnSoundOff && playSound(sound.GameStart);
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -76,7 +76,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      !turnSoundOff && playGameStart();
+                      !turnSoundOff && playSound(sound.GameStart);
                     }}
                   >
                     {PROGRESSIVE}
@@ -94,7 +94,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      !turnSoundOff && playGameStart();
+                      !turnSoundOff && playSound(sound.GameStart);
                     }}
                   >
                     {CONSTANT}
@@ -112,7 +112,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      !turnSoundOff && playGameStart();
+                      !turnSoundOff && playSound(sound.GameStart);
                     }}
                   >
                     {RANDOM}
@@ -134,7 +134,7 @@ const GameMode = () => {
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      !turnSoundOff && playGameStart();
+                      !turnSoundOff && playSound(sound.GameStart);
                     }}
                   >
                     {REGULAR}
@@ -152,7 +152,7 @@ const GameMode = () => {
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      !turnSoundOff && playGameStart();
+                      !turnSoundOff && playSound(sound.GameStart);
                     }}
                   >
                     {SESSION}
@@ -165,7 +165,7 @@ const GameMode = () => {
                 buttonStyle="btn--gradient"
                 width="w-80"
                 onClick={() => {
-                  !turnSoundOff && playGameStart();
+                  !turnSoundOff && playSound(sound.GameStart);
                   contextDispatch({ type: "SHOW_HOME_PAGE" });
                   setShowMenu(!showMenu);
                 }}

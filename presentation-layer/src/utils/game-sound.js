@@ -7,39 +7,21 @@ import QuitNotice from "../assets/sound/quit-notice.mp3";
 import SessionWon from "../assets/sound/session-won.mp3";
 import ButtonClick from "../assets/sound/button-click.mp3";
 import InputError from "../assets/sound/input-error.mp3";
+import SuccessfulRegistration from "../assets/sound/successful-registration.mp3";
 
-export const playGameStart = () => {
-  new Audio(GameStart).play();
+export const sound = {
+  GameStart,
+  NumberClick,
+  CorrectGuess,
+  WrongGuess,
+  AttemptExhausted,
+  QuitNotice,
+  SessionWon,
+  ButtonClick,
+  InputError,
+  SuccessfulRegistration,
 };
 
-export const playNumberClick = () => {
-  new Audio(NumberClick).play();
-};
-
-export const playCorrectGuess = () => {
-  new Audio(CorrectGuess).play();
-};
-
-export const playWrongGuess = () => {
-  new Audio(WrongGuess).play();
-};
-
-export const playAttemptExhausted = () => {
-  new Audio(AttemptExhausted).play();
-};
-
-export const playQuitNotice = () => {
-  new Audio(QuitNotice).play();
-};
-
-export const playSessionWon = () => {
-  new Audio(SessionWon).play();
-};
-
-export const playButtonClick = () => {
-  new Audio(ButtonClick).play();
-};
-
-export const playInputError = () => {
-  new Audio(InputError).play();
+export const playSound = (soundToPlay) => {
+  new Audio(soundToPlay).play();
 };

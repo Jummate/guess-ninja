@@ -8,7 +8,7 @@ import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 import "./GameInfo.css";
 import Confetti from "../../components/Confetti";
-import { playGameStart } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GameInfo = () => {
@@ -89,7 +89,7 @@ const GameInfo = () => {
           buttonSize="btn--large"
           buttonStyle="btn--gradient"
           onClick={() => {
-            !turnSoundOff && playGameStart();
+            !turnSoundOff && playSound(sound.GameStart);
             contextDispatch({
               type: "PLAY_MUSIC",
               payload: {

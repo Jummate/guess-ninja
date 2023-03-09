@@ -3,7 +3,7 @@ import { generateRandomDifficulty } from "./random-difficulty";
 import { getSessionWinner } from "./session-winner";
 import { computeNewDifficulty } from "./new-difficulty";
 import { game_mode, mode_type } from "./reusable-variables";
-import { playSessionWon } from "./game-sound";
+import { playSound, sound } from "./game-sound";
 
 export const alertError = (errorMsg) => {
   swal({
@@ -181,7 +181,7 @@ export const alertSuccess = async (
         multiPlayerGameType === `${SESSION}`
       ) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
-          !turnSoundOff && playSessionWon();
+          !turnSoundOff && playSound(sound.SessionWon);
           alertSessionEnd(initialState, contextDispatch);
         } else {
           contextDispatch({

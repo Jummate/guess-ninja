@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 import "./PlayerRegistration.css";
 import Confetti from "../../components/Confetti";
-import { playButtonClick } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 import { validatePlayerName } from "../../utils/validation";
 
@@ -52,6 +52,7 @@ const PlayerRegistration = () => {
       incrementPlayerCount();
       clearInputField();
       if (playerCount === Number(numOfPlayer)) {
+        !turnSoundOff && playSound(sound.SuccessfulRegistration);
         toast("All players successfully registered", {
           position: "top-center",
           autoClose: 1000,
@@ -105,7 +106,7 @@ const PlayerRegistration = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               onClick={() => {
-                !turnSoundOff && playButtonClick();
+                !turnSoundOff && playSound(sound.ButtonClick);
                 handleClick();
               }}
               width="w-80"

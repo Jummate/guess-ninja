@@ -8,7 +8,7 @@ import Confetti from "../../components/Confetti";
 // import MinimalBeat from "../../assets/minimal.mp3";
 // import GameStart from "../../assets/game-start.mp3";
 // import Sound from "../../components/Sound";
-import { playGameStart } from "../../utils/game-sound";
+import { sound, playSound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const Welcome = () => {
@@ -33,7 +33,7 @@ const Welcome = () => {
         buttonSize="btn--medium"
         buttonStyle="btn--gradient"
         onClick={() => {
-          !turnSoundOff && playGameStart();
+          !turnSoundOff && playSound(sound.GameStart);
           setShowMenu(!showMenu);
         }}
       >
@@ -48,7 +48,7 @@ const Welcome = () => {
             width="w-80"
             onClick={() => {
               contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" });
-              !turnSoundOff && playGameStart();
+              !turnSoundOff && playSound(sound.GameStart);
             }}
           >
             GUIDE
@@ -60,7 +60,7 @@ const Welcome = () => {
             width="w-80"
             onClick={() => {
               contextDispatch({ type: "SHOW_GAME_MODE_PAGE" });
-              !turnSoundOff && playGameStart();
+              !turnSoundOff && playSound(sound.GameStart);
             }}
           >
             START
@@ -73,7 +73,7 @@ const Welcome = () => {
             onClick={() => {
               contextDispatch({ type: "SHOW_HOME_PAGE" });
               setShowMenu(!showMenu);
-              !turnSoundOff && playGameStart();
+              !turnSoundOff && playSound(sound.GameStart);
             }}
           >
             BACK

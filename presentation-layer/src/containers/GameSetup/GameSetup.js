@@ -16,7 +16,7 @@ import {
 } from "../../utils/reusable-variables";
 import { validateField } from "../../utils/validation";
 import Confetti from "../../components/Confetti";
-import { playButtonClick } from "../../utils/game-sound";
+import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GameSetup = () => {
@@ -178,7 +178,7 @@ const GameSetup = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               onClick={() => {
-                !turnSoundOff && playButtonClick();
+                !turnSoundOff && playSound(sound.ButtonClick);
                 handleClick();
               }}
             >
