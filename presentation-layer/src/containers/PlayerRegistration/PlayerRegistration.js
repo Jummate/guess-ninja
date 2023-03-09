@@ -47,7 +47,7 @@ const PlayerRegistration = () => {
   };
 
   const handleClick = () => {
-    if (validatePlayerName(nameRef, turnSoundOff)) {
+    if (validatePlayerName(nameRef, newGame, turnSoundOff)) {
       registerPlayer();
       incrementPlayerCount();
       clearInputField();

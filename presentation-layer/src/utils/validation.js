@@ -49,6 +49,18 @@ const validateAlpha = (ref) => {
   return IS_VALID;
 };
 
+const validateDuplicateName = (ref, game) => {
+  let NOT_DUPLICATE = true;
+  if (game.getPlayersInvolvedByName().includes(ref.current.value)) {
+    ref.current.style.border = errorStyle;
+    errorMsg = "Name already exists!";
+    NOT_DUPLICATE = false;
+  } else {
+    ref.current.style.border = "";
+  }
+  return NOT_DUPLICATE;
+};
+
 const validateOutOfRange = (ref, min, max) => {
   let IS_IN_RANGE = true;
   min = Number(min);
@@ -99,10 +111,14 @@ const validateMulti = (type, refs) => {
   );
 };
 
-export const validatePlayerName = (ref, turnSoundOff) => {
+export const validatePlayerName = (ref, currentGame, turnSoundOff) => {
   let IS_OKAY = true;
 
-  if (!validateEmpty(ref) || !validateAlpha(ref)) {
+  if (
+    !validateEmpty(ref) ||
+    !validateAlpha(ref) ||
+    !validateDuplicateName(ref, currentGame)
+  ) {
     IS_OKAY = false;
     !turnSoundOff && playInputError();
     alertError(errorMsg);
