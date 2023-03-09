@@ -51,7 +51,7 @@ function App() {
         <ToastContainer />
         {state.showScoreTable ? (
           <Table
-            data={scoreData}
+            data={[...scoreData].sort((prev, next) => next.score - prev.score)}
             columns={columns}
           />
         ) : null}
