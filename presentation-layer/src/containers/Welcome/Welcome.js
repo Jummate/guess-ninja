@@ -14,7 +14,10 @@ import SoundIcon from "../../components/SoundController";
 const Welcome = () => {
   const [showMenu, setShowMenu] = useState(false);
   const context = useContext(AppContext);
-  const { contextDispatch } = context;
+  const {
+    initialState: { turnSoundOff },
+    contextDispatch,
+  } = context;
 
   return (
     <div className="Welcome__container">
@@ -30,7 +33,7 @@ const Welcome = () => {
         buttonSize="btn--medium"
         buttonStyle="btn--gradient"
         onClick={() => {
-          playGameStart();
+          !turnSoundOff && playGameStart();
           setShowMenu(!showMenu);
         }}
       >
@@ -45,7 +48,7 @@ const Welcome = () => {
             width="w-80"
             onClick={() => {
               contextDispatch({ type: "SHOW_GAME_GUIDE_PAGE" });
-              playGameStart();
+              !turnSoundOff && playGameStart();
             }}
           >
             GUIDE
@@ -57,7 +60,7 @@ const Welcome = () => {
             width="w-80"
             onClick={() => {
               contextDispatch({ type: "SHOW_GAME_MODE_PAGE" });
-              playGameStart();
+              !turnSoundOff && playGameStart();
             }}
           >
             START
@@ -70,7 +73,7 @@ const Welcome = () => {
             onClick={() => {
               contextDispatch({ type: "SHOW_HOME_PAGE" });
               setShowMenu(!showMenu);
-              playGameStart();
+              !turnSoundOff && playGameStart();
             }}
           >
             BACK

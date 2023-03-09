@@ -26,6 +26,7 @@ export const defaultState = {
   counter: 1,
   showConfetti: true,
   turnBgMusicOff: false,
+  turnSoundOff: false,
   playBackgroundMusic: true,
   playBackgroundMusic2: false,
 };

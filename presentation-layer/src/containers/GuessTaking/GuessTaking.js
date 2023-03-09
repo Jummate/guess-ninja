@@ -37,6 +37,7 @@ const GuessTaking = () => {
       numOfPlayer,
       numberArray,
       difficulty,
+      turnSoundOff,
     },
     contextDispatch,
   } = context;
@@ -85,7 +86,7 @@ const GuessTaking = () => {
           playBackgroundMusic2: false,
         },
       });
-      playCorrectGuess();
+      !turnSoundOff && playCorrectGuess();
 
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
@@ -94,7 +95,7 @@ const GuessTaking = () => {
         0
       ) {
         if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
-          playAttemptExhausted();
+          !turnSoundOff && playAttemptExhausted();
           newGame.updatePlayersNoOfPlays();
           alertNoWinner(initialState, contextDispatch);
         } else {
@@ -103,11 +104,11 @@ const GuessTaking = () => {
             generateRandomPlayers(newGame.getPlayersInvolved())
           );
           setCount(0);
-          playWrongGuess();
+          !turnSoundOff && playWrongGuess();
           alertIncorrectGuess(contextDispatch);
         }
       } else {
-        playWrongGuess();
+        !turnSoundOff && playWrongGuess();
         alertIncorrectGuess(contextDispatch);
       }
     }
@@ -182,7 +183,7 @@ const GuessTaking = () => {
             buttonStyle="btn--danger--solid"
             width="w-10"
             onClick={(e) => {
-              playNumberClick();
+              !turnSoundOff && playNumberClick();
               handleNumberButtonClick(e);
             }}
           >

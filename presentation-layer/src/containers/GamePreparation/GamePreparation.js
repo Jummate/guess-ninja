@@ -29,6 +29,7 @@ const GamePreparation = () => {
       difficulty,
       multiPlayerGameType,
       sessionCount,
+      turnSoundOff,
     },
     contextDispatch,
   } = context;
@@ -116,7 +117,7 @@ const GamePreparation = () => {
                   type: "SHOW_GUESS_TAKING_PAGE",
                   payload: { numberToGuess, numberArray },
                 });
-                playGameStart();
+                !turnSoundOff && playGameStart();
               }}
             >
               START

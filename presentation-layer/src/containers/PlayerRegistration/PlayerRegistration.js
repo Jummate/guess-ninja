@@ -23,6 +23,7 @@ const PlayerRegistration = () => {
       numOfAttempt,
       numOfGamesInSession,
       multiPlayerGameType,
+      turnSoundOff,
     },
     contextDispatch,
   } = context;
@@ -99,7 +100,7 @@ const PlayerRegistration = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               onClick={() => {
-                playGameStart();
+                !turnSoundOff && playGameStart();
                 handleClick();
               }}
               width="w-80"

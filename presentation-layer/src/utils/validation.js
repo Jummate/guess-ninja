@@ -89,19 +89,19 @@ const validateMulti = (type, refs) => {
   );
 };
 
-export const validateField = (mode, multiGameType, refs) => {
+export const validateField = (mode, multiGameType, turnSoundOff, refs) => {
   let IS_OKAY = true;
 
   if (mode === `${SINGLE}`) {
     if (!validateSingle(refs)) {
       IS_OKAY = false;
-      playInputError();
+      !turnSoundOff && playInputError();
       alertError(errorMsg);
     }
   } else {
     if (!validateMulti(multiGameType, refs)) {
       IS_OKAY = false;
-      playInputError();
+      !turnSoundOff && playInputError();
       alertError(errorMsg);
     }
   }

@@ -39,7 +39,12 @@ const GameSetup = () => {
   };
 
   const {
-    initialState: { selectedMode, multiPlayerGameType, onePlayerGameType },
+    initialState: {
+      selectedMode,
+      multiPlayerGameType,
+      onePlayerGameType,
+      turnSoundOff,
+    },
     contextDispatch,
   } = context;
 
@@ -59,7 +64,7 @@ const GameSetup = () => {
 
   const handleClick = () => {
     if (
-      validateField(selectedMode, multiPlayerGameType, [
+      validateField(selectedMode, multiPlayerGameType, turnSoundOff, [
         playerRef,
         attemptRef,
         roundRef,
@@ -173,7 +178,7 @@ const GameSetup = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               onClick={() => {
-                playButtonClick();
+                !turnSoundOff && playButtonClick();
                 handleClick();
               }}
             >

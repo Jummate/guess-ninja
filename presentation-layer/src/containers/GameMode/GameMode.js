@@ -20,7 +20,10 @@ const GameMode = () => {
   const { LIGHTER } = color_type;
 
   const context = useContext(AppContext);
-  const { contextDispatch } = context;
+  const {
+    initialState: { turnSoundOff },
+    contextDispatch,
+  } = context;
   const [showMenu, setShowMenu] = useState(false);
   const [mode, setMode] = useState("");
   return (
@@ -38,7 +41,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
-              playGameStart();
+              !turnSoundOff && playGameStart();
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -49,7 +52,7 @@ const GameMode = () => {
             buttonSize="btn--large"
             buttonStyle="btn--gradient"
             onClick={(e) => {
-              playGameStart();
+              !turnSoundOff && playGameStart();
               setShowMenu(!showMenu);
               setMode(e.target.textContent.trim());
             }}
@@ -73,7 +76,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      playGameStart();
+                      !turnSoundOff && playGameStart();
                     }}
                   >
                     {PROGRESSIVE}
@@ -91,7 +94,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      playGameStart();
+                      !turnSoundOff && playGameStart();
                     }}
                   >
                     {CONSTANT}
@@ -109,7 +112,7 @@ const GameMode = () => {
                           onePlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      playGameStart();
+                      !turnSoundOff && playGameStart();
                     }}
                   >
                     {RANDOM}
@@ -131,7 +134,7 @@ const GameMode = () => {
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      playGameStart();
+                      !turnSoundOff && playGameStart();
                     }}
                   >
                     {REGULAR}
@@ -149,7 +152,7 @@ const GameMode = () => {
                           multiPlayerGameType: `${e.target.textContent.trim()}`,
                         },
                       });
-                      playGameStart();
+                      !turnSoundOff && playGameStart();
                     }}
                   >
                     {SESSION}
@@ -162,7 +165,7 @@ const GameMode = () => {
                 buttonStyle="btn--gradient"
                 width="w-80"
                 onClick={() => {
-                  playGameStart();
+                  !turnSoundOff && playGameStart();
                   contextDispatch({ type: "SHOW_HOME_PAGE" });
                   setShowMenu(!showMenu);
                 }}

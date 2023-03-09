@@ -119,6 +119,7 @@ export const alertSuccess = async (
     numOfPlayer,
     numOfAttempt,
     counter,
+    turnSoundOff,
   } = initialState;
 
   const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
@@ -180,7 +181,7 @@ export const alertSuccess = async (
         multiPlayerGameType === `${SESSION}`
       ) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
-          playSessionWon();
+          !turnSoundOff && playSessionWon();
           alertSessionEnd(initialState, contextDispatch);
         } else {
           contextDispatch({

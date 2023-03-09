@@ -18,8 +18,10 @@ const SoundController = () => {
   const [toggleSound, setToggleSound] = useState(true);
   const context = useContext(AppContext);
 
-  const { contextDispatch } = context;
-
+  const {
+    initialState: { turnBgMusicOff, turnSoundOff },
+    contextDispatch,
+  } = context;
   return (
     <div style={styles}>
       <span
@@ -34,10 +36,20 @@ const SoundController = () => {
           });
         }}
       >
-        {toggleMusic ? <TbMusicOff /> : <TbMusic />}
+        {toggleMusic && !turnBgMusicOff ? <TbMusicOff /> : <TbMusic />}
       </span>
-      <span onClick={() => setToggleSound(!toggleSound)}>
-        {toggleSound ? (
+      <span
+        onClick={() => {
+          setToggleSound(!toggleSound);
+          contextDispatch({
+            type: "TURN_SOUND_OFF",
+            payload: {
+              turnSoundOff: toggleSound,
+            },
+          });
+        }}
+      >
+        {toggleSound && !turnSoundOff ? (
           <MdOutlineNotificationsOff />
         ) : (
           <MdOutlineNotifications />

@@ -25,6 +25,7 @@ const GameInfo = () => {
       onePlayerGameType,
       multiPlayerGameType,
       numOfGamesInSession,
+      turnSoundOff,
     },
     contextDispatch,
   } = context;
@@ -88,7 +89,7 @@ const GameInfo = () => {
           buttonSize="btn--large"
           buttonStyle="btn--gradient"
           onClick={() => {
-            playGameStart();
+            !turnSoundOff && playGameStart();
             contextDispatch({
               type: "PLAY_MUSIC",
               payload: {

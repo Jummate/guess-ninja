@@ -195,6 +195,12 @@ const reducer = (state, action) => {
         turnBgMusicOff: action.payload.turnBgMusicOff,
       };
 
+    case "TURN_SOUND_OFF":
+      return {
+        ...state,
+        turnSoundOff: action.payload.turnSoundOff,
+      };
+
     default:
       throw new Error("No matching action type");
   }
