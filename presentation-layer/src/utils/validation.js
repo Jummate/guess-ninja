@@ -25,11 +25,23 @@ const validateEmpty = (ref) => {
   return NOT_EMPTY;
 };
 
-const validateInvalid = (ref) => {
+const validateNum = (ref) => {
   let IS_VALID = true;
   if (/[^0-9]/i.test(ref.current.value)) {
     ref.current.style.border = errorStyle;
-    errorMsg = "Invalid entry. Alphabets not allowed!";
+    errorMsg = "Invalid entry. Only numbers are allowed!";
+    IS_VALID = false;
+  } else {
+    ref.current.style.border = "";
+  }
+  return IS_VALID;
+};
+
+const validateAlpha = (ref) => {
+  let IS_VALID = true;
+  if (/[^a-zA-Z]/i.test(ref.current.value)) {
+    ref.current.style.border = errorStyle;
+    errorMsg = "Invalid entry. Only alphabets are allowed!";
     IS_VALID = false;
   } else {
     ref.current.style.border = "";
@@ -58,20 +70,18 @@ const validateOutOfRange = (ref, min, max) => {
 
 const validatePlayer = (ref) => {
   return (
-    validateEmpty(ref) && validateInvalid(ref) && validateOutOfRange(ref, 2, 5)
+    validateEmpty(ref) && validateNum(ref) && validateOutOfRange(ref, 2, 5)
   );
 };
 
 const validateAttempt = (ref) => {
   return (
-    validateEmpty(ref) && validateInvalid(ref) && validateOutOfRange(ref, 1, 3)
+    validateEmpty(ref) && validateNum(ref) && validateOutOfRange(ref, 1, 3)
   );
 };
 
 const validateRound = (ref) => {
-  return (
-    validateEmpty(ref) && validateInvalid(ref) && validateOutOfRange(ref, 1)
-  );
+  return validateEmpty(ref) && validateNum(ref) && validateOutOfRange(ref, 1);
 };
 
 const validateSingle = (refs) => validateAttempt(refs[1]);
@@ -87,6 +97,17 @@ const validateMulti = (type, refs) => {
     validateAttempt(attemptRef) &&
     validateRound(roundRef)
   );
+};
+
+export const validatePlayerName = (ref, turnSoundOff) => {
+  let IS_OKAY = true;
+
+  if (!validateEmpty(ref) || !validateAlpha(ref)) {
+    IS_OKAY = false;
+    !turnSoundOff && playInputError();
+    alertError(errorMsg);
+  }
+  return IS_OKAY;
 };
 
 export const validateField = (mode, multiGameType, turnSoundOff, refs) => {

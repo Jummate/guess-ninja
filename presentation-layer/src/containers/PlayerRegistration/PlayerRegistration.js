@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createRef } from "react";
 import Navigation from "../../components/nav/Navigation";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
@@ -10,11 +10,13 @@ import { toast } from "react-toastify";
 
 import "./PlayerRegistration.css";
 import Confetti from "../../components/Confetti";
-import { playGameStart } from "../../utils/game-sound";
+import { playButtonClick } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
+import { validatePlayerName } from "../../utils/validation";
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
+  const nameRef = createRef();
   const {
     initialState: {
       numOfPlayer,
@@ -45,33 +47,35 @@ const PlayerRegistration = () => {
   };
 
   const handleClick = () => {
-    registerPlayer();
-    incrementPlayerCount();
-    clearInputField();
-    if (playerCount === Number(numOfPlayer)) {
-      toast("All players successfully registered", {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        type: "success",
-        onClose: () =>
-          contextDispatch({
-            type: "SHOW_GAME_INFO_PAGE",
-            payload: {
-              difficulty,
-              newGame,
-              numOfAttempt,
-              numOfGamesInSession,
-              multiPlayerGameType,
-            },
-          }),
-      });
-      setShowOverlay(true);
+    if (validatePlayerName(nameRef, turnSoundOff)) {
+      registerPlayer();
+      incrementPlayerCount();
+      clearInputField();
+      if (playerCount === Number(numOfPlayer)) {
+        toast("All players successfully registered", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          type: "success",
+          onClose: () =>
+            contextDispatch({
+              type: "SHOW_GAME_INFO_PAGE",
+              payload: {
+                difficulty,
+                newGame,
+                numOfAttempt,
+                numOfGamesInSession,
+                multiPlayerGameType,
+              },
+            }),
+        });
+        setShowOverlay(true);
+      }
     }
   };
   return (
@@ -91,6 +95,7 @@ const PlayerRegistration = () => {
             </label>
             <Input
               value={player}
+              ref={nameRef}
               onChange={(e) => setPlayer(e.target.value)}
               width="w-80"
             />
@@ -100,7 +105,7 @@ const PlayerRegistration = () => {
               buttonSize="btn--medium"
               buttonStyle="btn--gradient"
               onClick={() => {
-                !turnSoundOff && playGameStart();
+                !turnSoundOff && playButtonClick();
                 handleClick();
               }}
               width="w-80"
