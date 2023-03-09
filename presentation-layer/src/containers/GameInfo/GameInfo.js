@@ -56,7 +56,11 @@ const GameInfo = () => {
           {selectedMode === `${MULTI}` ? (
             <Card
               headerText="Players:"
-              content={newGame.getPlayersInvolvedByName().join(", ")}
+              content={newGame
+                .getPlayersInvolvedByName()
+                .map((player, index) => (
+                  <li key={index}>{player}</li>
+                ))}
             />
           ) : null}
 

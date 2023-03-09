@@ -16,6 +16,7 @@ const Navigation = () => {
       multiPlayerGameType,
       onePlayerGameType,
       showOtherTabs,
+      turnSoundOff,
     },
     contextDispatch,
   } = context;
@@ -69,7 +70,7 @@ const Navigation = () => {
             <li
               onClick={() => {
                 alertQuit(contextDispatch);
-                playSound(sound.QuitNotice);
+                !turnSoundOff && playSound(sound.QuitNotice);
               }}
             >
               Quit

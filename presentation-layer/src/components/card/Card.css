@@ -4,17 +4,26 @@
     line-height: 1.5;
     padding-left: 3px;
     padding-top: 3px;
+    overflow: auto;
+    max-height:100px;
+    margin-right:10px
 }
 .Card__container p{
     /* color:rgb(36, 34, 34); */
     color:#e8f8f7;
  }
-.Card__container p::before{
+/* .Card__container p::before{
    content: "~";
-   /* color:#e8f8f7; */
    color:#000
-}
+} */
 
 .Card__container h6{
-    color: var(--danger)
+    color: var(--danger);
+    position:sticky;
+    top:1px;
+    background-color: #000;
+}
+
+li{
+    font-size: 1.1rem;
 }
