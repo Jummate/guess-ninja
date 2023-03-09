@@ -33,8 +33,12 @@ function App() {
     <AppContext.Provider value={memoizedValue}>
       <main className="App__container">
         <div className="App__content__wrapper">
-          {state.playBackgroundMusic ? <Sound src={MinimalBeat} /> : null}
-          {state.playBackgroundMusic2 ? <Sound src={GameMusic} /> : null}
+          {state.playBackgroundMusic && !state.turnBgMusicOff ? (
+            <Sound src={MinimalBeat} />
+          ) : null}
+          {state.playBackgroundMusic2 && !state.turnBgMusicOff ? (
+            <Sound src={GameMusic} />
+          ) : null}
           {state.homePageActive ? <Welcome /> : null}
           {state.gameModeActive ? <GameMode /> : null}
           {state.gameSetupActive ? <GameSetup /> : null}

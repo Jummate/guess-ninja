@@ -17,6 +17,7 @@ import {
 import { validateField } from "../../utils/validation";
 import Confetti from "../../components/Confetti";
 import { playButtonClick } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const GameSetup = () => {
   const context = useContext(AppContext);
@@ -184,6 +185,7 @@ const GameSetup = () => {
 
       <Navigation />
       <Confetti />
+      <SoundIcon />
     </section>
   );
 };

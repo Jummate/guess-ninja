@@ -23,6 +23,7 @@ import {
   playNumberClick,
   playWrongGuess,
 } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const GuessTaking = () => {
   const { MULTI } = game_mode;
@@ -191,6 +192,7 @@ const GuessTaking = () => {
       </div>
       <Navigation />
       {showConfetti ? <Confetti opacity={1.0} /> : null}
+      <SoundIcon />
     </section>
   );
 };

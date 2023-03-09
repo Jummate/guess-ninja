@@ -12,6 +12,7 @@ import {
 } from "../../utils/reusable-variables";
 import Confetti from "../../components/Confetti";
 import { playGameStart } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const GameMode = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -175,6 +176,7 @@ const GameMode = () => {
 
       <Navigation />
       <Confetti />
+      <SoundIcon />
     </section>
   );
 };

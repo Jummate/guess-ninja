@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import "./PlayerRegistration.css";
 import Confetti from "../../components/Confetti";
 import { playGameStart } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const PlayerRegistration = () => {
   const context = useContext(AppContext);
@@ -112,6 +113,7 @@ const PlayerRegistration = () => {
       {showOverlay && <Overlay />}
       <Navigation />
       <Confetti opacity={0.05} />
+      <SoundIcon />
     </section>
   );
 };

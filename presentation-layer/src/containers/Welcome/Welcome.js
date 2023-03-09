@@ -9,6 +9,7 @@ import Confetti from "../../components/Confetti";
 // import GameStart from "../../assets/game-start.mp3";
 // import Sound from "../../components/Sound";
 import { playGameStart } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const Welcome = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,6 +18,7 @@ const Welcome = () => {
 
   return (
     <div className="Welcome__container">
+      <SoundIcon />
       <h1 className="Welcome__heading">Guess Ninja</h1>
       <img
         className="Welcome__image"

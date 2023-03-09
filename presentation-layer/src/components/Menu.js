@@ -1,4 +1,5 @@
 import React from "react";
+import SoundIcon from "./SoundController";
 
 const Menu = ({ children }) => {
   const styles = {
@@ -15,7 +16,12 @@ const Menu = ({ children }) => {
     left: "0",
     zIndex: "1",
   };
-  return <div style={styles}>{children}</div>;
+  return (
+    <div style={styles}>
+      <SoundIcon />
+      {children}
+    </div>
+  );
 };
 
 export default Menu;

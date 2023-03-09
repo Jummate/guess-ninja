@@ -9,6 +9,7 @@ import { game_mode, mode_type } from "../../utils/reusable-variables";
 import "./GameInfo.css";
 import Confetti from "../../components/Confetti";
 import { playGameStart } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const GameInfo = () => {
   const { SINGLE, MULTI } = game_mode;
@@ -40,20 +41,20 @@ const GameInfo = () => {
       <div className="GameInfo__body">
         <div className="GameInfo__wrapper">
           <Card
-            headerText="Game Mode:"
+            headerText="Mode:"
             content={selectedMode}
           />
 
           {selectedMode === `${MULTI}` ? (
             <Card
-              headerText="Number of Players:"
+              headerText="No of Players:"
               content={selectedMode === `${MULTI}` ? numOfPlayer : 1}
             />
           ) : null}
 
           {selectedMode === `${MULTI}` ? (
             <Card
-              headerText="Players involved:"
+              headerText="Players:"
               content={newGame.getPlayersInvolvedByName().join(", ")}
             />
           ) : null}
@@ -66,7 +67,7 @@ const GameInfo = () => {
           ) : null}
 
           <Card
-            headerText="Game Type:"
+            headerText="Mode Type:"
             content={
               selectedMode === `${SINGLE}`
                 ? onePlayerGameType
@@ -77,7 +78,7 @@ const GameInfo = () => {
           {selectedMode === `${MULTI}` &&
           multiPlayerGameType === `${SESSION}` ? (
             <Card
-              headerText="Number of Games:"
+              headerText="No of Rounds:"
               content={numOfGamesInSession}
             />
           ) : null}
@@ -106,6 +107,7 @@ const GameInfo = () => {
 
       <Navigation />
       <Confetti opacity={0.06} />
+      <SoundIcon />
     </section>
   );
 };

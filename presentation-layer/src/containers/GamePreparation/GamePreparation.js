@@ -13,6 +13,7 @@ import {
 } from "../../utils/reusable-variables";
 import "./GamePreparation.css";
 import { playGameStart } from "../../utils/game-sound";
+import SoundIcon from "../../components/SoundController";
 
 const GamePreparation = () => {
   const { MULTI } = game_mode;
@@ -124,6 +125,7 @@ const GamePreparation = () => {
         </div>
       </div>
       <Navigation />
+      <SoundIcon />
     </section>
   );
 };
