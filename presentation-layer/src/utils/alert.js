@@ -38,7 +38,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
         innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><h4>${winningPlayer} wins the session with ${maxScore} point${
           maxScore > 1 ? "s" : ""
         } </h4>`,
-        // style: "color: maroon; font-weight: bolder",
+        // style: " font-family: 'Orbitron', sans-serif",
       },
     },
 
@@ -159,7 +159,7 @@ export const alertSuccess = async (
       element: "div",
       attributes: {
         innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">${title}</h3><br /><h4>Romeo picked ${numberToGuess}</h4>`,
-        // style: "color: maroon; font-weight: bolder",
+        // style: " font-family: 'Orbitron', sans-serif",
       },
     },
     buttons: {
@@ -168,8 +168,8 @@ export const alertSuccess = async (
         value: "continue",
       },
       viewScore: {
-        text: "View Score",
-        value: "view-score",
+        text: "Check Score",
+        value: "score",
       },
       quit: {
         text: "End Game",
@@ -239,7 +239,7 @@ export const alertSuccess = async (
       }
 
       break;
-    case "view-score":
+    case "score":
       contextDispatch({
         type: "PLAY_MUSIC",
         payload: {
@@ -297,7 +297,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
       element: "div",
       attributes: {
         innerHTML: `<h3 style="color: maroon; font-weight: bolder">${errorMsg}</h3><br /><h4>Romeo picked ${numberToGuess}</h4>`,
-        // style: "color: maroon; font-weight: bolder",
+        // style: " font-family: 'Orbitron', sans-serif; font-size: 1.2rem",
       },
     },
     closeOnClickOutside: false,
@@ -354,7 +354,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
 
     default:
       !turnSoundOff && playSound(sound.QuitNotice);
-      alertQuit(contextDispatch, null, false);
+      alertQuit(contextDispatch, {}, false);
       break;
   }
 };
@@ -393,7 +393,7 @@ export const alertIncorrectGuess = async (initialState, contextDispatch) => {
 
     default:
       !turnSoundOff && playSound(sound.QuitNotice);
-      alertQuit(contextDispatch, null, false);
+      alertQuit(contextDispatch, {}, false);
       break;
   }
 };

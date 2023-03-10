@@ -90,16 +90,22 @@
     width:30%
 } */
 
+
 .swal-button:hover{
     background-color: #000 !important;
 }
 .swal-button--quit{
-    background-color: var(--danger);
+    background: linear-gradient(to left, var(--danger), black, var(--danger));
+    color: var(--light);
+}
+
+.swal-button--viewScore{
+    background: linear-gradient(to left, #7cd1f9, black, #7cd1f9);
     color: var(--light);
 }
 
 .swal-button--continue{
-    background-color: var(--primary);
+    background: linear-gradient(to left, var(--primary), black, var(--primary));
     color: var(--light);
 }
 .swal-title{

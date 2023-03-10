@@ -55,7 +55,13 @@ const Table = ({ data = [], columns }) => {
                 style={{ textAlign: "right" }}
                 colSpan={`${columns.length + 1}`}
               >
-                <span style={{ color: `${DANGER}`, fontWeight: "bolder" }}>
+                <span
+                  style={{
+                    color: `${DANGER}`,
+                    fontWeight: "bolder",
+                    letterSpacing: "1.1px",
+                  }}
+                >
                   Void
                 </span>{" "}
                 : {newGame.getVoidRound()}

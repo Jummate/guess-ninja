@@ -69,7 +69,7 @@ const Navigation = () => {
 
             <li
               onClick={() => {
-                alertQuit(contextDispatch);
+                alertQuit(contextDispatch, {});
                 !turnSoundOff && playSound(sound.QuitNotice);
               }}
             >

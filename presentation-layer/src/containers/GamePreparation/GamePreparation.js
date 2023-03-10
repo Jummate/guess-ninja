@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
@@ -34,11 +34,12 @@ const GamePreparation = () => {
     contextDispatch,
   } = context;
 
-  const { start, end, numberToGuess, numberArray } = generateNumberToGuess(
-    numOfPlayer,
-    numOfAttempt,
-    difficulty
+  const memoizedValue = useMemo(
+    () => generateNumberToGuess(numOfPlayer, numOfAttempt, difficulty),
+    [numOfAttempt, numOfPlayer, difficulty]
   );
+
+  const { start, end, numberToGuess, numberArray } = memoizedValue;
 
   const isSessionGame =
     selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`
