@@ -92,6 +92,7 @@ const GuessTaking = () => {
         if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
           !turnSoundOff && playSound(sound.AttemptExhausted);
           newGame.updatePlayersNoOfPlays();
+          newGame.incrementVoid();
           alertNoWinner(initialState, contextDispatch);
         } else {
           newGame.resetPlayersPlayStatus();

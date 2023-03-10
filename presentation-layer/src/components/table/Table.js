@@ -4,11 +4,16 @@ import Button from "../button/Button";
 import "./Table.css";
 import { alertSessionEnd } from "../../utils/alert";
 import { generateRandomDifficulty } from "../../utils/random-difficulty";
-import { game_mode, mode_type } from "../../utils/reusable-variables";
+import {
+  game_mode,
+  mode_type,
+  color_type,
+} from "../../utils/reusable-variables";
 
 const Table = ({ data = [], columns }) => {
   const { SINGLE, MULTI } = game_mode;
   const { SESSION, RANDOM } = mode_type;
+  const { DANGER } = color_type;
   const context = useContext(AppContext);
   const {
     initialState: {
@@ -18,6 +23,7 @@ const Table = ({ data = [], columns }) => {
       selectedMode,
       multiPlayerGameType,
       onePlayerGameType,
+      newGame,
     },
     contextDispatch,
   } = context;
@@ -44,6 +50,17 @@ const Table = ({ data = [], columns }) => {
                   })}
                 </tr>
               ))}
+            <tr>
+              <td
+                style={{ textAlign: "right" }}
+                colSpan={`${columns.length + 1}`}
+              >
+                <span style={{ color: `${DANGER}`, fontWeight: "bolder" }}>
+                  Void
+                </span>{" "}
+                : {newGame.getVoidRound()}
+              </td>
+            </tr>
           </tbody>
         </table>
         {!data.length && (

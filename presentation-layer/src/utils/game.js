@@ -3,6 +3,7 @@ export class GuessGame {
   constructor() {
     this.gameId = Date.now();
     this.playersInvolved = [];
+    this.voidRound = 0;
   }
 
   addPlayer(newPlayer) {
@@ -10,6 +11,13 @@ export class GuessGame {
       ...this.playersInvolved,
       new Player(this.gameId, newPlayer),
     ];
+  }
+
+  getVoidRound() {
+    return this.voidRound;
+  }
+  incrementVoid() {
+    this.voidRound = this.getVoidRound() + 1;
   }
 
   getGameId() {
