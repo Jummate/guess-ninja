@@ -100,11 +100,11 @@ const GuessTaking = () => {
           );
           setCount(0);
           !turnSoundOff && playSound(sound.WrongGuess);
-          alertIncorrectGuess(contextDispatch);
+          alertIncorrectGuess(initialState, contextDispatch);
         }
       } else {
         !turnSoundOff && playSound(sound.WrongGuess);
-        alertIncorrectGuess(contextDispatch);
+        alertIncorrectGuess(initialState, contextDispatch);
       }
     }
   };

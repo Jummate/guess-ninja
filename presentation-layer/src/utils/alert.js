@@ -11,6 +11,8 @@ export const alertError = (errorMsg) => {
     buttons: {
       confirm: true,
     },
+    closeOnClickOutside: false,
+    closeOnEsc: false,
     content: {
       element: "p",
       attributes: {
@@ -85,16 +87,32 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   }
 };
 
-export const alertQuit = async (contextDispatch, triggeredByTab = true) => {
+export const alertQuit = async (
+  contextDispatch,
+  initialState,
+  triggeredByTab = true
+) => {
+  const { MULTI } = game_mode;
+  const { SESSION } = mode_type;
+  const { sessionCount, selectedMode, multiPlayerGameType } = initialState;
   const willEnd = await swal({
     title: "Are you sure you want to end the game?",
     icon: "warning",
     buttons: true,
     dangerMode: true,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
   });
   if (willEnd) {
     contextDispatch({ type: "SHOW_HOME_PAGE" });
   } else {
+    selectedMode === `${MULTI}` &&
+      multiPlayerGameType === `${SESSION}` &&
+      contextDispatch({
+        type: "SET_NEW_SESSION_COUNT",
+        payload: { sessionCount: sessionCount + 1 },
+      });
+
     !triggeredByTab && contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
   }
 };
@@ -240,7 +258,8 @@ export const alertSuccess = async (
       break;
 
     default:
-      alertQuit(contextDispatch, false);
+      !turnSoundOff && playSound(sound.QuitNotice);
+      alertQuit(contextDispatch, initialState, false);
       break;
   }
 };
@@ -258,6 +277,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
     numOfPlayer,
     numOfAttempt,
     counter,
+    turnSoundOff,
   } = initialState;
 
   const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
@@ -333,12 +353,14 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
       break;
 
     default:
-      alertQuit(contextDispatch, false);
+      !turnSoundOff && playSound(sound.QuitNotice);
+      alertQuit(contextDispatch, null, false);
       break;
   }
 };
 
-export const alertIncorrectGuess = async (contextDispatch) => {
+export const alertIncorrectGuess = async (initialState, contextDispatch) => {
+  const { turnSoundOff } = initialState;
   const value = await swal({
     // title: "Oops!",
     // text: `Incorrect guess!`,
@@ -370,9 +392,8 @@ export const alertIncorrectGuess = async (contextDispatch) => {
       break;
 
     default:
-      alertQuit(contextDispatch, false);
+      !turnSoundOff && playSound(sound.QuitNotice);
+      alertQuit(contextDispatch, null, false);
       break;
   }
 };
-
-// module.export = { alertSuccess, alertQuit, alertNoWinner, alertIncorrectGuess };
