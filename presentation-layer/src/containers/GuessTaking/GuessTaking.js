@@ -5,7 +5,7 @@ import { generateRandomPlayers } from "../../utils/random-player";
 import ThinkingDoll from "../../assets/images/thinking.gif";
 import { difficultyValue } from "../../utils/difficultyValue";
 import Navigation from "../../components/nav/Navigation";
-import { game_mode } from "../../utils/reusable-variables";
+import { game_mode, mode_type } from "../../utils/reusable-variables";
 
 import {
   alertIncorrectGuess,
@@ -21,7 +21,8 @@ import { playSound, sound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
 const GuessTaking = () => {
-  const { MULTI } = game_mode;
+  const { SINGLE, MULTI } = game_mode;
+  const { PROGRESSIVE } = mode_type;
   const context = useContext(AppContext);
   const {
     initialState: {
@@ -33,6 +34,7 @@ const GuessTaking = () => {
       numberArray,
       difficulty,
       turnSoundOff,
+      onePlayerGameType,
     },
     contextDispatch,
   } = context;
@@ -45,6 +47,12 @@ const GuessTaking = () => {
   const [numArray, setNumArray] = useState(numberArray);
   const [combinedAttempts, setCombinedAttempts] = useState(1);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  //the increment of numOfPlayer for Progressive type is solely for number buttons expansion, so the original value value should always be 1
+  const modifiedNumOfPlayer =
+    selectedMode === SINGLE && onePlayerGameType === PROGRESSIVE
+      ? 1
+      : numOfPlayer;
 
   const handleNumberButtonClick = (e) => {
     let numberClicked = e.target.textContent;
@@ -86,10 +94,14 @@ const GuessTaking = () => {
       alertSuccess(currentPlayerName, initialState, contextDispatch);
     } else {
       if (
-        (combinedAttempts + Number(numOfPlayer)) % Number(numOfPlayer) ===
+        (combinedAttempts + Number(modifiedNumOfPlayer)) %
+          Number(modifiedNumOfPlayer) ===
         0
       ) {
-        if (combinedAttempts === Number(numOfAttempt) * Number(numOfPlayer)) {
+        if (
+          combinedAttempts ===
+          Number(numOfAttempt) * Number(modifiedNumOfPlayer)
+        ) {
           !turnSoundOff && playSound(sound.AttemptExhausted);
           newGame.updatePlayersNoOfPlays();
           newGame.incrementVoid();
@@ -156,8 +168,8 @@ const GuessTaking = () => {
             <span style={{ color: "#000", marginRight: "2px" }}>Attempt: </span>
             <span>
               {Math.floor(
-                (combinedAttempts + Number(numOfPlayer) - 1) /
-                  Number(numOfPlayer)
+                (combinedAttempts + Number(modifiedNumOfPlayer) - 1) /
+                  Number(modifiedNumOfPlayer)
               )}{" "}
               of {numOfAttempt}
             </span>
