@@ -389,7 +389,6 @@ export const alertIncorrectGuess = async (initialState, contextDispatch) => {
   });
   switch (value) {
     case "continue":
-      console.log("agsaddhddhdhdh");
       break;
 
     default:
