@@ -278,6 +278,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
     numOfPlayer,
     numOfAttempt,
     counter,
+    numOfGamesInSession,
     turnSoundOff,
   } = initialState;
 
@@ -321,10 +322,15 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
       contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
 
       if (selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`) {
-        contextDispatch({
-          type: "SET_NEW_SESSION_COUNT",
-          payload: { sessionCount: sessionCount + 1 },
-        });
+        if (Number(numOfGamesInSession) === Number(sessionCount)) {
+          !turnSoundOff && playSound(sound.SessionWon);
+          alertSessionEnd(initialState, contextDispatch);
+        } else {
+          contextDispatch({
+            type: "SET_NEW_SESSION_COUNT",
+            payload: { sessionCount: sessionCount + 1 },
+          });
+        }
       }
       if (selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`) {
         contextDispatch({
