@@ -14,6 +14,7 @@ const reducer = (state, action) => {
         showScoreTable: false,
         playBackgroundMusic2: false,
         playBackgroundMusic: true,
+        sessionCount: 1,
       };
     case "SHOW_GAME_MODE_PAGE":
       return {
