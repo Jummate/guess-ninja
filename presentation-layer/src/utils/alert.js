@@ -4,7 +4,7 @@ import { getSessionWinner } from "./session-winner";
 import { computeNewDifficulty } from "./new-difficulty";
 import { game_mode, mode_type } from "./reusable-variables";
 import { playSound, sound } from "./game-sound";
-import { GiTrophyCup } from "react-icons/gi";
+import AwardIcon from "../assets/images/awards-icon.jpg";
 
 export const alertError = (errorMsg) => {
   swal({
@@ -36,9 +36,9 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
     content: {
       element: "div",
       attributes: {
-        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><h4>${winningPlayer} wins the session with ${maxScore} point${
+        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><p><img src=${AwardIcon} style="height:35px; width:35px" alt="Trophy Icon"/></p><br /><h4>${winningPlayer} wins the session with ${maxScore} point${
           maxScore > 1 ? "s" : ""
-        } <img src="https://icons8.com/icon/kuU7I7uPlHfo/trophy" alt="Trophy Icon"/></h4>`,
+        } </h4>`,
         // style: " font-family: 'Orbitron', sans-serif",
       },
     },
