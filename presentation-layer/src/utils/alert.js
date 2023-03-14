@@ -23,10 +23,134 @@ export const alertError = (errorMsg) => {
   });
 };
 
-export const alertSessionEnd = async (initialState, contextDispatch) => {
-  const { newGame } = initialState;
+export const alertNoSessionWinner = async (initialState, contextDispatch) => {
+  const { SINGLE, MULTI } = game_mode;
+  const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
+  const {
+    numberToGuess,
+    sessionCount,
+    selectedMode,
+    onePlayerGameType,
+    multiPlayerGameType,
+    difficulty,
+    numOfPlayer,
+    numOfAttempt,
+    counter,
+    numOfGamesInSession,
+    turnSoundOff,
+  } = initialState;
 
-  const { winningPlayer, maxScore } = getSessionWinner(newGame);
+  const { newDifficulty, newNumOfPlayer } = computeNewDifficulty(
+    difficulty,
+    numOfPlayer,
+    counter
+  );
+
+  const errorMsg =
+    selectedMode === `${SINGLE}`
+      ? "Wrong guess! Attempts used up! Try again."
+      : " No winner in this round!";
+
+  const value = await swal({
+    icon: "error",
+    content: {
+      element: "div",
+      attributes: {
+        innerHTML: `<h3 style="color: maroon; font-weight: bolder">${errorMsg}</h3><br /><h4>Romeo picked ${numberToGuess}</h4>`,
+        // style: " font-family: 'Orbitron', sans-serif; font-size: 1.2rem",
+      },
+    },
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    dangerMode: true,
+
+    buttons: {
+      continue: {
+        text: "Start A New Round",
+        value: "continue",
+      },
+      quit: {
+        text: "End Game",
+        value: "quit",
+      },
+    },
+  });
+  switch (value) {
+    case "continue":
+      contextDispatch({ type: "SHOW_GAME_PREP_PAGE" });
+
+      if (selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`) {
+        if (Number(numOfGamesInSession) === Number(sessionCount)) {
+          // !turnSoundOff && playSound(sound.SessionWon);
+          alertSessionEnd(initialState, contextDispatch);
+        } else {
+          contextDispatch({
+            type: "SET_NEW_SESSION_COUNT",
+            payload: { sessionCount: sessionCount + 1 },
+          });
+        }
+      }
+      if (selectedMode === `${SINGLE}` && onePlayerGameType === `${RANDOM}`) {
+        contextDispatch({
+          type: "RANDOMIZE_THE_DIFFICULTY",
+          payload: { difficulty: generateRandomDifficulty() },
+        });
+      }
+      if (
+        selectedMode === `${SINGLE}` &&
+        onePlayerGameType === `${PROGRESSIVE}`
+      ) {
+        contextDispatch({
+          type: "COMPUTE_NEW_DIFFICULTY",
+          payload: {
+            numOfPlayer: newNumOfPlayer,
+            difficulty: newDifficulty,
+            numOfAttempt,
+          },
+        });
+        contextDispatch({
+          type: "INCREMENT_COUNTER",
+          payload: {
+            counter: counter + 1,
+          },
+        });
+      }
+      break;
+
+    default:
+      !turnSoundOff && playSound(sound.QuitNotice);
+      alertQuit(contextDispatch, {}, false);
+      break;
+  }
+};
+
+export const alertSessionEnd = async (initialState, contextDispatch) => {
+  const { newGame, turnSoundOff } = initialState;
+
+  const { maxScore, winningPlayers } = getSessionWinner(newGame);
+
+  const hasNoWinner = winningPlayers.length > 1 || maxScore === 0;
+
+  let winningMsg = `<p><img src=${AwardIcon} style="height:35px; width:35px" alt="Trophy Icon"/></p><br /><h4>${
+    winningPlayers[0]
+  } wins the session with ${maxScore} point${maxScore > 1 ? "s" : ""} </h4>`;
+
+  let noWinnerMsg = "";
+
+  if (winningPlayers.length > 1 && maxScore > 0) {
+    let players = `${winningPlayers
+      .slice(0, winningPlayers.length - 1)
+      .toString()} and ${winningPlayers[winningPlayers.length - 1]}`;
+
+    noWinnerMsg = `<h4 style="color:red">No winner for this session! ${players} are tied on ${maxScore} point${
+      maxScore > 1 ? "s" : ""
+    }</h4>`;
+  } else if (maxScore === 0) {
+    noWinnerMsg =
+      "<h4 style='color:red'>No winner for this session! All players have 0 point.</h4>";
+  }
+
+  !hasNoWinner && !turnSoundOff && playSound(sound.SessionWon);
 
   const value = await swal({
     icon: "success",
@@ -36,16 +160,21 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
     content: {
       element: "div",
       attributes: {
-        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /><p><img src=${AwardIcon} style="height:35px; width:35px" alt="Trophy Icon"/></p><br /><h4>${winningPlayer} wins the session with ${maxScore} point${
-          maxScore > 1 ? "s" : ""
-        } </h4>`,
+        innerHTML: `<h3 style="color: green; padding-top:5px; font-weight: bolder">END OF SESSION!</h3><br /> ${
+          hasNoWinner ? noWinnerMsg : winningMsg
+        }`,
         // style: " font-family: 'Orbitron', sans-serif",
       },
     },
 
     buttons: {
+      findWinner: {
+        text: "Find A Winner",
+        value: "find-winner",
+        visible: winningPlayers.length > 1 && maxScore > 0,
+      },
       continue: {
-        text: " New Session",
+        text: "New Session",
         value: "new-session",
       },
       viewScore: {
@@ -200,7 +329,7 @@ export const alertSuccess = async (
         multiPlayerGameType === `${SESSION}`
       ) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
-          !turnSoundOff && playSound(sound.SessionWon);
+          // !turnSoundOff && playSound(sound.SessionWon);
           alertSessionEnd(initialState, contextDispatch);
         } else {
           contextDispatch({
@@ -323,7 +452,7 @@ export const alertNoWinner = async (initialState, contextDispatch) => {
 
       if (selectedMode === `${MULTI}` && multiPlayerGameType === `${SESSION}`) {
         if (Number(numOfGamesInSession) === Number(sessionCount)) {
-          !turnSoundOff && playSound(sound.SessionWon);
+          // !turnSoundOff && playSound(sound.SessionWon);
           alertSessionEnd(initialState, contextDispatch);
         } else {
           contextDispatch({

@@ -104,6 +104,11 @@
     color: var(--light);
 }
 
+.swal-button--findWinner{
+    background: linear-gradient(to left, var(--warning), black, var(--warning));
+    color: var(--light);
+}
+
 .swal-button--continue{
     background: linear-gradient(to left, var(--primary), black, var(--primary));
     color: var(--light);
