@@ -127,7 +127,8 @@ export const alertNoSessionWinner = async (initialState, contextDispatch) => {
 export const alertSessionEnd = async (initialState, contextDispatch) => {
   const { newGame, turnSoundOff } = initialState;
 
-  const { maxScore, winningPlayers } = getSessionWinner(newGame);
+  const { maxScore, winningPlayers, winningPlayersWithProps } =
+    getSessionWinner(newGame);
 
   const hasNoWinner = winningPlayers.length > 1 || maxScore === 0;
 
@@ -208,6 +209,23 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
       contextDispatch({
         type: "SHOW_SCORE_TABLE",
         payload: { showScoreTable: true },
+      });
+      break;
+    case "find-winner":
+      newGame.setPlayersInvolved(winningPlayersWithProps);
+      newGame.resetPlayersScore();
+      newGame.resetPlayerNoOfWins();
+      newGame.resetPlayerNoOfPlays();
+      contextDispatch({
+        type: "SET_NEW_NO_OF_ROUNDS_FOR_SESSION",
+        payload: { numOfGamesInSession: 2, numOfPlayer: winningPlayers.length },
+      });
+      contextDispatch({
+        type: "SET_NEW_SESSION_COUNT",
+        payload: { sessionCount: 1 },
+      });
+      contextDispatch({
+        type: "SHOW_GAME_PREP_PAGE",
       });
       break;
 

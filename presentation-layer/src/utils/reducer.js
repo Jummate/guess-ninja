@@ -180,6 +180,13 @@ const reducer = (state, action) => {
     case "SET_NEW_SESSION_COUNT":
       return { ...state, sessionCount: action.payload.sessionCount };
 
+    case "SET_NEW_NO_OF_ROUNDS_FOR_SESSION":
+      return {
+        ...state,
+        numOfGamesInSession: action.payload.numOfGamesInSession,
+        numOfPlayer: action.payload.numOfPlayer,
+      };
+
     case "INCREMENT_COUNTER":
       return { ...state, counter: action.payload.counter };
 
