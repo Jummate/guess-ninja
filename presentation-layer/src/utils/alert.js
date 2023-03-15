@@ -139,9 +139,11 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   let noWinnerMsg = "";
 
   if (winningPlayers.length > 1 && maxScore > 0) {
-    let players = `${winningPlayers
-      .slice(0, winningPlayers.length - 1)
-      .toString()} and ${winningPlayers[winningPlayers.length - 1]}`;
+    // let players = `${winningPlayers
+    //   .slice(0, winningPlayers.length - 1)
+    //   .toString()} and ${winningPlayers[winningPlayers.length - 1]}`;
+
+    let players = new Intl.ListFormat("en-us").format(winningPlayers);
 
     noWinnerMsg = `<h4 style="color:red">No winner for this session! ${players} are tied on ${maxScore} point${
       maxScore > 1 ? "s" : ""
@@ -190,9 +192,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   });
   switch (value) {
     case "new-session":
-      newGame.resetPlayersScore();
-      newGame.resetPlayerNoOfWins();
-      newGame.resetPlayerNoOfPlays();
+      newGame.resetAll();
       contextDispatch({
         type: "SET_NEW_SESSION_COUNT",
         payload: { sessionCount: 1 },
@@ -213,9 +213,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
       break;
     case "find-winner":
       newGame.setPlayersInvolved(winningPlayersWithProps);
-      newGame.resetPlayersScore();
-      newGame.resetPlayerNoOfWins();
-      newGame.resetPlayerNoOfPlays();
+      newGame.resetAll();
       contextDispatch({
         type: "SET_NEW_NO_OF_ROUNDS_FOR_SESSION",
         payload: { numOfGamesInSession: 2, numOfPlayer: winningPlayers.length },

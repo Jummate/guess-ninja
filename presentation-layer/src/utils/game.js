@@ -16,8 +16,18 @@ export class GuessGame {
   getVoidRound() {
     return this.voidRound;
   }
+  resetVoidRound() {
+    this.voidRound = 0;
+  }
   incrementVoid() {
     this.voidRound = this.getVoidRound() + 1;
+  }
+
+  resetAll() {
+    this.resetPlayersScore();
+    this.resetPlayerNoOfWins();
+    this.resetPlayerNoOfPlays();
+    this.resetVoidRound();
   }
 
   getGameId() {
