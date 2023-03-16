@@ -125,7 +125,7 @@ export const alertNoSessionWinner = async (initialState, contextDispatch) => {
 };
 
 export const alertSessionEnd = async (initialState, contextDispatch) => {
-  const { newGame, turnSoundOff } = initialState;
+  const { newGame, turnSoundOff, numOfGamesInSession } = initialState;
 
   const { maxScore, winningPlayers, winningPlayersWithProps } =
     getSessionWinner(newGame);
@@ -144,6 +144,9 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
     //   .toString()} and ${winningPlayers[winningPlayers.length - 1]}`;
 
     let players = new Intl.ListFormat("en-us").format(winningPlayers);
+
+    // newGame.setTempBucketForPlayers(newGame.getPlayersInvolved());
+    // newGame.setTempNumOfRoundsInSession(numOfGamesInSession);
 
     noWinnerMsg = `<h4 style="color:red">No winner for this session! ${players} are tied on ${maxScore} point${
       maxScore > 1 ? "s" : ""
@@ -192,7 +195,19 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   });
   switch (value) {
     case "new-session":
+      if (newGame.getTempBucketForPlayers().length > 0) {
+        newGame.setPlayersInvolved(newGame.getTempBucketForPlayers());
+        contextDispatch({
+          type: "SET_NEW_NO_OF_ROUNDS_FOR_SESSION",
+          payload: {
+            numOfGamesInSession: newGame.getTempNumOfRoundsInSession(),
+            numOfPlayer: newGame.getTempBucketForPlayers().length,
+          },
+        });
+      }
+
       newGame.resetAll();
+
       contextDispatch({
         type: "SET_NEW_SESSION_COUNT",
         payload: { sessionCount: 1 },
@@ -212,6 +227,8 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
       });
       break;
     case "find-winner":
+      newGame.setTempBucketForPlayers(newGame.getPlayersInvolved());
+      newGame.setTempNumOfRoundsInSession(numOfGamesInSession);
       newGame.setPlayersInvolved(winningPlayersWithProps);
       newGame.resetAll();
       contextDispatch({

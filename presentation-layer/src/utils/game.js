@@ -3,7 +3,9 @@ export class GuessGame {
   constructor() {
     this.gameId = Date.now();
     this.playersInvolved = [];
+    this.tempBucketForPlayers = [];
     this.voidRound = 0;
+    this.tempNumOfRoundsInSession = 0;
   }
 
   addPlayer(newPlayer) {
@@ -23,6 +25,14 @@ export class GuessGame {
     this.voidRound = this.getVoidRound() + 1;
   }
 
+  getTempNumOfRoundsInSession() {
+    return this.tempNumOfRoundsInSession;
+  }
+
+  setTempNumOfRoundsInSession(newNumOfRound) {
+    this.tempNumOfRoundsInSession = newNumOfRound;
+  }
+
   resetAll() {
     this.resetPlayersScore();
     this.resetPlayerNoOfWins();
@@ -40,6 +50,13 @@ export class GuessGame {
 
   setPlayersInvolved(newPlayers) {
     this.playersInvolved = [...newPlayers];
+  }
+
+  getTempBucketForPlayers() {
+    return this.tempBucketForPlayers;
+  }
+  setTempBucketForPlayers(players) {
+    this.tempBucketForPlayers = [...players];
   }
 
   getPlayersInvolvedByName() {

@@ -1,6 +1,5 @@
 export const getSessionWinner = (currentGame) => {
   let maxScore = Number.MIN_SAFE_INTEGER;
-  // let winningPlayer = "";
   const tempObj = {};
   const tempObj2 = {};
 
@@ -16,10 +15,6 @@ export const getSessionWinner = (currentGame) => {
     }
 
     maxScore = playerScore > maxScore ? playerScore : maxScore;
-    // if (player.getPlayerScore() > maxScore) {
-    //   maxScore = player.getPlayerScore();
-    //   winningPlayer = player.getPlayerName().toString().toUpperCase();
-    // }
   });
 
   return {
@@ -27,5 +22,4 @@ export const getSessionWinner = (currentGame) => {
     winningPlayers: tempObj[maxScore],
     winningPlayersWithProps: tempObj2[maxScore],
   };
-  // return { winningPlayer, maxScore };
 };
