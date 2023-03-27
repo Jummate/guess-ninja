@@ -26,6 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
     /* background-color: #000; */
     border-radius: 20px;
     box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
@@ -37,6 +38,9 @@
     background-color: #000;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* .GameGuide__heading{
@@ -47,15 +51,13 @@
     background-clip: text;
 
 } */
-/* .back-arrow-wrapper{
-    position:absolute;
+ .arrow-wrapper{
+    /* position:absolute; */
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom:20px;
-    left:20px;
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
     border-radius: 50%;
     background:transparent;
     color:#49cdcb;
@@ -63,8 +65,8 @@
     font-weight: bolder;
     cursor: pointer;
 }
-.back-arrow-wrapper:hover{
+.arrow-wrapper:hover{
     transition:all ease-in-out 0.5s;
     background-color: #255958;
     color:#000;
-} */
+} 
