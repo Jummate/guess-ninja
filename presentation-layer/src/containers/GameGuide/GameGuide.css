@@ -5,20 +5,49 @@
     border-radius: 20px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color:var(--danger)
 
 }
-.GameGuide__heading{
+
+.GameGuide__body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:70%;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.GameGuide__wrapper{
+    width: 95%;
+    height:95%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #000; */
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
+}
+
+.GameGuide__footer{
+    width: 100%;
+    height: 10%;
+    background-color: #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* .GameGuide__heading{
     margin-bottom: 30px;
     background: linear-gradient(to left, #000 19%, #CF1512 75%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 
-}
-.back-arrow-wrapper{
+} */
+/* .back-arrow-wrapper{
     position:absolute;
     display: flex;
     justify-content: center;
@@ -38,4 +67,4 @@
     transition:all ease-in-out 0.5s;
     background-color: #255958;
     color:#000;
-}
+} */

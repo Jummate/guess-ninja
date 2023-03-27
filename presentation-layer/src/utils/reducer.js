@@ -46,7 +46,7 @@ const reducer = (state, action) => {
         guessTakingActive: false,
         gameGuideActive: true,
         showScoreTable: false,
-        showHome: false,
+        showHome: true,
         showMode: false,
         showSetup: false,
         showOtherTabs: false,

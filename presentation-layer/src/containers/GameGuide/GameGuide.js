@@ -1,20 +1,33 @@
 import React, { useContext } from "react";
-import Button from "../../components/button/Button";
-import { AppContext } from "../../utils/context";
-import { FaChevronLeft } from "react-icons/fa";
+// import { AppContext } from "../../utils/context";
+// import { FaChevronLeft } from "react-icons/fa";
+import Header from "../../components/header/Header";
+import Navigation from "../../components/nav/Navigation";
+import SoundIcon from "../../components/SoundController";
 
 import "./GameGuide.css";
 
 const GameGuide = () => {
-  const context = useContext(AppContext);
+  // const context = useContext(AppContext);
 
-  const { contextDispatch } = context;
+  // const { contextDispatch } = context;
 
   return (
-    <section className="GameGuide_container">
-      <h1 className="GameGuide__heading">This is Game Guide Page</h1>
+    <section className="GameGuide__container">
+      <Header
+        hOneText="Game Guide"
+        mt="40"
+        height="20"
+        // bg={LIGHTER}
+      />
 
-      <div className="back-arrow-wrapper">
+      <div className="GameGuide__body">
+        <div className="GameGuide__wrapper"></div>
+      </div>
+
+      <div className="GameGuide__footer"></div>
+
+      {/* <div className="back-arrow-wrapper">
         <FaChevronLeft
           onClick={() =>
             contextDispatch({
@@ -22,7 +35,7 @@ const GameGuide = () => {
             })
           }
         />
-      </div>
+      </div> */}
 
       {/* <Button
         buttonSize="btn--medium"
@@ -33,6 +46,8 @@ const GameGuide = () => {
           })
         }
       ></Button> */}
+      <Navigation />
+      <SoundIcon />
     </section>
   );
 };

@@ -51,7 +51,7 @@ const Welcome = () => {
               !turnSoundOff && playSound(sound.GameStart);
             }}
           >
-            GUIDE
+            INTRO
           </Button>
 
           <Button
