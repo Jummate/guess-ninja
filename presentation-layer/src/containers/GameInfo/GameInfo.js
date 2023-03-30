@@ -106,7 +106,7 @@ const GameInfo = () => {
             });
           }}
         >
-          Start Game
+          Continue
         </Button>
       </div>
 
