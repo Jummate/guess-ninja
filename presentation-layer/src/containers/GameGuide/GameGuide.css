@@ -24,12 +24,13 @@
     height:95%;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: scroll;
     /* background-color: #000; */
     border-radius: 20px;
     box-shadow: 2px 2px 4px gray, -2px -2px 4px gray;
+    padding:20px;
+    line-height: 1.5;
 }
 
 .GameGuide__footer{
@@ -39,7 +40,7 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -65,8 +66,8 @@
     font-weight: bolder;
     cursor: pointer;
 }
-.arrow-wrapper:hover{
+/* .arrow-wrapper:hover{
     transition:all ease-in-out 0.5s;
     background-color: #255958;
     color:#000;
-} 
+}  */

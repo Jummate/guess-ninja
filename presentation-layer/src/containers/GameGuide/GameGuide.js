@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 // import { AppContext } from "../../utils/context";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
 import SoundIcon from "../../components/SoundController";
+import { contentSchema } from "../../utils/content-schema";
+import Content from "../../components/ContentRenderer";
 
 import "./GameGuide.css";
 
@@ -12,7 +14,9 @@ const GameGuide = () => {
 
   // const { contextDispatch } = context;
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
+
+  const memoizedData = useMemo(() => contentSchema[count], [count]);
 
   return (
     <section className="GameGuide__container">
@@ -25,21 +29,37 @@ const GameGuide = () => {
 
       <div className="GameGuide__body">
         <div className="GameGuide__wrapper">
-          {count === 1 && <h2>YOU {count}</h2>}
-          {count === 2 && <h2>ARE {count}</h2>}
-          {count === 3 && <h2>WELCOME {count}</h2>}
-          {count === 4 && <h2>HERE {count}</h2>}
-          {count === 5 && <h2>BRO {count}</h2>}
+          <Content data={memoizedData} />
         </div>
       </div>
 
       <div className="GameGuide__footer">
         <div className="arrow-wrapper">
-          <FaChevronLeft onClick={() => setCount((prev) => prev - 1)} />
+          {count > 0 && (
+            <FaChevronLeft
+              onClick={() => {
+                if (count >= 1) {
+                  setCount((prev) => prev - 1);
+                }
+              }}
+            />
+          )}
+        </div>
+
+        <div>
+          {count + 1} of {contentSchema.length}
         </div>
 
         <div className="arrow-wrapper">
-          <FaChevronRight onClick={() => setCount((prev) => prev + 1)} />
+          {count < contentSchema.length - 1 && (
+            <FaChevronRight
+              onClick={() => {
+                if (count < contentSchema.length - 1) {
+                  setCount((prev) => prev + 1);
+                }
+              }}
+            />
+          )}
         </div>
       </div>
 
