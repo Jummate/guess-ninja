@@ -1,11 +1,82 @@
 .content-header {
     background-color: black;
     padding: 10px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    width:100%;
+    position: sticky;
+    top:0px
+}
+
+.content-header h3{
+    font-size: 1.2rem;
+    text-align: center;
 }
 .content-body{
-    padding: 20px
+    padding: 10px;
+    font-family: 'Creepster', cursive;
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.2rem;
 }
+
+.content-body article{
+    padding: 15px;
+    color:#000
+}
+
+.content-body article h3{
+    margin-bottom: 3px;
+}
+
+.content-body ul{
+    line-height: 1.9;
+}
+.content-body li{
+    font-size: 1.2rem;
+}
+
+.content-body ul span{
+    font-weight: bolder;
+}
+
+
+@media screen and (min-width:340px) and (max-width:480px){
+    .content-body, .content-body li, .content-header h3{
+        font-size: 1.3rem;
+   }
+   /* .content-body{
+        font-size: 1.3rem;
+   }
+   .content-body li{
+        font-size: 1.3rem;
+    }
+    .content-header h3{
+        font-size: 1.3rem;
+    } */
+}
+
+@media screen and (min-width:481px){
+    .content-body, .content-body li, .content-header h3{
+        font-size: 1.4rem;
+   }
+   
+}
+
+@media screen and (min-width:769px){
+    .content-body, .content-body li, .content-header h3{
+        font-size: 1.5rem;
+   }
+   
+}
+
+/* @media screen and (min-width:1024px){
+    .content-body{
+        font-size: 1.6rem;
+   }
+   .content-body li{
+        font-size: 1.6rem;
+    }
+} */

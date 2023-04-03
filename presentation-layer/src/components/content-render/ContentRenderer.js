@@ -1,23 +1,31 @@
 import React from "react";
 import "./ContentRenderer.css";
+import { ImArrowRight } from "react-icons/im";
 
 const Content = ({ data }) => {
   const { mainHeading, mainContent, list } = data;
   return (
-    <section>
+    <>
       <div className="content-header">
         <h3>{mainHeading}</h3>
       </div>
       <div className="content-body">
-        <h5>{mainContent}</h5>
+        {mainContent && (
+          <h4>
+            <span>
+              <ImArrowRight />
+            </span>{" "}
+            {mainContent}
+          </h4>
+        )}
         {list.length > 0 && list[0].item[0].content
           ? list.map(({ heading, item }, index) => (
               <article key={index}>
-                {heading && <h6>{heading}</h6>}
+                {heading && <h3>{heading}</h3>}
                 <ul>
                   {item.map(({ title, content }, index) => (
                     <li key={index}>
-                      {title && title} {content}
+                      <span>{title && title.toUpperCase()}</span> {content}
                     </li>
                   ))}
                 </ul>
@@ -25,7 +33,7 @@ const Content = ({ data }) => {
             ))
           : null}
       </div>
-    </section>
+    </>
   );
 };
 

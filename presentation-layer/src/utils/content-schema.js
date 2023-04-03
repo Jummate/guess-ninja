@@ -2,7 +2,7 @@ export const contentSchema = [
   {
     mainHeading: "Mode Selection",
     mainContent:
-      "On the Game Mode Page, click any of the buttons to indicate the desired mode",
+      "On the Game Mode page, click any of the buttons to specify the desired mode",
     list: [
       {
         heading: "",
@@ -19,8 +19,8 @@ export const contentSchema = [
 
   {
     mainHeading: `Mode Type`,
-    mainContent: `On the next page that shows up after specifying the desired mode,
-    click any of the buttons to specify the desired Mode Type`,
+    mainContent:
+      "Click any of the buttons on the next page to specify the desired Mode Type",
 
     list: [
       {
@@ -47,7 +47,7 @@ export const contentSchema = [
           {
             title: "Regular:",
             content:
-              "similar to Constant modetype but it involves multiple players",
+              "similar to CONSTANT modetype but it involves multiple players",
           },
           {
             title: "Session:",
@@ -70,12 +70,12 @@ export const contentSchema = [
           {
             title: "",
             content:
-              "Each field has its specific requirement. For example, the field for Number of players will only accept a value between 2 and 5",
+              "Each field has its specific requirement. For example, the field for Number of Players will only accept a value between 2 and 5",
           },
           {
             title: "",
             content:
-              "The length of the range the number to guess falls within is largely dependent on the number of players, the number of attempt and the difficulty",
+              "The length of the range the number to guess falls within largely depends on Number of Players, Number of Attempt, and Difficulty",
           },
         ],
       },
@@ -125,7 +125,7 @@ export const contentSchema = [
   {
     mainHeading: "Taking a guess",
     mainContent:
-      "For multiplayer game, each player takes turn to specify their guess.",
+      "For MULTIPLAYER game, each player takes turn to specify their guess.",
     list: [
       {
         heading: "",
@@ -138,13 +138,13 @@ export const contentSchema = [
           {
             title: "",
             content:
-              "the count of the buttons is determined by the number of attempt, the number of player and the difficulty.",
+              "the count of the buttons is determined by Number of Players, Number of Attempt, and Difficulty.",
           },
 
           {
             title: "",
             content:
-              "users accessing the application via smaller devices may have to scoll vertically to locate some portions of the buttons especially for games requiring a fairly large number of the buttons",
+              "users accessing the app via smaller devices may have to scroll vertically to locate some portions of the buttons especially for games requiring a fairly large number of the buttons",
           },
         ],
       },
@@ -161,7 +161,7 @@ export const contentSchema = [
           {
             title: "",
             content:
-              "For all types of game except Session, the player whose guess matches the number-to-guess wins the game",
+              "For all types of game except SESSION, the player whose guess matches the number-to-guess wins the game",
           },
 
           {
@@ -173,7 +173,7 @@ export const contentSchema = [
           {
             title: "",
             content:
-              "In the event that two players or more players are tied on the smae score, these players will be isolated for replay to determine the eventual winner",
+              "In the event that two or more players are tied on the same score, these players will be isolated for replay to determine the eventual winner",
           },
         ],
       },
