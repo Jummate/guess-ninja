@@ -5,7 +5,7 @@ import Header from "../../components/header/Header";
 import Navigation from "../../components/nav/Navigation";
 import SoundIcon from "../../components/SoundController";
 import { contentSchema } from "../../utils/content-schema";
-import Content from "../../components/ContentRenderer";
+import Content from "../../components/content-render/ContentRenderer";
 
 import "./GameGuide.css";
 

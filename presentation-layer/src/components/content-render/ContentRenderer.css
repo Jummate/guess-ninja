@@ -1,0 +1,11 @@
+.content-header {
+    background-color: black;
+    padding: 10px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-body{
+    padding: 20px
+}
