@@ -12,10 +12,7 @@
     /* color:rgb(36, 34, 34); */
     color:#e8f8f7;
  }
-/* .Card__container p::before{
-   content: "~";
-   color:#000
-} */
+
 
 .Card__container h6{
     color: var(--danger);

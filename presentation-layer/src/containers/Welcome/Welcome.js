@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
-import NinjaImage from "../../assets/images/ninja-gaming-joystick-sport-logo-icon.jpg";
+import NinjaImage from "../../assets/images/ninja-gaming-logo-icon.png";
 import "./Welcome.css";
 import { AppContext } from "../../utils/context";
 import Menu from "../../components/Menu";
 import Confetti from "../../components/Confetti";
-// import MinimalBeat from "../../assets/minimal.mp3";
-// import GameStart from "../../assets/game-start.mp3";
-// import Sound from "../../components/Sound";
+
 import { sound, playSound } from "../../utils/game-sound";
 import SoundIcon from "../../components/SoundController";
 
