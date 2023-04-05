@@ -1,6 +1,6 @@
 export const contentSchema = [
   {
-    mainHeading: "Mode Selection",
+    mainHeading: "Specify The Mode",
     mainContent:
       "On the Game Mode page, click any of the buttons to specify the desired mode",
     list: [
@@ -18,7 +18,7 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: `Mode Type`,
+    mainHeading: "Specify The Mode Type",
     mainContent:
       "Click any of the buttons on the next page to specify the desired Mode Type",
 
@@ -47,12 +47,12 @@ export const contentSchema = [
           {
             title: "Regular:",
             content:
-              "similar to CONSTANT modetype but it involves multiple players",
+              "similar to CONSTANT modetype but involves multiple players",
           },
           {
             title: "Session:",
             content:
-              "number of rounds to go is selected and the winner is declared after the specified number of rounds has been completed",
+              "number of rounds is specified and winner is declared after number of rounds has been completed",
           },
         ],
       },
@@ -60,22 +60,22 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: "Configuring the Setup",
+    mainHeading: "Configure The Setup",
     mainContent: "Define the setting to apply for the game",
     list: [
       {
         heading: "",
         item: [
-          { title: "", content: "No field can be left empty" },
+          { title: "", content: "No field can be empty" },
           {
             title: "",
             content:
-              "Each field has its specific requirement. For example, the field for Number of Players will only accept a value between 2 and 5",
+              "Each field has its specific requirement. For example, Number of Players field will only accept a value between 2 and 5",
           },
           {
             title: "",
             content:
-              "The length of the range the number to guess falls within largely depends on Number of Players, Number of Attempt, and Difficulty",
+              "The length of the range the number-to-guess falls within largely depends on Number of Players, Number of Attempt, and Difficulty",
           },
         ],
       },
@@ -83,7 +83,7 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: "Player Registration (For Multiplayer)",
+    mainHeading: "Register Players (For Multiplayer)",
     mainContent: "Register the name of each player",
     list: [
       {
@@ -101,7 +101,7 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: "Info Confirmation",
+    mainHeading: "Confirm The Info",
     mainContent: "Confirm the configuration defined for the game",
     list: [
       {
@@ -112,7 +112,7 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: "Prepare to Start",
+    mainHeading: "Prepare To Start",
     mainContent: "Take note of the range the number to guess falls within",
     list: [
       {
@@ -123,7 +123,7 @@ export const contentSchema = [
   },
 
   {
-    mainHeading: "Taking a guess",
+    mainHeading: "Start Guessing",
     mainContent:
       "For MULTIPLAYER game, each player takes turn to specify their guess.",
     list: [

@@ -12,6 +12,7 @@
     height: 100%;
     z-index: 1;
     font-family: 'Orbitron', sans-serif;
+    border-radius: 20px;
 }
 .loading h1{
     color: var(--danger);

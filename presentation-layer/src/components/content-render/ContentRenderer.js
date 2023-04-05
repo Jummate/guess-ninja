@@ -12,7 +12,7 @@ const Content = ({ data }) => {
       <div className="content-body">
         {mainContent && (
           <h4>
-            <span>
+            <span style={{ color: "#000" }}>
               <ImArrowRight />
             </span>{" "}
             {mainContent}
@@ -25,7 +25,10 @@ const Content = ({ data }) => {
                 <ul>
                   {item.map(({ title, content }, index) => (
                     <li key={index}>
-                      <span>{title && title.toUpperCase()}</span> {content}
+                      <span>{title && title.toUpperCase()}</span>{" "}
+                      {title
+                        ? content
+                        : content.charAt(0).toUpperCase() + content.slice(1)}
                     </li>
                   ))}
                 </ul>

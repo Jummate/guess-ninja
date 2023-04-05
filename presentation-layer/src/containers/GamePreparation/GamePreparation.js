@@ -78,8 +78,8 @@ const GamePreparation = () => {
           <div className="GamePrep__body-item-2">
             <p style={{ marginBottom: "10px" }}>
               {" "}
-              <span style={{ color: `${PRIMARY}` }}>ROMEO</span> picked a number{" "}
-              {numberToGuess} from a box containing numbers between{" "}
+              <span style={{ color: `${PRIMARY}` }}>ROMEO</span> picked a number
+              from a box containing numbers between{" "}
               <span
                 style={{
                   backgroundColor: "maroon",
