@@ -10,7 +10,7 @@ This is a simple guessing game which can be played by one or many players. You c
 - Regular
 - Session
 
-![img](https://github.com/Jummate/guess-ninja/blob/4d2803aa105d7ce9b2e5b008e2251030f7489e3c/presentation-layer/src/assets/images/guess-ninja-screenshot.png)
+![Ninja Logo](https://github.com/Jummate/guess-ninja/blob/4d2803aa105d7ce9b2e5b008e2251030f7489e3c/presentation-layer/src/assets/images/guess-ninja-screenshot.png)
 
 ## 🚀 How To Get Started
 ***
