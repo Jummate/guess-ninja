@@ -1,15 +1,10 @@
 import React, { useContext, useState } from "react";
-import Button from "../../components/button/Button";
-import NinjaImage from "../../assets/images/ninja-gaming-logo-icon.png";
+import { Button, Menu, SoundController, Confetti } from "../../components";
+import { NinjaImage } from "../../assets";
 import "./Welcome.css";
-import { AppContext } from "../../utils/context";
-import Menu from "../../components/Menu";
-import Confetti from "../../components/Confetti";
+import { AppContext, sound, playSound } from "../../utils";
 
-import { sound, playSound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
-
-const Welcome = () => {
+export const Welcome = () => {
   const [showMenu, setShowMenu] = useState(false);
   const context = useContext(AppContext);
   const {
@@ -19,7 +14,7 @@ const Welcome = () => {
 
   return (
     <div className="Welcome__container">
-      <SoundIcon />
+      <SoundController />
       <h1 className="Welcome__heading">Guess Ninja</h1>
       <img
         className="Welcome__image"
@@ -82,5 +77,3 @@ const Welcome = () => {
     </div>
   );
 };
-
-export default Welcome;

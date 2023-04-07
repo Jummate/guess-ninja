@@ -1,7 +1,13 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ buttonStyle, buttonSize, onClick, width, children }) => {
+export const Button = ({
+  buttonStyle,
+  buttonSize,
+  onClick,
+  width,
+  children,
+}) => {
   return (
     <button
       type="button"
@@ -12,4 +18,3 @@ const Button = ({ buttonStyle, buttonSize, onClick, width, children }) => {
     </button>
   );
 };
-export default Button;

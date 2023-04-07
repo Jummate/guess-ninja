@@ -3,22 +3,20 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Welcome from "./containers/Welcome/Welcome";
-import GameMode from "./containers/GameMode/GameMode";
-import GameSetup from "./containers/GameSetup/GameSetup";
-import PlayerRegistration from "./containers/PlayerRegistration/PlayerRegistration";
-import GameInfo from "./containers/GameInfo/GameInfo";
-import GamePreparation from "./containers/GamePreparation/GamePreparation";
-import GameGuide from "./containers/GameGuide/GameGuide";
-import reducer from "./utils/reducer";
-import { AppContext } from "./utils/context";
-import GuessTaking from "./containers/GuessTaking/GuessTaking";
-import { defaultState } from "./utils/defaultState";
-import Table from "./components/table/Table";
-import { getScore, columns } from "./utils/score";
-import Sound from "./components/Sound";
-import MinimalBeat from "./assets/sound/minimal.mp3";
-import GameMusic from "./assets/sound/game-music.mp3";
+import {
+  Welcome,
+  GameInfo,
+  PlayerRegistration,
+  GameSetup,
+  GameGuide,
+  GuessTaking,
+  GamePreparation,
+  GameMode,
+} from "./containers";
+
+import { reducer, AppContext, defaultState, getScore, columns } from "./utils";
+import { Table, Sound } from "./components";
+import { GameMusic, MinimalBeat } from "./assets";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);

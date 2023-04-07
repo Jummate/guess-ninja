@@ -1,16 +1,16 @@
 import { React, useContext } from "react";
-import { AppContext } from "../../utils/context";
-import Button from "../button/Button";
 import "./Table.css";
-import { alertSessionEnd } from "../../utils/alert";
-import { generateRandomDifficulty } from "../../utils/random-difficulty";
 import {
+  AppContext,
+  alertSessionEnd,
+  generateRandomDifficulty,
   game_mode,
   mode_type,
   color_type,
-} from "../../utils/reusable-variables";
+} from "../../utils";
+import { Button } from "../button/Button";
 
-const Table = ({ data = [], columns }) => {
+export const Table = ({ data = [], columns }) => {
   const { SINGLE, MULTI } = game_mode;
   const { SESSION, RANDOM } = mode_type;
   const { DANGER } = color_type;
@@ -120,5 +120,3 @@ const Table = ({ data = [], columns }) => {
     </div>
   );
 };
-
-export default Table;

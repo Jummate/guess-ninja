@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 
 import "./Input.css";
 
-const Input = forwardRef(
+export const Input = forwardRef(
   (
     { type = "text", placeholder, value, width, onChange, min = 2, max = 5 },
     ref
@@ -21,5 +21,3 @@ const Input = forwardRef(
     );
   }
 );
-
-export default Input;

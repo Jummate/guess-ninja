@@ -1,8 +1,8 @@
 import React from "react";
 import "./Loading.css";
-import { color_type } from "../../utils/reusable-variables";
+import { color_type } from "../../utils";
 
-const Loading = ({ isSessionGame, sessionCount }) => {
+export const Loading = ({ isSessionGame, sessionCount }) => {
   const { PRIMARY } = color_type;
   return (
     <div className="loading">
@@ -15,5 +15,3 @@ const Loading = ({ isSessionGame, sessionCount }) => {
     </div>
   );
 };
-
-export default Loading;

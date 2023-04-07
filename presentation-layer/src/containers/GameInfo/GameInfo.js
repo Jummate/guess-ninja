@@ -1,17 +1,22 @@
 import React, { useContext } from "react";
-import Button from "../../components/button/Button";
-import Header from "../../components/header/Header";
-import Navigation from "../../components/nav/Navigation";
-import { AppContext } from "../../utils/context";
-import Card from "../../components/card/Card";
-import { game_mode, mode_type } from "../../utils/reusable-variables";
-
 import "./GameInfo.css";
-import Confetti from "../../components/Confetti";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
+import {
+  Button,
+  Header,
+  Navigation,
+  Card,
+  Confetti,
+  SoundController,
+} from "../../components";
+import {
+  AppContext,
+  game_mode,
+  mode_type,
+  playSound,
+  sound,
+} from "../../utils";
 
-const GameInfo = () => {
+export const GameInfo = () => {
   const { SINGLE, MULTI } = game_mode;
   const { SESSION, RANDOM, PROGRESSIVE } = mode_type;
   const context = useContext(AppContext);
@@ -112,9 +117,7 @@ const GameInfo = () => {
 
       <Navigation />
       <Confetti opacity={0.06} />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default GameInfo;

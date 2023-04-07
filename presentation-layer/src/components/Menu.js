@@ -1,7 +1,7 @@
 import React from "react";
-import SoundIcon from "./SoundController";
+import { SoundController } from "./SoundController";
 
-const Menu = ({ children }) => {
+export const Menu = ({ children }) => {
   const styles = {
     height: "100%",
     width: "100%",
@@ -18,10 +18,8 @@ const Menu = ({ children }) => {
   };
   return (
     <div style={styles}>
-      <SoundIcon />
+      <SoundController />
       {children}
     </div>
   );
 };
-
-export default Menu;

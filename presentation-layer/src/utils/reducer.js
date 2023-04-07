@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "SHOW_HOME_PAGE":
       return {
@@ -213,5 +213,3 @@ const reducer = (state, action) => {
       throw new Error("No matching action type");
   }
 };
-
-export default reducer;

@@ -1,25 +1,28 @@
 import React, { useState, useContext, createRef } from "react";
 import Select from "react-select";
 import "./GameSetup.css";
-import Input from "../../components/input/Input";
-import Navigation from "../../components/nav/Navigation";
-import Button from "../../components/button/Button";
-import Header from "../../components/header/Header";
-import { AppContext } from "../../utils/context";
-import { GuessGame } from "../../utils/game";
-import { generateRandomDifficulty } from "../../utils/random-difficulty";
-import { options } from "../../utils/difficulty-options";
 import {
+  Input,
+  Navigation,
+  Button,
+  Header,
+  SoundController,
+  Confetti,
+} from "../../components";
+import {
+  AppContext,
+  GuessGame,
+  generateRandomDifficulty,
+  options,
   game_mode,
   mode_type,
   color_type,
-} from "../../utils/reusable-variables";
-import { validateField } from "../../utils/validation";
-import Confetti from "../../components/Confetti";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
+  validateField,
+  playSound,
+  sound,
+} from "../../utils";
 
-const GameSetup = () => {
+export const GameSetup = () => {
   const context = useContext(AppContext);
   const [numOfPlayer, setNumOfPlayer] = useState("");
   const [numOfAttempt, setNumOfAttempt] = useState("");
@@ -190,9 +193,7 @@ const GameSetup = () => {
 
       <Navigation />
       <Confetti />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default GameSetup;

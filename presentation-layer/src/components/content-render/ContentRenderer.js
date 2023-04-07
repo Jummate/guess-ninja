@@ -2,7 +2,7 @@ import React from "react";
 import "./ContentRenderer.css";
 import { ImArrowRight } from "react-icons/im";
 
-const Content = ({ data }) => {
+export const Content = ({ data }) => {
   const { mainHeading, mainContent, list } = data;
   return (
     <>
@@ -39,5 +39,3 @@ const Content = ({ data }) => {
     </>
   );
 };
-
-export default Content;

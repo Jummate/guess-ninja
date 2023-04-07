@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Header.css";
 
-const Header = ({ hOneText, hFourText, height, mt, tRadius, bg }) => {
+export const Header = ({ hOneText, hFourText, height, mt, tRadius, bg }) => {
   return (
     <header
       style={{
@@ -18,5 +18,3 @@ const Header = ({ hOneText, hFourText, height, mt, tRadius, bg }) => {
     </header>
   );
 };
-
-export default Header;

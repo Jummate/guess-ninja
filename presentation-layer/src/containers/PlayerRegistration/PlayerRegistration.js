@@ -1,20 +1,18 @@
 import React, { useState, useContext, createRef } from "react";
-import Navigation from "../../components/nav/Navigation";
-import Input from "../../components/input/Input";
-import Button from "../../components/button/Button";
-import { AppContext } from "../../utils/context";
-import Header from "../../components/header/Header";
-import Overlay from "../../components/Overlay";
-
+import "./PlayerRegistration.css";
+import {
+  Navigation,
+  Button,
+  Input,
+  Header,
+  Overlay,
+  Confetti,
+  SoundController,
+} from "../../components";
+import { AppContext, playSound, sound, validatePlayerName } from "../../utils";
 import { toast } from "react-toastify";
 
-import "./PlayerRegistration.css";
-import Confetti from "../../components/Confetti";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
-import { validatePlayerName } from "../../utils/validation";
-
-const PlayerRegistration = () => {
+export const PlayerRegistration = () => {
   const context = useContext(AppContext);
   const nameRef = createRef();
   const {
@@ -120,9 +118,7 @@ const PlayerRegistration = () => {
       {showOverlay && <Overlay />}
       <Navigation />
       <Confetti opacity={0.05} />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default PlayerRegistration;

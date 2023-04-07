@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import "./Navigation.css";
-import { AppContext } from "../../utils/context";
-import { alertQuit } from "../../utils/alert";
-import { playSound, sound } from "../../utils/game-sound";
+import { AppContext, alertQuit, playSound, sound } from "../../utils";
 
-const Navigation = () => {
+export const Navigation = () => {
   const context = useContext(AppContext);
 
   const {
@@ -81,5 +79,3 @@ const Navigation = () => {
     </section>
   );
 };
-
-export default Navigation;

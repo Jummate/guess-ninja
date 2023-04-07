@@ -1,21 +1,25 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
-import Button from "../../components/button/Button";
-import Header from "../../components/header/Header";
-import Navigation from "../../components/nav/Navigation";
-import Loading from "../../components/loading/Loading";
-import { AppContext } from "../../utils/context";
-import { generateNumberToGuess } from "../../utils/numberToGuess";
-import RobotRomeo from "../../assets/images/romeo-robot.webp";
+import "./GamePreparation.css";
+
 import {
+  Button,
+  Header,
+  Navigation,
+  Loading,
+  SoundController,
+} from "../../components";
+import {
+  AppContext,
+  generateNumberToGuess,
   game_mode,
   mode_type,
   color_type,
-} from "../../utils/reusable-variables";
-import "./GamePreparation.css";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
+  playSound,
+  sound,
+} from "../../utils";
+import { RobotRomeo } from "../../assets";
 
-const GamePreparation = () => {
+export const GamePreparation = () => {
   const { MULTI } = game_mode;
   const { SESSION } = mode_type;
   const { PRIMARY } = color_type;
@@ -127,9 +131,7 @@ const GamePreparation = () => {
         </div>
       </div>
       <Navigation />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default GamePreparation;

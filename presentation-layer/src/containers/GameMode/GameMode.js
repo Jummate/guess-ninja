@@ -1,20 +1,23 @@
 import React, { useContext, useState } from "react";
 import "./GameMode.css";
-import Button from "../../components/button/Button";
-import Navigation from "../../components/nav/Navigation";
-import { AppContext } from "../../utils/context";
-import Header from "../../components/header/Header";
-import Menu from "../../components/Menu";
 import {
+  Button,
+  Navigation,
+  Header,
+  Menu,
+  Confetti,
+  SoundController,
+} from "../../components";
+import {
+  AppContext,
   game_mode,
   mode_type,
   color_type,
-} from "../../utils/reusable-variables";
-import Confetti from "../../components/Confetti";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
+  playSound,
+  sound,
+} from "../../utils";
 
-const GameMode = () => {
+export const GameMode = () => {
   const { SINGLE, MULTI } = game_mode;
   const { SESSION, RANDOM, CONSTANT, REGULAR, PROGRESSIVE } = mode_type;
   const { LIGHTER } = color_type;
@@ -179,8 +182,7 @@ const GameMode = () => {
 
       <Navigation />
       <Confetti />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-export default GameMode;

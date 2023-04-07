@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sound = ({ src, loop = true, autoPlay = true }) => {
+export const Sound = ({ src, loop = true, autoPlay = true }) => {
   return (
     <audio
       loop={loop}
@@ -10,5 +10,3 @@ const Sound = ({ src, loop = true, autoPlay = true }) => {
     </audio>
   );
 };
-
-export default Sound;

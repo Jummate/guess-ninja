@@ -1,7 +1,7 @@
 import ReactConfetti from "react-confetti";
 import React, { useEffect, useState } from "react";
 
-const Confetti = ({ opacity = 0.1 }) => {
+export const Confetti = ({ opacity = 0.1 }) => {
   // const {
   //   initialState: { confettiOpacity },
   // } = context;
@@ -32,5 +32,3 @@ const Confetti = ({ opacity = 0.1 }) => {
     </>
   );
 };
-
-export default Confetti;

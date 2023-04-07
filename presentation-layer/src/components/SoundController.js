@@ -4,7 +4,7 @@ import {
   MdOutlineNotificationsOff,
   MdOutlineNotifications,
 } from "react-icons/md";
-import { AppContext } from "../utils/context";
+import { AppContext } from "../utils";
 
 const styles = {
   position: "absolute",
@@ -13,7 +13,7 @@ const styles = {
   color: "#fff",
 };
 
-const SoundController = () => {
+export const SoundController = () => {
   const [toggleMusic, setToggleMusic] = useState(true);
   const [toggleSound, setToggleSound] = useState(true);
   const context = useContext(AppContext);
@@ -58,5 +58,3 @@ const SoundController = () => {
     </div>
   );
 };
-
-export default SoundController;

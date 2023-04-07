@@ -1,15 +1,12 @@
 import React, { useState, useMemo } from "react";
 // import { AppContext } from "../../utils/context";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Header from "../../components/header/Header";
-import Navigation from "../../components/nav/Navigation";
-import SoundIcon from "../../components/SoundController";
-import { contentSchema } from "../../utils/content-schema";
-import Content from "../../components/content-render/ContentRenderer";
+import { Header, Content, Navigation, SoundController } from "../../components";
+import { contentSchema } from "../../utils";
 
 import "./GameGuide.css";
 
-const GameGuide = () => {
+export const GameGuide = () => {
   // const context = useContext(AppContext);
 
   // const { contextDispatch } = context;
@@ -73,9 +70,7 @@ const GameGuide = () => {
         }
       ></Button> */}
       <Navigation />
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default GameGuide;

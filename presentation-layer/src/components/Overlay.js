@@ -1,6 +1,6 @@
 import React from "react";
 
-const Overlay = () => {
+export const Overlay = () => {
   const styles = {
     height: "100%",
     width: "100%",
@@ -13,5 +13,3 @@ const Overlay = () => {
   };
   return <div style={styles}></div>;
 };
-
-export default Overlay;

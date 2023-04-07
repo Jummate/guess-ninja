@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Card.css";
 
-const Card = ({ headerText, content }) => {
+export const Card = ({ headerText, content }) => {
   return (
     <article className="Card__container">
       <h6>{headerText}</h6>
@@ -10,5 +10,3 @@ const Card = ({ headerText, content }) => {
     </article>
   );
 };
-
-export default Card;

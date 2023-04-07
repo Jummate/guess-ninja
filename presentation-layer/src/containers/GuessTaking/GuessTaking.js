@@ -1,26 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
-import Button from "../../components/button/Button";
-import { AppContext } from "../../utils/context";
-import { generateRandomPlayers } from "../../utils/random-player";
-import ThinkingDoll from "../../assets/images/thinking.gif";
-import { difficultyValue } from "../../utils/difficultyValue";
-import Navigation from "../../components/nav/Navigation";
-import { game_mode, mode_type } from "../../utils/reusable-variables";
+import "./GuessTaking.css";
 
 import {
+  Button,
+  Navigation,
+  Header,
+  Confetti,
+  SoundController,
+} from "../../components";
+import { ThinkingDoll } from "../../assets";
+import {
+  game_mode,
+  mode_type,
   alertIncorrectGuess,
   alertNoWinner,
   alertSuccess,
-} from "../../utils/alert";
+  checkAndConfirmGuess,
+  playSound,
+  sound,
+  difficultyValue,
+  generateRandomPlayers,
+  AppContext,
+} from "../../utils";
 
-import "./GuessTaking.css";
-import { checkAndConfirmGuess } from "../../utils/checkGuess";
-import Header from "../../components/header/Header";
-import Confetti from "../../components/Confetti";
-import { playSound, sound } from "../../utils/game-sound";
-import SoundIcon from "../../components/SoundController";
-
-const GuessTaking = () => {
+export const GuessTaking = () => {
   const { SINGLE, MULTI } = game_mode;
   const { PROGRESSIVE } = mode_type;
   const context = useContext(AppContext);
@@ -48,7 +51,7 @@ const GuessTaking = () => {
   const [combinedAttempts, setCombinedAttempts] = useState(1);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  //the increment of numOfPlayer for Progressive type is solely for number buttons expansion, so the original value value should always be 1
+  //the increment of numOfPlayer for Progressive type is solely to increase the count of number buttons, the original value should always be 1
   const modifiedNumOfPlayer =
     selectedMode === SINGLE && onePlayerGameType === PROGRESSIVE
       ? 1
@@ -201,9 +204,7 @@ const GuessTaking = () => {
       </div>
       <Navigation />
       {showConfetti ? <Confetti opacity={1.0} /> : null}
-      <SoundIcon />
+      <SoundController />
     </section>
   );
 };
-
-export default GuessTaking;
