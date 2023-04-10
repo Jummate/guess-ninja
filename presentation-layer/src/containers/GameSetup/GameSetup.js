@@ -1,6 +1,7 @@
 import React, { useState, useContext, createRef } from "react";
 import Select from "react-select";
 import "./GameSetup.css";
+
 import {
   Input,
   Navigation,
@@ -9,6 +10,7 @@ import {
   SoundController,
   Confetti,
 } from "../../components";
+
 import {
   AppContext,
   GuessGame,

@@ -22,6 +22,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, defaultState);
   const scoreData = getScore(state?.newGame?.getPlayersInvolved());
 
+  //prevent unwanted re-rendering of consumers of context
   const memoizedValue = useMemo(
     () => ({ initialState: state, contextDispatch: dispatch }),
     [state]

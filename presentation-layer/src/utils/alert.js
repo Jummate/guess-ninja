@@ -139,10 +139,7 @@ export const alertSessionEnd = async (initialState, contextDispatch) => {
   let noWinnerMsg = "";
 
   if (winningPlayers.length > 1 && maxScore > 0) {
-    // let players = `${winningPlayers
-    //   .slice(0, winningPlayers.length - 1)
-    //   .toString()} and ${winningPlayers[winningPlayers.length - 1]}`;
-
+    //format the players name in the format - John, Doe, and Jane
     let players = new Intl.ListFormat("en-us").format(winningPlayers);
 
     // newGame.setTempBucketForPlayers(newGame.getPlayersInvolved());
@@ -280,7 +277,7 @@ export const alertQuit = async (
   }
 };
 
-//Success Alert----------------------
+//---------------------- Success Alert ----------------------
 
 export const alertSuccess = async (
   winningPlayerName,

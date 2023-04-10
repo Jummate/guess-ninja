@@ -101,10 +101,4 @@ export class GuessGame {
       return player;
     });
   }
-
-  // getStat() {
-  //   return this.playersInvolved
-  //     .map((player) => player.getPlayerPlayStatus())
-  //     .join(", ");
-  // }
 }

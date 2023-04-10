@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-// import { AppContext } from "../../utils/context";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Header, Content, Navigation, SoundController } from "../../components";
 import { contentSchema } from "../../utils";
@@ -7,12 +6,9 @@ import { contentSchema } from "../../utils";
 import "./GameGuide.css";
 
 export const GameGuide = () => {
-  // const context = useContext(AppContext);
-
-  // const { contextDispatch } = context;
-
   const [count, setCount] = useState(0);
 
+  //prevent unnecessary rendering of the component
   const memoizedData = useMemo(() => contentSchema[count], [count]);
 
   return (

@@ -8,6 +8,7 @@ import {
   Loading,
   SoundController,
 } from "../../components";
+
 import {
   AppContext,
   generateNumberToGuess,
@@ -17,6 +18,7 @@ import {
   playSound,
   sound,
 } from "../../utils";
+
 import { RobotRomeo } from "../../assets";
 
 export const GamePreparation = () => {

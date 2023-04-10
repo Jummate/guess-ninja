@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import "./GameInfo.css";
+
 import {
   Button,
   Header,
@@ -8,6 +9,7 @@ import {
   Confetti,
   SoundController,
 } from "../../components";
+
 import {
   AppContext,
   game_mode,
