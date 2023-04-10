@@ -28,7 +28,8 @@ export const contentSchema = [
         item: [
           {
             title: "Progressive:",
-            content: "game difficulty increases as game progresses",
+            content:
+              "game difficulty and range of number-to-guess increase as game progresses",
           },
           {
             title: "Constant:",
@@ -76,6 +77,11 @@ export const contentSchema = [
             title: "",
             content:
               "The length of the range the number-to-guess falls within largely depends on Number of Players, Number of Attempt, and Difficulty",
+          },
+          {
+            title: "",
+            content:
+              "The difficulties Hard, Medium, and Easy have corresponding values of 5, 3, and 1",
           },
         ],
       },
