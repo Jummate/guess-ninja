@@ -12,7 +12,7 @@
     justify-content: flex-end;
     align-items: center;
     padding-right: 20px;
-    font-family: 'Creepster', cursive;
+    font-family: 'Montserrat', sans-serif;
 
 }
 .Navigation__wrapper{
@@ -25,7 +25,7 @@
 .Navigation__wrapper li{
     margin-left: 10px;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   
 }
 .Navigation__wrapper li:hover{
@@ -36,14 +36,14 @@
 @media screen and (min-width:340px) and (max-width:480px){
     
     .Navigation__wrapper li{
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       
     }
 }
 
 @media screen and (min-width:481px){
     .Navigation__wrapper li{
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       
     }
   

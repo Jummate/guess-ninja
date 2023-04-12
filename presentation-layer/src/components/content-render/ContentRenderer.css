@@ -16,7 +16,8 @@
 }
 .content-body{
     padding: 10px;
-    font-family: 'Creepster', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     width: 100%;
     max-width: 500px;
     font-size: 1.2rem;

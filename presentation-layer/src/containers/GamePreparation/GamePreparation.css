@@ -62,7 +62,7 @@
     padding: 10px;
     padding-top: 12px;
     background-color: #000;
-    line-height: 1.4;
+    line-height: 1.43;
 
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -74,7 +74,7 @@
 .GamePrep__body-item-2 p{
     text-align: center;
     font-weight: bolder;
-    font-size: 1.4rem;
+    font-size: 1.22rem;
 }
 
 
