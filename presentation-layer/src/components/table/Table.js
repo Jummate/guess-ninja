@@ -27,6 +27,9 @@ export const Table = ({ data = [], columns }) => {
     },
     contextDispatch,
   } = context;
+  
+
+
 
   const { initialState } = context;
   return (
